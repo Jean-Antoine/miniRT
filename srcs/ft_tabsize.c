@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_rt.h                                          :+:      :+:    :+:   */
+/*   ft_tabsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 14:10:31 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/24 18:00:58 by lpaquatt         ###   ########.fr       */
+/*   Created: 2024/05/24 17:58:42 by lpaquatt          #+#    #+#             */
+/*   Updated: 2024/05/24 18:00:26 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINI_RT_H
-# define MINI_RT_H
+#include "mini_rt.h"
 
-# include "struct.h"
-# include "libft.h"
-# include "get_next_line.h"
-# include "ft_printf.h"
-# include "libraries.h"
-# include "vector_operations.h"
-# include "parsing.h"
+size_t	ft_tabsize(char	**tab)
+{
+	size_t	res;
 
-# define TRUE 1
-# define FALSE 0
-# define OK 1
-# define KO 0
-
-size_t	ft_tabsize(char	**tab); // a deplacer
-
-
-#endif
+	if (!tab)
+		return (0);
+	res = 0;
+	while (tab[res])
+		res++;
+	return (res);
+}

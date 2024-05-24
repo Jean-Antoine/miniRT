@@ -9,6 +9,16 @@ SRCS_F =					$(addprefix /vector_operations/,\
 								ft_normalize_vector.c\
 								ft_dot_product_vectors.c\
 								ft_cross_product_vectors.c)\
+							$(addprefix /parsing/,\
+								ft_open_file.c\
+								ft_new_light_addback.c\
+								ft_create_color.c\
+								ft_create_color_from_arg.c\
+								ft_create_ambiant_light.c\
+								ft_fill_scene.c\
+								ft_create_scene.c\
+								ft_parse_scene.c)\
+							ft_tabsize.c\
 							main.c
 
 OBJS_F = 					$(SRCS_F:.c=.o)
@@ -18,7 +28,9 @@ SRCS =						$(addprefix $(SRCS_D), $(SRCS_F))
 OBJS =						$(addprefix $(OBJS_D), $(OBJS_F))
 HEADERS_D =					./include/
 HEADERS_F =					mini_rt.h \
+							struct.h \
 							vector_operations.h \
+							parsing.h \
 							libraries.h
 HEADERS =					$(addprefix $(HEADERS_D), $(HEADERS_F))
 CC = 						cc
@@ -57,7 +69,7 @@ valgrind:					$(NAME)
 								--show-reachable=yes \
 								--track-fds=yes\
 								--track-origins=yes \
-								./$(NAME)
+								./$(NAME) test.rt
 
 valgrindnoenv: 				$(NAME)
 							valgrind --leak-check=full \

@@ -6,26 +6,14 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:57:04 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/23 17:07:31 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/24 11:41:59 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_OPERATIONS_H
 # define VECTOR_OPERATIONS_H
+# include "struct.h"
 
-typedef struct t_point
-{
-	double	x;
-	double	y;
-	double	z;
-}	t_point;
-
-typedef struct t_vector
-{
-	double	x;
-	double	y;
-	double	z;
-}	t_vector;
 
 
 t_point		ft_create_point(double x, double y, double z);
