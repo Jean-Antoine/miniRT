@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fill_scene.c                                    :+:      :+:    :+:   */
+/*   ft_parse_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:04:33 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/24 18:22:23 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:58:15 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_args_to_scene(char **args, t_scene *scene)
 	return (EXIT_FAILURE);
 }
 
-int	ft_fill_scene(char *line, t_scene *scene)
+int	ft_parse_line(char *line, t_scene *scene)
 {
 	char	**args;
 

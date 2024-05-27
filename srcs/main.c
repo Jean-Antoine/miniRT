@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 11:52:13 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:57:09 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int ac, char **av)
 		ft_putstr_fd("Error: wrong number of arguments\n", 2);
 		return (EXIT_FAILURE);
 	}
-	if (ft_parse_scene(&scene, av[1]))
+	if (ft_parse(&scene, av[1]))
 		return (ft_exit(EXIT_FAILURE, scene));
 	return (ft_exit(EXIT_SUCCESS, scene));
 }
