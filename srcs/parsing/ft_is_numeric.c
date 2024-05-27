@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:35:06 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/27 15:38:46 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 16:04:16 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,17 @@ int	ft_is_float(char *str)
 			return (FALSE);
 	if (*str == '.')
 		return (ft_is_numeric(++str));
+	return (TRUE);
+}
+
+int	ft_is_triplet(char **tab)
+{
+	if (!tab)
+		return (FALSE);
+	if (ft_tabsize(tab) != 3)
+		return (FALSE);
+	while (*tab)
+		if (!ft_is_float(*tab++))
+			return (FALSE);
 	return (TRUE);
 }
