@@ -10,6 +10,7 @@ SRCS_F =					$(addprefix /operations/,\
 								ft_v_dot_prod.c\
 								ft_v_cross_prod.c)\
 							$(addprefix /parsing/,\
+								ft_error.c\
 								ft_open_file.c\
 								ft_new_light_addback.c\
 								ft_set_color.c\
@@ -18,6 +19,7 @@ SRCS_F =					$(addprefix /operations/,\
 								ft_create_ambiant_light.c\
 								ft_parse_line.c\
 								ft_is_numeric.c\
+								ft_get_triplet.c\
 								ft_parse.c)\
 							ft_tabsize.c\
 							main.c
