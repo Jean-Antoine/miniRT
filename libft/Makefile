@@ -84,30 +84,41 @@ NAME =						libft.a
 CC =						cc
 CPPFLAGS =					-I./include/
 CFLAGS =					-Wall -Wextra -Werror
+SILENT =					FALSE
+OBJ_COLOR =					\033[0;34m
+LIB_COLOR =					\033[1;36m
+NO_COLOR =					\033[0m
+BOLD =						\033[1m
 
-
-all: 						$(NAME)	
+all: 						$(NAME)
 
 $(OBJS_D)%.o:				$(SRCS_D)%.c
-							@mkdir -p $(addprefix $(OBJS_D), $(BASE_D) $(PRINTF_D) $(GNL_D) $(LIST_D))
-							$(CC) $(CPPFLAGS) -c $(CFLAGS) $< -o $@
+	@mkdir -p $(addprefix $(OBJS_D), $(BASE_D) $(PRINTF_D) $(GNL_D) $(LIST_D))
+ifeq (FALSE, $(SILENT))
+	$(CC) $(CPPFLAGS) -c $(CFLAGS) $< -o $@
+else
+	@$(CC) $(CPPFLAGS) -c $(CFLAGS) $< -o $@
+endif
 
-$(NAME): 					$(OBJS)							
-							ar crs $@ $?
-
+$(NAME): 					$(OBJS)
+ifeq (FALSE, $(SILENT))
+	ar crs $@ $?
+else
+	@ar crs $@ $?
+endif
 clean:
-							rm -fdr $(OBJS_D)
+	@rm -fdr $(OBJS_D)
 
 fclean: 					clean
-							rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: 						fclean all
 
 norme:
-							norminette $(SRCS)
-							norminette -R CheckDefine $(HEADER_D)
+	norminette $(SRCS)
+	norminette -R CheckDefine $(HEADER_D)
 
 .PHONY:						mkdir_obj
 
 echo:						
-							echo $(addprefix $(OBJS_D), $(BASE_D) $(PRINTF_D) $(GNL_D) $(LIST_D))
+	echo $(SILENT)
