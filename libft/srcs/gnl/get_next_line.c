@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:32:48 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/02/29 14:10:52 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:35:09 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ char	*get_next_line(int fd, int clean)
 	static t_buffer	*buffer;
 	char			*line;
 
-	line = read_line(&buffer, fd);
+	if (!clean)
+		line = read_line(&buffer, fd);
 	buffer = remove_node(buffer, fd, !line || clean);
 	return (line);
 }
