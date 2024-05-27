@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:04:33 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 17:21:27 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:41:36 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ static int	ft_args_to_scene(char **args, t_scene *scene)
 {
 	if (!args || !args[0])
 		return (EXIT_SUCCESS);
-	if (ft_strcmp(args[0], "A") == 0)
-		return (ft_create_ambiant_light(args, scene));
-	if (ft_strcmp(args[0], "L") == 0)
-		return (ft_create_spot_light(args, scene));
-	return (ft_error("Invalid data\n", FALSE));
+	if (ft_parse_light(args, &scene->lights)
+		&& ft_parse_object(args, &scene->objects)
+		&& ft_parse_camera(args, &scene->camera))
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
 int	ft_parse_line(char *line, t_scene *scene)

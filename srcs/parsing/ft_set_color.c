@@ -3,21 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/24 18:04:26 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 15:43:11 by lpaquatt         ###   ########.fr       */
+/*   Created: 2024/05/24 18:04:21 by lpaquatt          #+#    #+#             */
+/*   Updated: 2024/05/27 17:22:53 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 
-t_color	ft_set_color(int r, int g, int b)
+static int	ft_is_color(char **tab)
 {
-	t_color	color;
+	size_t	i;
+	size_t	j;
 
-	color.r = r;
-	color.g = g;
-	color.b = b;
-	return (color);
+	if (ft_tabsize(tab) != 3)
+		return (KO);
+	j = 0;
+	while (tab[j])
+	{
+		i = 0;
+		if (!ft_is_numeric(tab[j]))
+			return (KO);
+		if (ft_strlen(tab[j]) > 3
+			|| ft_atoi(tab[j]) > 255)
+			return (KO);
+		j++;
+	}
+	return (OK);
+}
+
+int	ft_set_color(t_color *color, char *arg)
+{
+	char	**rgb;
+
+	rgb = ft_split(arg, ',');
+	if (!rgb)
+	{
+		perror("ft_split");
+		return (EXIT_FAILURE);
+	}
+	if (ft_is_color(rgb) == KO)
+	{
+		ft_free_tab((void **) rgb);
+		ft_putstr_fd("Error: invalid data in file\n", 2);
+		return (EXIT_FAILURE);
+	}
+	color->r = ft_atoi(rgb[0]);
+	color->g = ft_atoi(rgb[1]);
+	color->b = ft_atoi(rgb[2]);
+	ft_free_tab((void **)rgb);
+	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:41:09 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 15:29:33 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:11:54 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_object
 {
 	t_object_type	type;
 	t_point			position;
-	double			radius;
+	double			diameter;
 	double			height;
 	t_vector		direction;
 	t_color			color;
