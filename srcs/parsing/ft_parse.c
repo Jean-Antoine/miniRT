@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:35:36 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 11:56:56 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:36:39 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	ft_parse_scene(int fd, t_scene *scene)
 int	ft_parse(t_scene *scene, char *file)
 {
 	int	fd;
+
 	ft_bzero(scene, sizeof(t_scene));
 	fd = ft_open_file(file);
 	if (fd == -1)
