@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 16:50:34 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:19:11 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		ft_parse_line(char *line, t_scene *scene);
 int		ft_parse(t_scene *scene, char *file);
 int		ft_open_file(char *file_name);
 t_color	ft_set_color(int r, int g, int b);
-int		ft_set_light_brightness(double *brightness, char *arg);
+int		ft_set_brightness(double *brightness, char *arg);
 int		ft_set_color_from_arg(t_color *color, char *str);
 int		ft_error(char *str, int use_errno);
 int		ft_parse_line(char *line, t_scene *scene);

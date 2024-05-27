@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_set_light_brightness.c                          :+:      :+:    :+:   */
+/*   ft_set_brightness.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:49:26 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 16:15:45 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:18:29 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 
-int	ft_set_light_brightness(double *brightness, char *arg)
+int	ft_set_brightness(double *brightness, char *arg)
 {
-	if (!ft_is_float(arg))
+	if (ft_is_float(arg) == FALSE)
 		return (ft_error("Invalid data\n", FALSE));
 	*brightness = ft_atof(arg);
 	if (*brightness < 0 || *brightness > 1)
-		return (EXIT_FAILURE);
-	return (EXIT_FAILURE);
+		return (ft_error("Invalid data\n", FALSE));
+	return (EXIT_SUCCESS);
 }

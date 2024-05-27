@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_numeric.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:35:06 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/27 16:04:16 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:06:26 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_is_float(char *str)
 	if (*str == '.')
 		return (FALSE);
 	while (*str && *str != '.')
-		if (ft_isdigit(*str++))
+		if (ft_isdigit(*str++) == FALSE)
 			return (FALSE);
 	if (*str == '.')
 		return (ft_is_numeric(++str));
