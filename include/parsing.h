@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 10:10:35 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:51:50 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "struct.h"
 
-int	ft_parse_scene(t_scene *scene, int ac, char **av);
+int	ft_parse_scene(t_scene *scene, char *file);
 int	ft_open_file(char *file_name);
 t_color	ft_create_color(int r, int g, int b);
 int	ft_create_color_from_arg(t_color *color, char *str);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/24 17:52:53 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:52:13 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,12 @@ int	main(int ac, char **av)
 {
 	t_scene	scene;
 
-	if (ft_parse_scene(&scene, ac, av) == EXIT_FAILURE)
+	if (ac != 2)
+	{
+		ft_putstr_fd("Error: wrong number of arguments\n", 2);
+		return (EXIT_FAILURE);
+	}
+	if (ft_parse_scene(&scene, av[1]))
 		return (ft_exit(EXIT_FAILURE, scene));
 	return (ft_exit(EXIT_SUCCESS, scene));
 }

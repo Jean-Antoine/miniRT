@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_open_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:58:26 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/24 14:58:43 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:48:44 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_check_suffix(char *file_name)
 	if (len > 3
 		&& ft_strncmp(&file_name[len - 3], ".rt", 3) == 0)
 		return (OK);
-	ft_putstr_fd("Error : file suffix must be .rt\n", 2);
+	ft_putstr_fd("Error: file suffix must be .rt\n", 2);
 	return (KO);
 }
 
