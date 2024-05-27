@@ -48,16 +48,16 @@ all:						$(NAME)
 
 $(NAME):					$(LIBFT) $(OBJS)
 							@echo "$(LIB_COLOR)[$(NAME)] Compiling$(NO_COLOR) $(LIB_COLOR)binary$(NO_COLOR)"
-							$(CC) $(CPPFLAGS) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFT_PATH) -lft -lm
+							@$(CC) $(CPPFLAGS) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFT_PATH) -lft -lm
 
 $(OBJS_D)%.o:				$(SRCS_D)%.c $(HEADERS)
 							@mkdir -p $(dir $@)
 							@echo "$(LIB_COLOR)[miniRT] $(NO_COLOR)Compiling $(OBJ_COLOR)$(notdir $<)$(NO_COLOR)"
-							$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+							@$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 $(LIBFT):
-							@echo "$(LIB_COLOR)[  libft  ] Compiling$(NO_COLOR) $(LIB_COLOR)library$(NO_COLOR)"
-							@make --no-print-directory -C $(LIBFT_PATH) all
+							@echo "$(LIB_COLOR)[libft] Compiling$(NO_COLOR) $(LIB_COLOR)library$(NO_COLOR)"
+							@make --no-print-directory -C $(LIBFT_PATH) all SILENT=TRUE
 
 bonus:						$(NAME)
 							@cp $(NAME) $(NAME)_bonus
