@@ -1,6 +1,6 @@
 SRCS_F =					$(addprefix /operations/,\
-								ft_p_create.c\
-								ft_v_create.c\
+								ft_p_set.c\
+								ft_v_set.c\
 								ft_v_norm.c\
 								ft_p_to_v.c\
 								ft_p_translate.c\
