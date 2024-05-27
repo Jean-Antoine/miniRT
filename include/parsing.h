@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 11:57:37 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:36:50 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 # include "struct.h"
 
-int	ft_parse_line(char *line, t_scene *scene);
-int	ft_parse(t_scene *scene, char *file);
-int	ft_open_file(char *file_name);
+int		ft_parse_line(char *line, t_scene *scene);
+int		ft_parse(t_scene *scene, char *file);
+int		ft_open_file(char *file_name);
+int		ft_is_numeric(char *str);
+int		ft_is_float(char *str);
 t_color	ft_create_color(int r, int g, int b);
-int	ft_create_color_from_arg(t_color *color, char *str);
+int		ft_create_color_from_arg(t_color *color, char *str);
 t_light	*ft_new_light_addback(t_light **light_lst);
-int	ft_create_ambiant_light(char **args, t_scene *scene);
+int		ft_create_ambiant_light(char **args, t_scene *scene);
 
 #endif

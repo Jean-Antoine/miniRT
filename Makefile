@@ -16,6 +16,7 @@ SRCS_F =					$(addprefix /operations/,\
 								ft_create_color_from_arg.c\
 								ft_create_ambiant_light.c\
 								ft_parse_line.c\
+								ft_is_numeric.c\
 								ft_parse.c)\
 							ft_tabsize.c\
 							main.c

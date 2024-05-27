@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:41:09 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 10:11:05 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:29:33 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,11 @@ typedef struct s_camera
 	t_point			position;
 	t_vector		direction;
 	int				fov;
-	struct s_camera	*next;
 }	t_camera;
 
 typedef struct s_scene
 {
-	t_camera	*camera;
-	t_light		*ambiant_light;
+	t_camera	camera;
 	t_light		*lights;
 	t_object	*objects;
 }	t_scene;
