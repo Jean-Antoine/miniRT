@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 11:05:00 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:42:11 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int	main(void)
 	t_vector W;
 	t_vector R;
 
-	O = ft_p_create(0, 0, 0);
-	A = ft_p_create(1, 0, 0);
+	O = ft_p_set(0, 0, 0);
+	A = ft_p_set(1, 0, 0);
 	V = ft_p_to_v(O, A);
 	printf("norm V = %f\n", ft_v_norm(V));
-	W = ft_v_create(0, 1, 0);
+	W = ft_v_set(0, 1, 0);
 	B = ft_p_translate(A, W);
 	printf("B = (%f, %f, %f)\n", B.x, B.y, B.z);
 	W = ft_v_add(V, W);

@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 11:57:09 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:12:27 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	ft_free_objects(t_object *object)
 
 void	ft_free_scene(t_scene scene)
 {
-	if (scene.ambiant_light)
-		ft_free_lights(scene.ambiant_light);
 	if (scene.lights)
 		ft_free_lights(scene.lights);
 	if (scene.objects)

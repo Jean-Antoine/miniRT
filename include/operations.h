@@ -14,10 +14,10 @@
 # define operations_H
 # include "struct.h"
 
-t_point		ft_p_create(double x, double y, double z);
+t_point		ft_p_set(double x, double y, double z);
 t_point		ft_p_translate(t_point starting_point, t_vector vector);
 t_vector	ft_p_to_v(t_point starting_point, t_point end_point);
-t_vector	ft_v_create(double x, double y, double z);
+t_vector	ft_v_set(double x, double y, double z);
 t_vector	ft_v_add(t_vector v1, t_vector v2);
 t_vector	ft_v_scalar_prod(double scalar, t_vector vector);
 t_vector	ft_v_normalize(t_vector vector);

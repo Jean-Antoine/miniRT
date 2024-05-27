@@ -1,6 +1,6 @@
 SRCS_F =					$(addprefix /operations/,\
-								ft_p_create.c\
-								ft_v_create.c\
+								ft_p_set.c\
+								ft_v_set.c\
 								ft_v_norm.c\
 								ft_p_to_v.c\
 								ft_p_translate.c\
@@ -17,6 +17,7 @@ SRCS_F =					$(addprefix /operations/,\
 								ft_set_light_brightness.c\
 								ft_create_ambiant_light.c\
 								ft_parse_line.c\
+								ft_is_numeric.c\
 								ft_parse.c)\
 							ft_tabsize.c\
 							main.c

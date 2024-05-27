@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:35:36 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 15:36:39 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:55:45 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_parse_scene(int fd, t_scene *scene)
 	{
 		line = get_next_line(fd, FALSE);
 		if (!line)
-			return (exit_code);
+			break ;
 		exit_code = ft_parse_line(line, scene);
 		free(line);
 		if (exit_code)

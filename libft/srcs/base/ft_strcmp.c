@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_light_addback.c                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/24 18:04:38 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 15:37:17 by jeada-si         ###   ########.fr       */
+/*   Created: 2024/05/27 15:04:06 by jeada-si          #+#    #+#             */
+/*   Updated: 2024/05/27 15:07:04 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_rt.h"
+#include "libft.h"
 
-t_light	*ft_new_light_addback(t_light **light_lst)
+int	ft_strcmp(char *s1, char *s2)
 {
-	t_light	*new_light;
-	t_light	*last;
+	size_t			i;
+	unsigned char	*ss1;
+	unsigned char	*ss2;
 
-	new_light = ft_calloc(1, sizeof(t_light));
-	if (!new_light)
+	ss1 = (unsigned char *)s1;
+	ss2 = (unsigned char *)s2;
+	i = 0;
+	while (ss1[i] || ss2[i])
 	{
-		perror("malloc");
-		return (NULL);
+		if (ss1[i] != ss2[i])
+			return (ss1[i] - ss2[i]);
+		else
+			i++;
 	}
-	if (!*light_lst)
-		*light_lst = new_light;
-	else 
-	{
-		last = *light_lst;
-		while (last->next)
-			last = last->next;
-		last->next = new_light;
-	}
-	return (new_light);
+	return (0);
 }
-

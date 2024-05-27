@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_p_create.c                                  :+:      :+:    :+:   */
+/*   ft_v_set.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 16:54:26 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/23 16:56:06 by lpaquatt         ###   ########.fr       */
+/*   Created: 2024/05/23 16:54:48 by lpaquatt          #+#    #+#             */
+/*   Updated: 2024/05/27 10:12:38 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 
-t_point	ft_p_create(double x, double y, double z)
+t_vector	ft_v_set(double x, double y, double z)
 {
-	t_point	point;
+	t_vector	vector;
 
-	point.x = x;
-	point.y = y;
-	point.z = z;
-	return (point);
+	vector.x = x;
+	vector.y = y;
+	vector.z = z;
+	return (vector);
 }
