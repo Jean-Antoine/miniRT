@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_p_create.c                                  :+:      :+:    :+:   */
+/*   ft_p_set.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "mini_rt.h"
 
-t_point	ft_p_create(double x, double y, double z)
+t_point	ft_p_set(double x, double y, double z)
 {
 	t_point	point;
 

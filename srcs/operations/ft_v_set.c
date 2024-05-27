@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_v_create.c                                 :+:      :+:    :+:   */
+/*   ft_v_set.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "mini_rt.h"
 
-t_vector	ft_v_create(double x, double y, double z)
+t_vector	ft_v_set(double x, double y, double z)
 {
 	t_vector	vector;
 
