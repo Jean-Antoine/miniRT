@@ -17,6 +17,7 @@ SRCS_F =					$(addprefix /operations/,\
 								ft_set_color_from_arg.c\
 								ft_set_light_brightness.c\
 								ft_create_ambiant_light.c\
+								ft_create_spot_light.c\
 								ft_parse_line.c\
 								ft_is_numeric.c\
 								ft_get_triplet.c\
