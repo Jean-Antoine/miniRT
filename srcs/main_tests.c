@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_tests.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/23 17:12:01 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:05:00 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,24 @@ int	main(void)
 	t_vector W;
 	t_vector R;
 
-	O = ft_create_point(0, 0, 0);
-	A = ft_create_point(1, 0, 0);
-	V = ft_create_vector_from_points(O, A);
-	printf("norm V = %f\n", ft_get_vector_norm(V));
-	W = ft_create_vector(0, 1, 0);
-	B = ft_translate_point(A, W);
+	O = ft_p_create(0, 0, 0);
+	A = ft_p_create(1, 0, 0);
+	V = ft_p_to_v(O, A);
+	printf("norm V = %f\n", ft_v_norm(V));
+	W = ft_v_create(0, 1, 0);
+	B = ft_p_translate(A, W);
 	printf("B = (%f, %f, %f)\n", B.x, B.y, B.z);
-	W = ft_add_vectors(V, W);
+	W = ft_v_add(V, W);
 	printf("W = (%f, %f, %f)\n", W.x, W.y, W.z);
-	W = ft_multiply_vector_by_num(2, W);
+	W = ft_v_scalar_prod(2, W);
 	printf("W = (%f, %f, %f)\n", W.x, W.y, W.z);
-	W = ft_normalize_vector(W);
+	W = ft_v_normalize(W);
 	printf("W = (%f, %f, %f)\n", W.x, W.y, W.z);
-	printf("norm W = %f\n", ft_get_vector_norm(W));
-	printf("dot product V . W = %f\n", ft_dot_product_vectors(V, W));
-	R = ft_cross_product_vectors(V, W);
+	printf("norm W = %f\n", ft_v_norm(W));
+	printf("dot product V . W = %f\n", ft_v_dot_prod(V, W));
+	R = ft_v_cross_prod(V, W);
 	printf("cross product V x W = (%f, %f, %f)\n", R.x, R.y, R.z);
-	R = ft_cross_product_vectors(W, V);
+	R = ft_v_cross_prod(W, V);
 	printf("cross product W x V = (%f, %f, %f)\n", R.x, R.y, R.z);
 	return (EXIT_SUCCESS);
 }

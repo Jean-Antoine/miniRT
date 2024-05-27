@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_normalize_vector.c                              :+:      :+:    :+:   */
+/*   ft_v_create.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 16:55:18 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/23 17:04:21 by lpaquatt         ###   ########.fr       */
+/*   Created: 2024/05/23 16:54:48 by lpaquatt          #+#    #+#             */
+/*   Updated: 2024/05/27 10:12:38 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 
-t_vector	ft_normalize_vector(t_vector vector)
+t_vector	ft_v_create(double x, double y, double z)
 {
-	return (ft_multiply_vector_by_num(1 / ft_get_vector_norm(vector), vector));
+	t_vector	vector;
+
+	vector.x = x;
+	vector.y = y;
+	vector.z = z;
+	return (vector);
 }

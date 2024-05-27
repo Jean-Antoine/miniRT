@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_vectors.c                                   :+:      :+:    :+:   */
+/*   ft_v_add.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "mini_rt.h"
 
-t_vector	ft_add_vectors(t_vector vector1, t_vector vector2)
+t_vector	ft_v_add(t_vector vector1, t_vector vector2)
 {
 	t_vector	vector_res;
 

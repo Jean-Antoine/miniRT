@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:57:00 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/24 18:07:13 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:16:01 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,11 @@ int	ft_create_scene(int fd, t_scene *scene)
 	{
 		line = get_next_line(fd, FALSE);
 		if (!line)
-			break ;
-		if (ft_fill_scene(line, scene) == EXIT_FAILURE)
-		{
-			exit_code = EXIT_FAILURE;
-			free(line);
-			break ;
-		}
+			return (exit_code);
+		exit_code = ft_fill_scene(line, scene);
 		free(line);
+		if (exit_code)
+			break ;
 	}
 	get_next_line(fd, TRUE);
 	close(fd);

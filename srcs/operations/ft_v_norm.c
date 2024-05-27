@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_multiply_vector_by_num.c                        :+:      :+:    :+:   */
+/*   ft_v_norm.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 16:55:22 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/23 17:04:29 by lpaquatt         ###   ########.fr       */
+/*   Created: 2024/05/23 16:55:26 by lpaquatt          #+#    #+#             */
+/*   Updated: 2024/05/23 17:00:06 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 
-t_vector	ft_multiply_vector_by_num(double factor, t_vector vector)
+double	ft_v_norm(t_vector vect)
 {
-	vector.x *= factor;
-	vector.y *= factor;
-	vector.z *= factor;
-	return (vector);
+	return (sqrt(pow(vect.x, 2) + pow(vect.y, 2) + pow(vect.z, 2)));
 }

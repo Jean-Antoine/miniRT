@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:41:09 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/24 15:48:45 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/27 10:11:05 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,12 @@ typedef struct s_color
 	int	b;
 }	t_color;
 
-typedef enum e_object_type {plan, sphere, cylinder}	t_object_type;
+typedef enum e_object_type
+{
+	plan, 
+	sphere, 
+	cylinder
+}	t_object_type;
 
 typedef struct s_object
 {

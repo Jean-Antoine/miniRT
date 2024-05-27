@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_vector_from_points.c                     :+:      :+:    :+:   */
+/*   ft_v_scalar_prod.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 16:54:44 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/23 17:13:15 by lpaquatt         ###   ########.fr       */
+/*   Created: 2024/05/23 16:55:22 by lpaquatt          #+#    #+#             */
+/*   Updated: 2024/05/27 11:00:28 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 
-// vector = end_point - starting_point
-t_vector	ft_create_vector_from_points(t_point starting_point,
-	t_point end_point)
+t_vector	ft_v_scalar_prod(double scalar, t_vector vector)
 {
-	t_vector	vector;
-
-	vector.x = end_point.x - starting_point.x;
-	vector.y = end_point.y - starting_point.y;
-	vector.z = end_point.z - starting_point.z;
+	vector.x *= scalar;
+	vector.y *= scalar;
+	vector.z *= scalar;
 	return (vector);
 }

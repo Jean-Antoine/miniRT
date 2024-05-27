@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_vector.c                                 :+:      :+:    :+:   */
+/*   ft_v_dot_prod.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 16:54:48 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/23 16:59:35 by lpaquatt         ###   ########.fr       */
+/*   Created: 2024/05/23 16:55:30 by lpaquatt          #+#    #+#             */
+/*   Updated: 2024/05/23 17:13:25 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 
-t_vector	ft_create_vector(double x, double y, double z)
+double	ft_v_dot_prod(t_vector vector1, t_vector vector2)
 {
-	t_vector	vector;
-
-	vector.x = x;
-	vector.y = y;
-	vector.z = z;
-	return (vector);
+	return (vector1.x * vector2.x + vector1.y * vector2.y
+		+ vector1.z * vector2.z);
 }

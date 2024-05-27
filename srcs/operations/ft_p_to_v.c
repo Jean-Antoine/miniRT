@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_point.c                                  :+:      :+:    :+:   */
+/*   ft_p_to_v.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 16:54:26 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/23 16:56:06 by lpaquatt         ###   ########.fr       */
+/*   Created: 2024/05/23 16:54:44 by lpaquatt          #+#    #+#             */
+/*   Updated: 2024/05/23 17:13:15 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 
-t_point	ft_create_point(double x, double y, double z)
+// vector = end_point - starting_point
+t_vector	ft_p_to_v(t_point starting_point,
+	t_point end_point)
 {
-	t_point	point;
+	t_vector	vector;
 
-	point.x = x;
-	point.y = y;
-	point.z = z;
-	return (point);
+	vector.x = end_point.x - starting_point.x;
+	vector.y = end_point.y - starting_point.y;
+	vector.z = end_point.z - starting_point.z;
+	return (vector);
 }

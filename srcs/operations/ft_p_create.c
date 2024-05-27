@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_translate_point.c                               :+:      :+:    :+:   */
+/*   ft_p_create.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 16:54:52 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/23 17:01:57 by lpaquatt         ###   ########.fr       */
+/*   Created: 2024/05/23 16:54:26 by lpaquatt          #+#    #+#             */
+/*   Updated: 2024/05/23 16:56:06 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 
-t_point	ft_translate_point(t_point starting_point, t_vector vector)
+t_point	ft_p_create(double x, double y, double z)
 {
-	starting_point.x += vector.x;
-	starting_point.y += vector.y;
-	starting_point.z += vector.z;
-	return (starting_point);
+	t_point	point;
+
+	point.x = x;
+	point.y = y;
+	point.z = z;
+	return (point);
 }

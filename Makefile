@@ -1,14 +1,14 @@
-SRCS_F =					$(addprefix /vector_operations/,\
-								ft_create_point.c\
-								ft_create_vector.c\
-								ft_get_vector_norm.c\
-								ft_create_vector_from_points.c\
-								ft_translate_point.c\
-								ft_add_vectors.c\
-								ft_multiply_vector_by_num.c\
-								ft_normalize_vector.c\
-								ft_dot_product_vectors.c\
-								ft_cross_product_vectors.c)\
+SRCS_F =					$(addprefix /operations/,\
+								ft_p_create.c\
+								ft_v_create.c\
+								ft_v_norm.c\
+								ft_p_to_v.c\
+								ft_p_translate.c\
+								ft_v_add.c\
+								ft_v_scalar_prod.c\
+								ft_v_normalize.c\
+								ft_v_dot_prod.c\
+								ft_v_cross_prod.c)\
 							$(addprefix /parsing/,\
 								ft_open_file.c\
 								ft_new_light_addback.c\
@@ -29,7 +29,7 @@ OBJS =						$(addprefix $(OBJS_D), $(OBJS_F))
 HEADERS_D =					./include/
 HEADERS_F =					mini_rt.h \
 							struct.h \
-							vector_operations.h \
+							operations.h \
 							parsing.h \
 							libraries.h
 HEADERS =					$(addprefix $(HEADERS_D), $(HEADERS_F))
@@ -95,6 +95,14 @@ echo:
 
 clean_local:
 							rm -rfd $(OBJS_D)
+
+update_libft:
+							rm -drf ./libft
+							git clone git@github.com:Jean-Antoine/my_libft.git libft
+							rm -drf ./libft/.git
+							git add ./libft/
+							git commit -m "update libft"
+							git push
 
 debug:						clean_local $(NAME)
 
