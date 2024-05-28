@@ -6,18 +6,18 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 18:02:57 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/28 11:20:51 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef PARSING_H
 # define PARSING_H
-
+# define INVALID_MSG "Invalid data: "
 # include "struct.h"
 
 
-
+size_t	ft_tabsize(char	**tab);
 int		ft_error(char *str, int use_errno);
 
 int		ft_open_file(char *file_name);
