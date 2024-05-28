@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/28 13:35:20 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:36:02 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ int		ft_is_numeric(char *str);
 int		ft_is_float(char *str);
 int		ft_is_triplet(char **tab);
 int		ft_is_normalized(t_vector vector);
+
+void	ft_free_scene(t_scene scene);
 
 #endif

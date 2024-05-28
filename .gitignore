@@ -3,3 +3,4 @@ objs/*
 *.out
 .vscode
 miniRT
+mlx*

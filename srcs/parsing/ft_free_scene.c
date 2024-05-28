@@ -1,33 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_free_scene.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/28 14:44:05 by jeada-si         ###   ########.fr       */
+/*   Created: 2024/05/28 14:34:44 by jeada-si          #+#    #+#             */
+/*   Updated: 2024/05/28 14:35:30 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 
-static int	ft_exit(int exit_code, t_scene scene)
+static void	ft_free_lights(t_light *light)
 {
-	ft_free_scene(scene);
-	return (exit_code);
+	t_light	*next;
+
+	while (light)
+	{
+		next = light->next;
+		free(light);
+		light = next;
+	}
 }
 
-int	main(int ac, char **av)
+static void	ft_free_objects(t_object *object)
 {
-	t_scene	scene;
-	// int		canvas[10][10];
-	
+	t_object	*next;
 
-	if (ac != 2)
-		return (ft_error("wrong number of arguments", FALSE));
-	if (ft_parse(&scene, av[1]))
-		return (ft_exit(EXIT_FAILURE, scene));
-	
-	return (ft_exit(EXIT_SUCCESS, scene));
+	while (object)
+	{
+		next = object->next;
+		free(object);
+		object = next;
+	}
+}
+
+void	ft_free_scene(t_scene scene)
+{
+	if (scene.lights)
+		ft_free_lights(scene.lights);
+	if (scene.objects)
+		ft_free_objects(scene.objects);
 }

@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:58:26 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 15:51:10 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:39:01 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static int	ft_check_suffix(char *file_name)
 	if (len > 3
 		&& ft_strncmp(&file_name[len - 3], ".rt", 3) == 0)
 		return (EXIT_SUCCESS);
-	return (ft_error("File extension must be .rt\n", FALSE));
+	ft_putstr_fd("Error\nFile extension must be .rt\n", STDERR_FILENO);
+	return (EXIT_FAILURE);
 }
 
 int	ft_open_file(char *file_name)
