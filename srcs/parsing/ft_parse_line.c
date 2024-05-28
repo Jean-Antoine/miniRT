@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:04:33 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 17:41:36 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 18:12:54 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 static int	ft_args_to_scene(char **args, t_scene *scene)
 {
+	int	exit_code;
+	
 	if (!args || !args[0])
 		return (EXIT_SUCCESS);
-	if (ft_parse_light(args, &scene->lights)
-		&& ft_parse_object(args, &scene->objects)
-		&& ft_parse_camera(args, &scene->camera))
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+	exit_code = ft_parse_light(args, &scene->lights)
+		* ft_parse_object(args, &scene->objects);
+	if (exit_code == 4)
+		return (ft_error("Invalid data\n", FALSE));
+	return (exit_code != 0);
 }
 
 int	ft_parse_line(char *line, t_scene *scene)

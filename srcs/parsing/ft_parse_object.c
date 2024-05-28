@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:53:37 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/27 17:39:17 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 18:08:35 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static int	ft_parse_sp(char **args, t_object *dest)
 {
 	if (ft_tabsize(args) != 3)
 		return (ft_error("Invalid data\n", FALSE));
-	return (ft_get_point(&dest->position, args[0])
-		|| ft_get_scalar(&dest->diameter, args[1])
+	return (ft_set_point(&dest->position, args[0])
+		|| ft_set_scalar(&dest->diameter, args[1])
 		|| ft_set_color(&dest->color, args[2]));
 }
 
@@ -25,8 +25,8 @@ static int	ft_parse_pl(char **args, t_object *dest)
 {
 	if (ft_tabsize(args) != 3)
 		return (ft_error("Invalid data\n", FALSE));
-	return (ft_get_point(&dest->position, args[0])
-		|| ft_get_vector(&dest->direction, args[1])
+	return (ft_set_point(&dest->position, args[0])
+		|| ft_set_vector(&dest->direction, args[1])
 		|| ft_set_color(&dest->color, args[2]));
 }
 
@@ -69,7 +69,7 @@ int	ft_parse_object(char **args, t_object **dest)
 	if (ft_strcmp(args[0], "sp")
 		&& ft_strcmp(args[0], "pl")
 		&& ft_strcmp(args[0], "cl"))
-		return (EXIT_FAILURE);
+		return (2);
 	object = ft_add_object(dest);
 	if (!object)
 		return (ft_error("ft_add_object", TRUE));

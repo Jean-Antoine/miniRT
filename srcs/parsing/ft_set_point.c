@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_point.c                                     :+:      :+:    :+:   */
+/*   ft_set_point.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:04:28 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/27 17:30:23 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/27 18:02:40 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 
-int	ft_get_point(t_point *dest, char *str)
+int	ft_set_point(t_point *dest, char *str)
 {
 	char	**tab;
 	int		exit_code;
@@ -31,9 +31,9 @@ int	ft_get_point(t_point *dest, char *str)
 	return (exit_code);
 }
 
-int	ft_get_vector(t_vector *dest, char *str)
+int	ft_set_vector(t_vector *dest, char *str)
 {
-	if (ft_get_point((t_point *) dest, str))
+	if (ft_set_point((t_point *) dest, str))
 		return (EXIT_FAILURE);
 	return (!ft_is_normalized(*dest));
 }

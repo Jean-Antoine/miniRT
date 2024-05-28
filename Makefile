@@ -12,21 +12,15 @@ SRCS_F =					$(addprefix /operations/,\
 							$(addprefix /parsing/,\
 								ft_error.c\
 								ft_open_file.c\
-								ft_new_light_addback.c\
-								ft_set_color.c\
-<<<<<<< HEAD
-								ft_set_color_from_arg.c\
-								ft_set_brightness.c\
-=======
-								ft_set_light_brightness.c\
->>>>>>> 2ba87c7 (ft_parse object)
-								ft_create_ambiant_light.c\
-								ft_create_spot_light.c\
+								ft_parse.c\
 								ft_parse_line.c\
-								ft_is_numeric.c\
-								ft_get_point.c\
-								ft_get_scalar.c\
-								ft_parse.c)\
+								ft_parse_light.c\
+								ft_parse_object.c\
+								ft_set_color.c\
+								ft_set_brightness.c\
+								ft_set_point.c\
+								ft_set_scalar.c\
+								ft_is_numeric.c)\
 							ft_tabsize.c\
 							main.c
 
