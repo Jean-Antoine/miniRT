@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:10:31 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 11:08:19 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/28 11:20:46 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define OK 1
 # define KO 0
 
-size_t	ft_tabsize(char	**tab); // a deplacer
+ // a deplacer
 
 
 #endif

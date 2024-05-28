@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:04:21 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 17:22:53 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/28 12:07:43 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,11 @@ int	ft_set_color(t_color *color, char *arg)
 
 	rgb = ft_split(arg, ',');
 	if (!rgb)
-	{
-		perror("ft_split");
-		return (EXIT_FAILURE);
-	}
+		return (ft_error("ft_split", TRUE));
 	if (ft_is_color(rgb) == KO)
 	{
 		ft_free_tab((void **) rgb);
-		ft_putstr_fd("Error: invalid data in file\n", 2);
-		return (EXIT_FAILURE);
+		return (ft_error("wrong color format", FALSE));
 	}
 	color->r = ft_atoi(rgb[0]);
 	color->g = ft_atoi(rgb[1]);

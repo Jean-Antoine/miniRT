@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:04:33 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/28 11:51:05 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/28 12:40:46 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_args_to_scene(char **args, t_scene *scene)
 		* ft_parse_object(args, &scene->objects)
 		* ft_parse_camera(args, &scene->camera);
 	if (exit_code == 8)
-		return (ft_error("Invalid data\n", FALSE));
+		return (ft_error("unknown identifier", FALSE));
 	return (exit_code != 0);
 }
 
@@ -35,11 +35,12 @@ int	ft_parse_line(char *line, t_scene *scene)
 		return (EXIT_FAILURE);
 	if (!ft_strcmp(line, "\n"))
 		return (EXIT_SUCCESS);
-	line[ft_strlen(line) - 1] = 0;
+	if (line[ft_strlen(line) - 1] == '\n')
+		line[ft_strlen(line) - 1] = 0;
 	args = ft_split(line, ' ');
 	if (!args)
 		return (ft_error("ft_split", TRUE));
 	exit_code = ft_args_to_scene(args, scene);
-	ft_free_tab((void **)args);
+	ft_free_tab((void **) args);
 	return (exit_code);
 }

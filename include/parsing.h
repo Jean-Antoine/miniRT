@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/28 11:48:33 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/28 12:39:05 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 # define PARSING_H
 
 # include "mini_rt.h"
+# define INVALID_MSG "Invalid data: "
 
 
-
+size_t	ft_tabsize(char	**tab);
 int		ft_error(char *str, int use_errno);
 
 int		ft_open_file(char *file_name);

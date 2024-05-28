@@ -21,8 +21,8 @@ SRCS_F =					$(addprefix /operations/,\
 								ft_set_brightness.c\
 								ft_set_point.c\
 								ft_set_scalar.c\
-								ft_is_numeric.c)\
-							ft_tabsize.c\
+								ft_is_numeric.c\
+								ft_tabsize.c)\
 							main.c
 
 OBJS_F = 					$(SRCS_F:.c=.o)

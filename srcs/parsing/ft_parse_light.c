@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:44:35 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/28 12:37:12 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/28 12:39:59 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_parse_spot_light(char **args, t_light *light)
 {
 	if (ft_tabsize(args) != 4)
-		return (ft_error("Invalid data in file\n", FALSE));
+		return (ft_error("Wrong number of parameters", FALSE));
 	if (ft_set_point(&light->position, args[1]))
 		return (EXIT_FAILURE);
 	if (ft_set_brightness(&light->brightness_ratio, args[2]))
@@ -29,7 +29,7 @@ static int	ft_parse_spot_light(char **args, t_light *light)
 static int	ft_parse_ambiant_light(char **args, t_light *light)
 {
 	if (ft_tabsize(args) != 3)
-		return (ft_error("Invalid data.\n", FALSE));
+		return (ft_error("Wrong number of parameters", FALSE));
 	light->ambient_light = TRUE;
 	if (ft_set_brightness(&light->brightness_ratio, args[1]))
 		return (EXIT_FAILURE);
@@ -45,10 +45,7 @@ static t_light	*ft_new_light_addback(t_light **light_lst)
 
 	new_light = ft_calloc(1, sizeof(t_light));
 	if (!new_light)
-	{
-		ft_error("ft_parse_light", TRUE);
 		return (NULL);
-	}
 	if (!*light_lst)
 		*light_lst = new_light;
 	else 
@@ -70,7 +67,7 @@ int	ft_parse_light(char **args, t_light **dest)
 		return (2);
 	light = ft_new_light_addback(dest);
 	if (!light)
-		return (EXIT_FAILURE);
+		return (ft_error("ft_parse_light", TRUE));
 	if (!ft_strcmp(args[0], "A"))
 		return (ft_parse_ambiant_light(args, light));
 	if (!ft_strcmp(args[0], "L"))

@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:04:28 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/27 18:02:40 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/28 12:10:55 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_set_point(t_point *dest, char *str)
 		return (ft_error("ft_split", TRUE));
 	exit_code = !ft_is_triplet(tab);
 	if (exit_code)
-		ft_error("Invalid data.\n", FALSE);
+		ft_error("wrong triplet format", FALSE);
 	else
 		*dest = ft_p_set(ft_atof(tab[0]), ft_atof(tab[1]), ft_atof(tab[2]));
 	ft_free_tab((void **) tab);
@@ -35,5 +35,7 @@ int	ft_set_vector(t_vector *dest, char *str)
 {
 	if (ft_set_point((t_point *) dest, str))
 		return (EXIT_FAILURE);
-	return (!ft_is_normalized(*dest));
+	if (!ft_is_normalized(*dest))
+		return (ft_error("vector is not normalized", FALSE));
+	return (EXIT_SUCCESS);
 }
