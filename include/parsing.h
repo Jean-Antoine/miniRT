@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 18:02:57 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/28 11:48:33 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #ifndef PARSING_H
 # define PARSING_H
 
-# include "struct.h"
+# include "mini_rt.h"
 
 
 
@@ -25,6 +25,7 @@ int		ft_parse(t_scene *scene, char *file);
 int		ft_parse_line(char *line, t_scene *scene);
 int		ft_parse_object(char **args, t_object **dest);
 int		ft_parse_light(char **args, t_light **dest);
+int		ft_parse_camera(char **args, t_camera *dest);
 
 int		ft_set_point(t_point *dest, char *str);
 int		ft_set_vector(t_vector *dest, char *str);

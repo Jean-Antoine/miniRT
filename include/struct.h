@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:41:09 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 17:11:54 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/28 11:50:26 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct s_color
 
 typedef enum e_object_type
 {
-	plan, 
-	sphere, 
+	plan,
+	sphere,
 	cylinder
 }	t_object_type;
 
@@ -67,7 +67,7 @@ typedef struct s_camera
 {
 	t_point			position;
 	t_vector		direction;
-	int				fov;
+	double			fov;
 }	t_camera;
 
 typedef struct s_scene

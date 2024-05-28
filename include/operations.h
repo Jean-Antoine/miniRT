@@ -12,7 +12,7 @@
 
 #ifndef operations_H
 # define operations_H
-# include "struct.h"
+# include "mini_rt.h"
 
 t_point		ft_p_set(double x, double y, double z);
 t_point		ft_p_translate(t_point starting_point, t_vector vector);

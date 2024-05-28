@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:04:33 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 18:12:54 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/28 11:51:05 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 static int	ft_args_to_scene(char **args, t_scene *scene)
 {
 	int	exit_code;
-	
+
 	if (!args || !args[0])
 		return (EXIT_SUCCESS);
 	exit_code = ft_parse_light(args, &scene->lights)
-		* ft_parse_object(args, &scene->objects);
-	if (exit_code == 4)
+		* ft_parse_object(args, &scene->objects)
+		* ft_parse_camera(args, &scene->camera);
+	if (exit_code == 8)
 		return (ft_error("Invalid data\n", FALSE));
 	return (exit_code != 0);
 }
