@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:53:37 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/28 12:05:42 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/28 12:35:48 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_parse_sp(char **args, t_object *dest)
 {
 	if (ft_tabsize(args) != 3)
-		return (ft_error("Wrong number of parameters", FALSE));
+		return (ft_error("wrong number of parameters", FALSE));
 	dest->type = sphere;
 	return (ft_set_point(&dest->position, args[0])
 		|| ft_set_scalar(&dest->diameter, args[1])
@@ -25,7 +25,7 @@ static int	ft_parse_sp(char **args, t_object *dest)
 static int	ft_parse_pl(char **args, t_object *dest)
 {
 	if (ft_tabsize(args) != 3)
-		return (ft_error("Wrong number of parameters", FALSE));
+		return (ft_error("wrong number of parameters", FALSE));
 	dest->type = plan;
 	return (ft_set_point(&dest->position, args[0])
 		|| ft_set_vector(&dest->direction, args[1])
@@ -35,7 +35,7 @@ static int	ft_parse_pl(char **args, t_object *dest)
 static int	ft_parse_cy(char **args, t_object *dest)
 {
 	if (ft_tabsize(args) != 5)
-		return (ft_error("Wrong number of parameters", FALSE));
+		return (ft_error("wrong number of parameters", FALSE));
 	dest->type = cylinder;
 	return (ft_set_point(&dest->position, args[0])
 		|| ft_set_vector(&dest->direction, args[1])

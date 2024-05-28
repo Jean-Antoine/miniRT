@@ -3,19 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:44:35 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/28 12:39:59 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/28 13:35:28 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 
+static int	ft_set_brightness(double *brightness, char *arg)
+{
+	if (ft_is_float(arg) == FALSE)
+		return (ft_error("wrong brightness format", FALSE));
+	*brightness = ft_atof(arg);
+	if (*brightness < 0 || *brightness > 1)
+		return (ft_error("brightness must be between 0 and 1", FALSE));
+	return (EXIT_SUCCESS);
+}
+
+
 static int	ft_parse_spot_light(char **args, t_light *light)
 {
+	static int i = 0;
+
+	if (i)
+		return (ft_error("more than one spot light", FALSE));
+	i++;
 	if (ft_tabsize(args) != 4)
-		return (ft_error("Wrong number of parameters", FALSE));
+		return (ft_error("wrong number of parameters", FALSE));
 	if (ft_set_point(&light->position, args[1]))
 		return (EXIT_FAILURE);
 	if (ft_set_brightness(&light->brightness_ratio, args[2]))
@@ -28,8 +44,13 @@ static int	ft_parse_spot_light(char **args, t_light *light)
 
 static int	ft_parse_ambiant_light(char **args, t_light *light)
 {
+	static int i = 0;
+
+	if (i)
+		return (ft_error("more than one ambiant light", FALSE));
+	i++;
 	if (ft_tabsize(args) != 3)
-		return (ft_error("Wrong number of parameters", FALSE));
+		return (ft_error("wrong number of parameters", FALSE));
 	light->ambient_light = TRUE;
 	if (ft_set_brightness(&light->brightness_ratio, args[1]))
 		return (EXIT_FAILURE);

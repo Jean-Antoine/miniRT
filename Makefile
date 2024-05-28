@@ -18,7 +18,6 @@ SRCS_F =					$(addprefix /operations/,\
 								ft_parse_object.c\
 								ft_parse_camera.c\
 								ft_set_color.c\
-								ft_set_brightness.c\
 								ft_set_point.c\
 								ft_set_scalar.c\
 								ft_is_numeric.c\
