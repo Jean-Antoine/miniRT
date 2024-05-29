@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:41:09 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/28 14:19:17 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/29 11:31:54 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,21 @@ typedef struct s_camera
 
 typedef struct s_scene
 {
-	t_camera	camera;
-	t_light		*lights;
-	t_object	*objects;
+	t_camera		camera;
+	t_light			*lights;
+	t_object		*objects;
+	unsigned int	size_y;
 }	t_scene;
+
+typedef struct s_mlx
+{
+	void	*conn;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		endian;
+	int		bits_per_pixel;
+	int		line_length;
+}	t_mlx;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/28 14:44:05 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/29 12:20:38 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ static int	ft_exit(int exit_code, t_scene scene)
 int	main(int ac, char **av)
 {
 	t_scene	scene;
-	// int		canvas[10][10];
-	
+	int		canvas[SIZE_X][SIZE_Y];
 
+	ft_bzero(&scene, sizeof(scene));
 	if (ac != 2)
 		return (ft_error("wrong number of arguments", FALSE));
 	if (ft_parse(&scene, av[1]))
 		return (ft_exit(EXIT_FAILURE, scene));
-	
+	ft_free_scene(scene);
+	ft_display(canvas, scene.size_y);
 	return (ft_exit(EXIT_SUCCESS, scene));
 }

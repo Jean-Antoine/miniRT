@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libraries.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:44:43 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/23 14:24:15 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/28 15:00:12 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@
 # include <fcntl.h>
 # include <signal.h>
 # include <limits.h>
+# include "mlx.h"
 
 #endif
