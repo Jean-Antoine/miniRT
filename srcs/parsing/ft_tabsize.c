@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tabsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:58:42 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/24 18:00:26 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/30 12:53:09 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_rt.h"
+#include "parsing.h"
 
 size_t	ft_tabsize(char	**tab)
 {

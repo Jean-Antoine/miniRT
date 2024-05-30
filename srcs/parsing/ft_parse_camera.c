@@ -6,11 +6,11 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:26:11 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/28 13:39:53 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/30 12:53:09 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_rt.h"
+#include "parsing.h"
 
 int	ft_parse_camera(char **args, t_camera *dest)
 {

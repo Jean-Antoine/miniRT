@@ -6,11 +6,11 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:44:35 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/28 13:35:28 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:23:34 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_rt.h"
+#include "parsing.h"
 
 static int	ft_set_brightness(double *brightness, char *arg)
 {
@@ -22,14 +22,12 @@ static int	ft_set_brightness(double *brightness, char *arg)
 	return (EXIT_SUCCESS);
 }
 
-
 static int	ft_parse_spot_light(char **args, t_light *light)
 {
-	static int i = 0;
+	static int	i = 0;
 
-	if (i)
+	if (i++)
 		return (ft_error("more than one spot light", FALSE));
-	i++;
 	if (ft_tabsize(args) != 4)
 		return (ft_error("wrong number of parameters", FALSE));
 	if (ft_set_point(&light->position, args[1]))
@@ -41,14 +39,12 @@ static int	ft_parse_spot_light(char **args, t_light *light)
 	return (EXIT_SUCCESS);
 }
 
-
 static int	ft_parse_ambiant_light(char **args, t_light *light)
 {
-	static int i = 0;
+	static int	i = 0;
 
-	if (i)
+	if (i++)
 		return (ft_error("more than one ambiant light", FALSE));
-	i++;
 	if (ft_tabsize(args) != 3)
 		return (ft_error("wrong number of parameters", FALSE));
 	light->ambient_light = TRUE;
@@ -69,7 +65,7 @@ static t_light	*ft_new_light_addback(t_light **light_lst)
 		return (NULL);
 	if (!*light_lst)
 		*light_lst = new_light;
-	else 
+	else
 	{
 		last = *light_lst;
 		while (last->next)

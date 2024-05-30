@@ -1,4 +1,4 @@
-SRCS_F =					$(addprefix /operations/,\
+SRCS_F =					$(addprefix /vector/,\
 								ft_p_set.c\
 								ft_v_set.c\
 								ft_v_norm.c\
@@ -23,6 +23,11 @@ SRCS_F =					$(addprefix /operations/,\
 								ft_is_numeric.c\
 								ft_tabsize.c\
 								ft_free_scene.c)\
+							$(addprefix /matrix/,\
+								ft_mat_print.c\
+								ft_mat_prod.c\
+								ft_mat_trans.c\
+								ft_mat_inv.c)\
 							ft_display.c\
 							main.c
 
@@ -32,11 +37,10 @@ OBJS_D =					./objs/
 SRCS =						$(addprefix $(SRCS_D), $(SRCS_F))
 OBJS =						$(addprefix $(OBJS_D), $(OBJS_F))
 HEADERS_D =					./include/
-HEADERS_F =					mini_rt.h \
-							struct.h \
-							operations.h \
+HEADERS_F =					vector.h \
 							parsing.h \
-							libraries.h
+							matrix.h \
+							display.h
 HEADERS =					$(addprefix $(HEADERS_D), $(HEADERS_F))
 CC = 						cc
 CPPFLAGS =					-I./libft/include -I./include -I./mlx/
@@ -91,7 +95,7 @@ fclean:						clean
 re:							fclean all
 
 echo:
-							echo $(SRCS)
+							echo $(OBJS)
 
 clean_local:
 							rm -rfd $(OBJS_D)

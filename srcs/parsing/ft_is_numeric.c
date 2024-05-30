@@ -6,11 +6,11 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:35:06 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/27 17:43:01 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/30 12:53:09 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_rt.h"
+#include "parsing.h"
 
 int	ft_is_numeric(char *str)
 {

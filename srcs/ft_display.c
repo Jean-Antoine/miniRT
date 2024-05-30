@@ -6,12 +6,14 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:26:41 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/29 11:52:45 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:24:50 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_rt.h"
+#include "display.h"
 #include <X11/keysym.h>
+#include <stdlib.h>
+#include "libft.h"
 
 static int	ft_exit(t_mlx *mlx)
 {
@@ -40,7 +42,7 @@ static void	ft_draw(t_mlx *mlx, int canvas[SIZE_X][SIZE_Y], int size_y)
 		while (++y < size_y)
 		{
 			offset = mlx->addr + (y * mlx->line_length + x
-				* (mlx->bits_per_pixel / 8));
+					* (mlx->bits_per_pixel / 8));
 			*(unsigned int *) offset = canvas[x][y];
 		}
 	}
@@ -67,7 +69,7 @@ void	ft_display(int canvas[SIZE_X][SIZE_Y], int size_y)
 		mlx.img = mlx_new_image(mlx.conn, SIZE_X, size_y);
 	if (mlx.img)
 		mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel,
-			&mlx.line_length, &mlx.endian);
+				&mlx.line_length, &mlx.endian);
 	if (!mlx.conn || !mlx.win || !mlx.img || !mlx.img)
 	{
 		ft_putstr_fd("Error\nCould not "

@@ -6,11 +6,11 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:34:44 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/28 14:35:30 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/30 12:53:09 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_rt.h"
+#include "parsing.h"
 
 static void	ft_free_lights(t_light *light)
 {

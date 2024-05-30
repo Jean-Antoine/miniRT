@@ -6,11 +6,12 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:58:26 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/28 14:39:01 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/30 12:59:23 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_rt.h"
+#include "parsing.h"
+#include <fcntl.h>
 
 static int	ft_check_suffix(char *file_name)
 {

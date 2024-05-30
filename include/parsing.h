@@ -6,17 +6,68 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/28 14:36:02 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:22:31 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef PARSING_H
 # define PARSING_H
-
-# include "mini_rt.h"
 # define INVALID_MSG "Invalid data: "
+# include "libft.h"
+# include "get_next_line.h"
+# include "vector.h"
+# define TRUE 1
+# define FALSE 0
 
+typedef int					t_bool;
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_color;
+
+typedef enum e_object_type
+{
+	plan,
+	sphere,
+	cylinder
+}	t_object_type;
+
+typedef struct s_object
+{
+	t_object_type	type;
+	t_point			position;
+	double			diameter;
+	double			height;
+	t_vector		direction;
+	t_color			color;
+	struct s_object	*next;
+}	t_object;
+
+typedef struct s_light
+{
+	t_bool			ambient_light;
+	t_point			position;
+	double			brightness_ratio;
+	t_color			color;
+	struct s_light	*next;
+}	t_light;
+
+typedef struct s_camera
+{
+	t_point			position;
+	t_vector		direction;
+	double			fov;
+}	t_camera;
+
+typedef struct s_scene
+{
+	t_camera		camera;
+	t_light			*lights;
+	t_object		*objects;
+	unsigned int	size_y;
+}	t_scene;
 
 size_t	ft_tabsize(char	**tab);
 int		ft_error(char *str, int use_errno);

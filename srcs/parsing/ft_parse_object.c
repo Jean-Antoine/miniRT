@@ -6,11 +6,11 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:53:37 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/28 12:35:48 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:23:50 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_rt.h"
+#include "parsing.h"
 
 static int	ft_parse_sp(char **args, t_object *dest)
 {
@@ -42,7 +42,6 @@ static int	ft_parse_cy(char **args, t_object *dest)
 		|| ft_set_scalar(&dest->diameter, args[2])
 		|| ft_set_scalar(&dest->height, args[3])
 		|| ft_set_color(&dest->color, args[4]));
-		
 }
 
 static t_object	*ft_add_object(t_object **dest)
@@ -68,7 +67,7 @@ static t_object	*ft_add_object(t_object **dest)
 int	ft_parse_object(char **args, t_object **dest)
 {
 	t_object	*object;
-	
+
 	if (ft_strcmp(args[0], "sp")
 		&& ft_strcmp(args[0], "pl")
 		&& ft_strcmp(args[0], "cy"))

@@ -6,17 +6,17 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:04:28 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/28 12:35:48 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:23:58 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_rt.h"
+#include "parsing.h"
 
 int	ft_set_point(t_point *dest, char *str)
 {
 	char	**tab;
 	int		exit_code;
-	
+
 	if (!str)
 		return (EXIT_FAILURE);
 	tab = ft_split(str, ',');
