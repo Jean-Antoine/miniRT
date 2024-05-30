@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:41:09 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/28 14:19:17 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/05/28 16:12:34 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+# include "libraries.h"
+
+# define SIZE_X 450
+# define SIZE_Y_MAX 800 
 
 typedef int					t_bool;
 
@@ -75,6 +79,7 @@ typedef struct s_scene
 	t_camera	camera;
 	t_light		*lights;
 	t_object	*objects;
+	size_t		size_y;
 }	t_scene;
 
 #endif

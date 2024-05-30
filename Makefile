@@ -23,6 +23,9 @@ SRCS_F =					$(addprefix /operations/,\
 								ft_is_numeric.c\
 								ft_tabsize.c\
 								ft_free_scene.c)\
+							$(addprefix /compute/,\
+								ft_compute.c\
+								)\
 							main.c
 
 OBJS_F = 					$(SRCS_F:.c=.o)
