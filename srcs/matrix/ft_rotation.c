@@ -1,24 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_p_set.c                                  :+:      :+:    :+:   */
+/*   ft_rotation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 16:54:26 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/23 16:56:06 by lpaquatt         ###   ########.fr       */
+/*   Created: 2024/05/30 17:01:18 by jeada-si          #+#    #+#             */
+/*   Updated: 2024/05/30 17:01:19 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
-
-t_point	ft_p_set(double x, double y, double z)
-{
-	t_point	point;
-
-	point.w = 1;
-	point.x = x;
-	point.y = y;
-	point.z = z;
-	return (point);
-}

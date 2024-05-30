@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_v_set.c                                 :+:      :+:    :+:   */
+/*   ft_mat_prod_tup.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 16:54:48 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 10:12:38 by jeada-si         ###   ########.fr       */
+/*   Created: 2024/05/30 14:58:10 by jeada-si          #+#    #+#             */
+/*   Updated: 2024/05/30 16:53:05 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "matrix.h"
 
-t_vector	ft_v_set(double x, double y, double z)
+double	ft_somprod(double *A, t_tuple tuple)
 {
-	t_vector	vector;
+	return (A[0] * tuple.x + A[1] * tuple.y + A[2] * tuple.z + A[3] * tuple.w);
+}
 
-	vector.x = x;
-	vector.y = y;
-	vector.z = z;
-	vector.w = 0;
-	return (vector);
+t_tuple	ft_mat_prod_tup(t_mat A, t_tuple tuple)
+{
+	t_tuple	res;
+	
+	res.x = ft_somprod(A.mat[0], tuple);
+	res.y = ft_somprod(A.mat[1], tuple);
+	res.z = ft_somprod(A.mat[2], tuple);
+	res.w = ft_somprod(A.mat[3], tuple);
+	return (res);
 }

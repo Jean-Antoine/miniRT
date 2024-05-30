@@ -21,5 +21,6 @@ t_vector	ft_p_to_v(t_point starting_point,
 	vector.x = end_point.x - starting_point.x;
 	vector.y = end_point.y - starting_point.y;
 	vector.z = end_point.z - starting_point.z;
+	vector.w = 0;
 	return (vector);
 }
