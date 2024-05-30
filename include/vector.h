@@ -14,19 +14,16 @@
 # define VECTOR_H
 # include <math.h>
 
-typedef struct s_point
+typedef struct s_tuple
 {
 	double	x;
 	double	y;
 	double	z;
-}	t_point;
+	double	w;
+}	t_tuple;
 
-typedef struct s_vector
-{
-	double	x;
-	double	y;
-	double	z;
-}	t_vector;
+typedef t_tuple t_vector;
+typedef t_tuple t_point;
 
 t_point		ft_p_set(double x, double y, double z);
 t_point		ft_p_translate(t_point starting_point, t_vector vector);

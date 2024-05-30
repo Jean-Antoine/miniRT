@@ -30,7 +30,9 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_mat_print.c\
 								ft_mat_prod.c\
 								ft_mat_trans.c\
-								ft_mat_inv.c)\
+								ft_mat_inv.c\
+								ft_mat_prod_tup.c\
+								ft_translation.c)\
 							ft_display.c\
 							main.c
 
