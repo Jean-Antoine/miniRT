@@ -25,7 +25,7 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_free_scene.c)\
 							$(addprefix /compute/,\
 								ft_compute.c\
-								)\
+								ft_intersect_sphere.c)\
 							$(addprefix /matrix/,\
 								ft_mat_print.c\
 								ft_mat_prod.c\

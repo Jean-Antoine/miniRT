@@ -6,12 +6,13 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/30 17:24:43 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/05/31 18:25:24 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 #include "parsing.h"
+#include "compute.h"
 #include "display.h"
 #include "matrix.h"
 #include "stdio.h"
@@ -39,7 +40,31 @@ int	main(int ac, char **av)
 	return (ft_exit(EXIT_SUCCESS, scene));
 }
 
+// /* test intersect*/
+// int	main(int ac, char **av)
+// {
+// 	t_scene	scene;
+// 	t_inters 	*inters_lst;
+// 	t_ray 		ray;
+// 	t_object	*sphere;
+// 	t_inters	*inters;
 
+// 	ft_bzero(&scene, sizeof(scene));
+// 	if (ac != 2)
+// 		return (ft_error("wrong number of arguments", FALSE));
+// 	if (ft_parse(&scene, av[1]))
+// 		return (ft_exit(EXIT_FAILURE, scene));
+// 	sphere = scene.objects;
+// 	ray = ft_create_ray(scene.camera.direction, scene.camera.direction);
+// 	inters_lst = NULL;
+// 	ft_intersect_sphere(&inters_lst, sphere, ray);
+// 	inters = inters_lst;
+// 	while (inters)
+// 	{
+// 		printf("TEST > t = %f\n", inters->t);
+// 		inters = inters->next;
+// 	}
+// }
 
 // int	main(void)
 // {
