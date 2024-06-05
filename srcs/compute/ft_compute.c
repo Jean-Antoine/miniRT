@@ -6,21 +6,11 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/31 18:01:16 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:26:31 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
-
-//Scenario: Creating and querying a ray
-t_ray	ft_create_ray(t_point origin, t_vector direction)
-{
-	t_ray	ray;
-
-	ray.origin = origin;
-	ray.direction = direction;
-	return (ray);
-}
 
 //Scenario: Computing a point from a distance
 t_point	ft_compute_point_on_ray(t_ray ray, double t)

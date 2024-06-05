@@ -25,6 +25,8 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_free_scene.c)\
 							$(addprefix /compute/,\
 								ft_compute.c\
+								ft_create_ray.c\
+								ft_insters_addback.c\
 								ft_intersect_sphere.c)\
 							$(addprefix /matrix/,\
 								ft_mat_print.c\
@@ -42,9 +44,10 @@ OBJS_D =					./objs/
 SRCS =						$(addprefix $(SRCS_D), $(SRCS_F))
 OBJS =						$(addprefix $(OBJS_D), $(OBJS_F))
 HEADERS_D =					./include/
-HEADERS_F =					vector.h \
-							parsing.h \
-							matrix.h \
+HEADERS_F =					vector.h\
+							parsing.h\
+							matrix.h\
+							compute.h\
 							display.h
 HEADERS =					$(addprefix $(HEADERS_D), $(HEADERS_F))
 CC = 						cc
