@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/06 14:51:29 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:45:45 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,34 @@ t_point	ft_compute_point_on_ray(t_ray ray, double t)
 
 int	ft_get_color_pixel(t_scene *scene, size_t x, size_t y)
 {
-	(void) scene;
-	(void) x;
-	(void) y;
-	return (EXIT_SUCCESS);
+	t_ray		*ray;
+	t_vector	direction;
+
+	direction = ft_v_set((double)x * 10 / (double)scene->size_y - 5 * (double)SIZE_X / (double)scene->size_y, (double)y * 10 / (double)scene->size_y - 5 , 15);
+	// pour canva a 15 U de la cam et de hauteur 5U (cam situee a 0,0,-5, sphere de 1 a l'origine)
+	ray = ft_create_ray(scene->camera.position, direction);
+	// if (x == 0 && y == 0)
+	// {
+	// 	printf("TEST	> ray (0,0) : \n");
+	// 	printf("	> origin = ");
+	// 	ft_tuple_print(ray->origin);
+	// 	printf("	> direction = ");
+	// 	ft_tuple_print(ray->direction);
+	// }
+	// 	if (x == 400 && y == 225)
+	// {
+	// 	printf("TEST	> ray (400,225) : \n");
+	// 	printf("	> origin = ");
+	// 	ft_tuple_print(ray->origin);
+	// 	printf("	> direction = ");
+	// 	ft_tuple_print(ray->direction);
+	// }
+	ft_intersect_sphere(scene->objects, ray);
+	if (ft_hit(&ray->inters_lst))
+	{
+		return (0xFF0000);
+	}
+	return (0x808a9f);
 }
 
 int	ft_compute(t_scene *scene, int canvas[SIZE_X][SIZE_Y])

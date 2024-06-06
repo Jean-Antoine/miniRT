@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/06 14:23:49 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/06 15:52:17 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,57 +23,57 @@ static int	ft_exit(int exit_code, t_scene scene)
 	return (exit_code);
 }
 
-// int	main(int ac, char **av)
-// {
-// 	t_scene	scene;
-// 	int		canvas[SIZE_X][SIZE_Y];
-
-// 	ft_bzero(&scene, sizeof(scene));
-// 	if (ac != 2)
-// 		return (ft_error("wrong number of arguments", FALSE));
-// 	if (ft_parse(&scene, av[1]))
-// 		return (ft_exit(EXIT_FAILURE, scene));
-// 	if (ft_compute(&scene, canvas))
-// 		return (ft_exit(EXIT_FAILURE, scene));
-// 	ft_free_scene(scene);
-// 	ft_display(canvas, scene.size_y);
-// 	return (ft_exit(EXIT_SUCCESS, scene));
-// }
-
-/* test intersect*/
 int	main(int ac, char **av)
 {
 	t_scene	scene;
-	// t_inters 	*inters_lst;
-	t_ray 		*ray;
-	t_object	*sphere;
-	t_inters	*inters;
-	t_inters	*hit;
+	int		canvas[SIZE_X][SIZE_Y];
 
 	ft_bzero(&scene, sizeof(scene));
 	if (ac != 2)
 		return (ft_error("wrong number of arguments", FALSE));
 	if (ft_parse(&scene, av[1]))
 		return (ft_exit(EXIT_FAILURE, scene));
-	sphere = scene.objects;
-	ray = ft_create_ray(scene.camera.position, scene.camera.direction);
-	ft_intersect_sphere(sphere, ray);
-	inters = ray->inters_lst;
-	while (inters)
-	{
-		printf("TEST > t = %f\n", inters->t);
-		inters = inters->next;
-	}
-	// inters_lst = NULL;
-	// ft_new_insters_addback(&inters_lst, sphere, 5);
-	// ft_new_insters_addback(&inters_lst, sphere, 7);
-	// ft_new_insters_addback(&inters_lst, sphere, -3);
-	// ft_new_insters_addback(&inters_lst, sphere, 2);
-	// ft_new_insters_addback(&inters_lst, sphere, -10);
-	hit = ft_hit(&ray->inters_lst);
-	if (hit)
-		printf("TEST > Hit : t = %f\n", hit->t);
+	if (ft_compute(&scene, canvas))
+		return (ft_exit(EXIT_FAILURE, scene));
+	ft_display(canvas, scene.size_y);
+	ft_free_scene(scene);
+	return (ft_exit(EXIT_SUCCESS, scene));
 }
+
+/* test intersect*/
+// int	main(int ac, char **av)
+// {
+// 	t_scene	scene;
+// 	// t_inters 	*inters_lst;
+// 	t_ray 		*ray;
+// 	t_object	*sphere;
+// 	t_inters	*inters;
+// 	t_inters	*hit;
+
+// 	ft_bzero(&scene, sizeof(scene));
+// 	if (ac != 2)
+// 		return (ft_error("wrong number of arguments", FALSE));
+// 	if (ft_parse(&scene, av[1]))
+// 		return (ft_exit(EXIT_FAILURE, scene));
+// 	sphere = scene.objects;
+// 	ray = ft_create_ray(scene.camera.position, scene.camera.direction);
+// 	ft_intersect_sphere(sphere, ray);
+// 	inters = ray->inters_lst;
+// 	while (inters)
+// 	{
+// 		printf("TEST > t = %f\n", inters->t);
+// 		inters = inters->next;
+// 	}
+// 	// inters_lst = NULL;
+// 	// ft_new_insters_addback(&inters_lst, sphere, 5);
+// 	// ft_new_insters_addback(&inters_lst, sphere, 7);
+// 	// ft_new_insters_addback(&inters_lst, sphere, -3);
+// 	// ft_new_insters_addback(&inters_lst, sphere, 2);
+// 	// ft_new_insters_addback(&inters_lst, sphere, -10);
+// 	hit = ft_hit(&ray->inters_lst);
+// 	if (hit)
+// 		printf("TEST > Hit : t = %f\n", hit->t);
+// }
 
 // int	main(void)
 // {
