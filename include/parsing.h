@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/30 14:29:54 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/05 17:22:24 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "get_next_line.h"
 # include "vector.h"
+# include "matrix.h"
 # define TRUE 1
 # define FALSE 0
 
@@ -42,6 +43,7 @@ typedef struct s_object
 	double			height;
 	t_vector		direction;
 	t_color			color;
+	t_mat			transform;
 	struct s_object	*next;
 }	t_object;
 

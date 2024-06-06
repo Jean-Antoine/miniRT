@@ -8,7 +8,8 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_v_scalar_prod.c\
 								ft_v_normalize.c\
 								ft_v_dot_prod.c\
-								ft_v_cross_prod.c)\
+								ft_v_cross_prod.c\
+								ft_tuple_print.c)\
 							$(addprefix /parsing/,\
 								ft_error.c\
 								ft_open_file.c\
@@ -26,15 +27,19 @@ SRCS_F =					$(addprefix /vector/,\
 							$(addprefix /compute/,\
 								ft_compute.c\
 								ft_create_ray.c\
+								ft_transform.c\
 								ft_insters_addback.c\
-								ft_intersect_sphere.c)\
+								ft_intersect_sphere.c\
+								ft_set_transform_sp.c\
+								ft_hit.c)\
 							$(addprefix /matrix/,\
 								ft_mat_print.c\
 								ft_mat_prod.c\
 								ft_mat_trans.c\
 								ft_mat_inv.c\
 								ft_mat_prod_tup.c\
-								ft_translation.c)\
+								ft_translation.c\
+								ft_scaling.c)\
 							ft_display.c\
 							main.c
 

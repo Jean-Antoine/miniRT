@@ -13,6 +13,7 @@
 #ifndef VECTOR_H
 # define VECTOR_H
 # include <math.h>
+# include <stdio.h>
 
 typedef struct s_tuple
 {
@@ -22,8 +23,8 @@ typedef struct s_tuple
 	double	w;
 }	t_tuple;
 
-typedef t_tuple t_vector;
-typedef t_tuple t_point;
+typedef t_tuple	t_vector;
+typedef t_tuple	t_point;
 
 t_point		ft_p_set(double x, double y, double z);
 t_point		ft_p_translate(t_point starting_point, t_vector vector);
@@ -35,5 +36,6 @@ t_vector	ft_v_normalize(t_vector vector);
 t_vector	ft_v_cross_prod(t_vector v1, t_vector v2);
 double		ft_v_norm(t_vector vect);
 double		ft_v_dot_prod(t_vector v1, t_vector v2);
+void		ft_tuple_print(t_tuple tup);
 
 #endif

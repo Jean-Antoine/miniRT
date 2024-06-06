@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/05 15:24:10 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:23:49 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ static int	ft_exit(int exit_code, t_scene scene)
 int	main(int ac, char **av)
 {
 	t_scene	scene;
-	t_inters 	*inters_lst;
+	// t_inters 	*inters_lst;
 	t_ray 		*ray;
 	t_object	*sphere;
 	t_inters	*inters;
+	t_inters	*hit;
 
 	ft_bzero(&scene, sizeof(scene));
 	if (ac != 2)
@@ -56,7 +57,6 @@ int	main(int ac, char **av)
 		return (ft_exit(EXIT_FAILURE, scene));
 	sphere = scene.objects;
 	ray = ft_create_ray(scene.camera.position, scene.camera.direction);
-	inters_lst = NULL;
 	ft_intersect_sphere(sphere, ray);
 	inters = ray->inters_lst;
 	while (inters)
@@ -64,6 +64,15 @@ int	main(int ac, char **av)
 		printf("TEST > t = %f\n", inters->t);
 		inters = inters->next;
 	}
+	// inters_lst = NULL;
+	// ft_new_insters_addback(&inters_lst, sphere, 5);
+	// ft_new_insters_addback(&inters_lst, sphere, 7);
+	// ft_new_insters_addback(&inters_lst, sphere, -3);
+	// ft_new_insters_addback(&inters_lst, sphere, 2);
+	// ft_new_insters_addback(&inters_lst, sphere, -10);
+	hit = ft_hit(&ray->inters_lst);
+	if (hit)
+		printf("TEST > Hit : t = %f\n", hit->t);
 }
 
 // int	main(void)

@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/05 15:26:31 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:51:29 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,17 @@ int	ft_compute(t_scene *scene, int canvas[SIZE_X][SIZE_Y])
 	}
 	return (EXIT_SUCCESS);
 }
+
+// t_mat	ft_identity_matrix(void)
+// {
+// 	t_mat	identity;
+
+// 	ft_bzero(&identity, sizeof(identity));
+// 	identity.col = 4;
+// 	identity.row = 4;
+// 	identity.mat[0][0] = 1;
+// 	identity.mat[1][1] = 1;
+// 	identity.mat[2][2] = 1;
+// 	identity.mat[3][3] = 1;
+// 	return (identity);
+// }
