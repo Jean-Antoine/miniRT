@@ -1,9 +1,9 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intersect_sphere.c                              :+:      :+:    :+:   */
+/*   ft_inters_sphere.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 12:24:51 by lpaquatt          #+#    #+#             */
 /*   Updated: 2024/06/07 10:58:31 by lpaquatt         ###   ########.fr       */
@@ -12,7 +12,7 @@
 
 #include "compute.h"
 
-static double	ft_get_sph_inters_values(t_ray ray, double *t1, double *t2)
+static double	ft_discriminant(t_ray ray, double *t1, double *t2)
 {
 	double		a;
 	double		b;
@@ -32,20 +32,17 @@ static double	ft_get_sph_inters_values(t_ray ray, double *t1, double *t2)
 	return (discr);
 }
 
-int	ft_intersect_sphere(t_object *sphere, t_ray *ray)
+int	ft_inters_sphere(t_object *sphere, t_ray *ray)
 {
 	t_ray		ray2;
 	double		discriminant;
 	double		t1;
 	double		t2;
 
-	ray2 = ft_transform(*ray, ft_mat_inv(sphere->transform));
-	discriminant = ft_get_sph_inters_values(ray2, &t1, &t2);
+	ray2 = ft_transform(*ray, sphere->transform);
+	discriminant = ft_discriminant(ray2, &t1, &t2);
 	if (discriminant < 0)
 		return (EXIT_SUCCESS);
-	if (ft_new_insters_addback(&ray->inters_lst, sphere, t1) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	if (ft_new_insters_addback(&ray->inters_lst, sphere, t2) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+	return (ft_new_inters(&ray->inters_lst, sphere, t1) ||
+		ft_new_inters(&ray->inters_lst, sphere, t2));
 }

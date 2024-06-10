@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_insters_addback.c                               :+:      :+:    :+:   */
+/*   ft_inters_addback.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -27,7 +27,7 @@ static t_inters	*ft_create_inters(t_object *object, double t)
 	return (inters);
 }
 
-static void	ft_insters_addback(t_inters **lst, t_inters *new)
+static void	ft_inters_addback(t_inters **lst, t_inters *new)
 {
 	t_inters	*inters;
 
@@ -44,15 +44,15 @@ static void	ft_insters_addback(t_inters **lst, t_inters *new)
 	inters->next = new;
 }
 
-int	ft_new_insters_addback(t_inters **lst, t_object *object, double t)
+int	ft_new_inters(t_inters **lst, t_object *object, double t)
 {
 	t_inters	*new_inters;
 
 	if (!lst)
-		return (ft_error("ft_new_insters_addback", FALSE)); //exit succes ?
+		return (ft_error("ft_new_inters", FALSE)); //exit succes ?
 	new_inters = ft_create_inters(object, t);
 	if (!new_inters)
 		return (EXIT_FAILURE);
-	ft_insters_addback(lst, new_inters);
+	ft_inters_addback(lst, new_inters);
 	return (EXIT_SUCCESS);
 }

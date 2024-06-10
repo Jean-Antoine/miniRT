@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/10 14:56:25 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:02:09 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ typedef struct s_ray
 	t_inters	*inters_lst;
 }	t_ray;
 
+void		ft_mat_sphere(t_object *sphere);
+void		ft_mat_obj(t_object *list);
 int			ft_compute(t_scene *scene, int canvas[SIZE_X][SIZE_Y]);
 void		ft_set_transform_sp(t_object *sphere);
 t_ray		ft_transform(t_ray ray, t_mat mat);
-int			ft_intersect_sphere(t_object *sphere, t_ray *ray);
-t_ray		*ft_create_ray(t_point origin, t_vector direction);
-int			ft_new_insters_addback(t_inters **lst, t_object *object, double t);
+int			ft_inters_sphere(t_object *sphere, t_ray *ray);
+t_ray		ft_create_ray(t_point origin, t_vector direction);
+int			ft_new_inters(t_inters **lst, t_object *object, double t);
 t_inters	*ft_hit(t_inters **lst);
 void		ft_free_inters_lst(t_inters *inters);
 

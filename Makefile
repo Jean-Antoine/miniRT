@@ -28,12 +28,21 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_compute.c\
 								ft_create_ray.c\
 								ft_transform.c\
+<<<<<<< HEAD
 								ft_insters_addback.c\
 								ft_intersect_sphere.c\
 								ft_set_transform_sp.c\
 								ft_hit.c\
 								ft_free_inters_lst.c)\
+=======
+								ft_new_inters.c\
+								ft_inters_sphere.c\
+								ft_mat_obj.c\
+								ft_mat_sphere.c\
+								ft_hit.c)\
+>>>>>>> adcbd66922d2553ca0f281f185f273b23272fa36
 							$(addprefix /matrix/,\
+								ft_mat_id.c\
 								ft_mat_print.c\
 								ft_mat_prod.c\
 								ft_mat_trans.c\
