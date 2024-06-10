@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:53:37 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/30 14:23:50 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/10 14:29:13 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static t_object	*ft_add_object(t_object **dest)
 	object = ft_calloc(1, sizeof(t_object));
 	if (!object)
 		return (NULL);
+	object->transform = ft_mat_id(4);
 	if (!*dest)
 		*dest = object;
 	else

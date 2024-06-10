@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/06 15:52:17 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/10 14:36:55 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(int ac, char **av)
 // 		return (ft_exit(EXIT_FAILURE, scene));
 // 	sphere = scene.objects;
 // 	ray = ft_create_ray(scene.camera.position, scene.camera.direction);
-// 	ft_intersect_sphere(sphere, ray);
+// 	ft_inters_sphere(sphere, ray);
 // 	inters = ray->inters_lst;
 // 	while (inters)
 // 	{
@@ -65,11 +65,11 @@ int	main(int ac, char **av)
 // 		inters = inters->next;
 // 	}
 // 	// inters_lst = NULL;
-// 	// ft_new_insters_addback(&inters_lst, sphere, 5);
-// 	// ft_new_insters_addback(&inters_lst, sphere, 7);
-// 	// ft_new_insters_addback(&inters_lst, sphere, -3);
-// 	// ft_new_insters_addback(&inters_lst, sphere, 2);
-// 	// ft_new_insters_addback(&inters_lst, sphere, -10);
+// 	// ft_new_inters(&inters_lst, sphere, 5);
+// 	// ft_new_inters(&inters_lst, sphere, 7);
+// 	// ft_new_inters(&inters_lst, sphere, -3);
+// 	// ft_new_inters(&inters_lst, sphere, 2);
+// 	// ft_new_inters(&inters_lst, sphere, -10);
 // 	hit = ft_hit(&ray->inters_lst);
 // 	if (hit)
 // 		printf("TEST > Hit : t = %f\n", hit->t);
@@ -103,4 +103,20 @@ int	main(int ac, char **av)
 // 	ft_mat_print(ft_mat_prod(ft_mat_prod(B, A), ft_mat_inv(A)));
 // 	// printf("determinant is %f\n", ft_mat_discr(A));
 // 	// ft_mat_print(ft_submatrix(A, 1, 2));
+// }
+
+// int main(void)
+// {
+// 	ft_mat_print(
+// 		ft_mat_prod(
+// 			ft_translation(0, 1, 2),
+// 			ft_scaling(2, 2, 2)
+// 		)
+// 	);
+// 	printf("\n");
+// 	ft_mat_print(
+// 		ft_mat_prod(			
+// 			ft_scaling(2, 2, 2), 
+// 		)
+// 	);
 // }
