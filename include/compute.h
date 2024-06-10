@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/06 14:55:19 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/10 14:56:25 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdio.h>
 # define SIZE_X 800
 # define SIZE_Y 450
+# define RADIUS_VISION 15
+# define HEIGHT_VISION 10
 
 typedef struct s_inters
 {
@@ -40,5 +42,7 @@ int			ft_intersect_sphere(t_object *sphere, t_ray *ray);
 t_ray		*ft_create_ray(t_point origin, t_vector direction);
 int			ft_new_insters_addback(t_inters **lst, t_object *object, double t);
 t_inters	*ft_hit(t_inters **lst);
+void		ft_free_inters_lst(t_inters *inters);
+
 
 #endif

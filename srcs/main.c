@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/06 15:52:17 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/07 14:58:30 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 		return (ft_exit(EXIT_FAILURE, scene));
 	if (ft_compute(&scene, canvas))
 		return (ft_exit(EXIT_FAILURE, scene));
-	ft_display(canvas, scene.size_y);
+	ft_display(canvas, scene.size_x);
 	ft_free_scene(scene);
 	return (ft_exit(EXIT_SUCCESS, scene));
 }

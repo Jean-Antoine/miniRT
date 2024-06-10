@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/06 16:45:45 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/10 14:57:39 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,19 @@ int	ft_get_color_pixel(t_scene *scene, size_t x, size_t y)
 	t_ray		*ray;
 	t_vector	direction;
 
-	direction = ft_v_set((double)x * 10 / (double)scene->size_y - 5 * (double)SIZE_X / (double)scene->size_y, (double)y * 10 / (double)scene->size_y - 5 , 15);
+	direction = ft_v_set((double)x * 10 / (double)SIZE_Y - 5 * (double)SIZE_X / (double)SIZE_Y, (double)y * 10 / (double)SIZE_Y - 5 , 15);
 	// pour canva a 15 U de la cam et de hauteur 5U (cam situee a 0,0,-5, sphere de 1 a l'origine)
 	ray = ft_create_ray(scene->camera.position, direction);
-	// if (x == 0 && y == 0)
-	// {
-	// 	printf("TEST	> ray (0,0) : \n");
-	// 	printf("	> origin = ");
-	// 	ft_tuple_print(ray->origin);
-	// 	printf("	> direction = ");
-	// 	ft_tuple_print(ray->direction);
-	// }
-	// 	if (x == 400 && y == 225)
-	// {
-	// 	printf("TEST	> ray (400,225) : \n");
-	// 	printf("	> origin = ");
-	// 	ft_tuple_print(ray->origin);
-	// 	printf("	> direction = ");
-	// 	ft_tuple_print(ray->direction);
-	// }
 	ft_intersect_sphere(scene->objects, ray);
 	if (ft_hit(&ray->inters_lst))
 	{
+		ft_free_inters_lst(ray->inters_lst);
+		free(ray);
 		return (0xFF0000);
 	}
-	return (0x808a9f);
+	ft_free_inters_lst(ray->inters_lst);
+	free(ray);
+	return (0xFFFFFF);
 }
 
 int	ft_compute(t_scene *scene, int canvas[SIZE_X][SIZE_Y])
@@ -56,11 +44,12 @@ int	ft_compute(t_scene *scene, int canvas[SIZE_X][SIZE_Y])
 	size_t	y;
 
 	x = 0;
-	scene->size_y = SIZE_Y * (size_t)scene->camera.fov / 180;
-	while (x < SIZE_X)
+	ft_set_transform_sp(scene->objects); //a placer ailleurs ?
+	scene->size_x = SIZE_X;
+	while (x < scene->size_x)
 	{
 		y = 0;
-		while (y < scene->size_y)
+		while (y < SIZE_Y)
 		{
 			canvas[x][y] = ft_get_color_pixel(scene, x, y);
 			y++;

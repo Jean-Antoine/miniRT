@@ -31,7 +31,8 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_insters_addback.c\
 								ft_intersect_sphere.c\
 								ft_set_transform_sp.c\
-								ft_hit.c)\
+								ft_hit.c\
+								ft_free_inters_lst.c)\
 							$(addprefix /matrix/,\
 								ft_mat_print.c\
 								ft_mat_prod.c\

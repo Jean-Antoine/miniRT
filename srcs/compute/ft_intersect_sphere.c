@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 12:24:51 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/06 14:52:05 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/07 10:58:31 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	ft_intersect_sphere(t_object *sphere, t_ray *ray)
 	double		t1;
 	double		t2;
 
-	ft_set_transform_sp(sphere); //a placer ailleurs ?
 	ray2 = ft_transform(*ray, ft_mat_inv(sphere->transform));
 	discriminant = ft_get_sph_inters_values(ray2, &t1, &t2);
 	if (discriminant < 0)
