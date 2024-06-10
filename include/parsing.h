@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/10 15:01:49 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:04:48 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ typedef struct s_scene
 	t_camera		camera;
 	t_light			*lights;
 	t_object		*objects;
-	unsigned int	size_x;
 	double			vertical_vision;
 }	t_scene;
 
