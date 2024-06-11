@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:28:55 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/11 17:43:33 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:59:41 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	ft_pixel_size(t_camera *camera)
 	double	fov_radian;
 	
 	camera->view_inv = ft_mat_view_inv(camera->direction, camera->position);	
-	aspect = SIZE_H / SIZE_V;
+	aspect = (double) SIZE_H / (double) SIZE_V;
 	fov_radian = camera->fov / 180 * M_PI;
 	half_view = tan(fov_radian / 2);
 	camera->half_width = half_view;
@@ -77,8 +77,8 @@ t_ray ft_pixel_to_ray(int px, int py, t_camera *camera)
 
 	if (!tbd++)
 		ft_pixel_size(camera);
-	x_offset = (px + 0.5) * camera->pixel_size;
-	y_offset = (py + 0.5) * camera->pixel_size;
+	x_offset = ((double) px + 0.5) * camera->pixel_size;
+	y_offset = ((double) py + 0.5) * camera->pixel_size;
 	x = camera->half_width - x_offset;
 	y = camera->half_height - y_offset;
 	return (ft_compute_ray(x, y, camera->view_inv, camera->position));
