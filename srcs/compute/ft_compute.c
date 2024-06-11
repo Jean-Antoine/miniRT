@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_compute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/10 15:08:13 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:31:55 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ t_point	ft_compute_point_on_ray(t_ray ray, double t)
 int	ft_get_color_pixel(t_scene *scene, size_t x, size_t y)
 {
 	t_ray		ray;
-	t_vector	direction;
 
-	direction = ft_v_set((double)x * 10 / (double)SIZE_Y - 5 * (double)SIZE_X / (double)SIZE_Y, (double)y * 10 / (double)SIZE_Y - 5 , 15);
-	ray = ft_create_ray(scene->camera.position, direction);
+	ray = ft_pixel_to_ray(x, y, &scene->camera);
 	ft_inters_sphere(scene->objects, &ray);
 	if (ft_hit(&ray.inters_lst))
 	{
@@ -34,17 +32,17 @@ int	ft_get_color_pixel(t_scene *scene, size_t x, size_t y)
 	return (0xFFFFFF);
 }
 
-int	ft_compute(t_scene *scene, int canvas[SIZE_X][SIZE_Y])
+int	ft_compute(t_scene *scene, int canvas[SIZE_H][SIZE_V])
 {
 	size_t	x;
 	size_t	y;
 
 	ft_mat_obj(scene->objects);
 	x = -1;
-	while (++x < SIZE_X)
+	while (++x < SIZE_H)
 	{
 		y = -1;
-		while (++y < SIZE_Y)
+		while (++y < SIZE_V)
 			canvas[x][y] = ft_get_color_pixel(scene, x, y);
 	}
 	return (EXIT_SUCCESS);

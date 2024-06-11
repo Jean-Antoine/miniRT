@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/10 15:08:33 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/11 13:29:58 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 static int	ft_exit(int exit_code, t_scene scene)
 {
+	printf("freeing\n");
 	ft_free_scene(scene);
 	return (exit_code);
 }
@@ -26,7 +27,7 @@ static int	ft_exit(int exit_code, t_scene scene)
 int	main(int ac, char **av)
 {
 	t_scene	scene;
-	int		canvas[SIZE_X][SIZE_Y];
+	int		canvas[SIZE_H][SIZE_V];
 
 	ft_bzero(&scene, sizeof(scene));
 	if (ac != 2)
@@ -35,8 +36,8 @@ int	main(int ac, char **av)
 		return (ft_exit(EXIT_FAILURE, scene));
 	if (ft_compute(&scene, canvas))
 		return (ft_exit(EXIT_FAILURE, scene));
-	ft_display(canvas, SIZE_X);// a changer
-	ft_free_scene(scene);
+	ft_free_scene(scene);	
+	ft_display(canvas);// a changer	
 	return (ft_exit(EXIT_SUCCESS, scene));
 }
 
@@ -56,7 +57,7 @@ int	main(int ac, char **av)
 // 	if (ft_parse(&scene, av[1]))
 // 		return (ft_exit(EXIT_FAILURE, scene));
 // 	sphere = scene.objects;
-// 	ray = ft_create_ray(scene.camera.position, scene.camera.direction);
+// 	ray = ft_ray(scene.camera.position, scene.camera.direction);
 // 	ft_inters_sphere(sphere, ray);
 // 	inters = ray->inters_lst;
 // 	while (inters)

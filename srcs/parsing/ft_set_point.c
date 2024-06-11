@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set_point.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:04:28 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/06 14:15:24 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:37:39 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_set_point(t_point *dest, char *str)
 	if (exit_code)
 		ft_error("wrong triplet format", FALSE);
 	else
-		*dest = ft_p_set(ft_atof(tab[0]), ft_atof(tab[1]), ft_atof(tab[2]));
+		*dest = ft_point(ft_atof(tab[0]), ft_atof(tab[1]), ft_atof(tab[2]));
 	ft_free_tab((void **) tab);
 	return (exit_code);
 }

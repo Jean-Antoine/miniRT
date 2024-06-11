@@ -20,7 +20,7 @@ static double	ft_discriminant(t_ray ray, double *t1, double *t2)
 	double		discr;
 	t_vector	sphere_to_ray;
 
-	sphere_to_ray = ft_p_to_v(ft_p_set(0, 0, 0), ray.origin);
+	sphere_to_ray = ft_p_to_v(ft_point(0, 0, 0), ray.origin);
 	a = ft_v_dot_prod(ray.direction, ray.direction);
 	b = 2 * ft_v_dot_prod(ray.direction, sphere_to_ray);
 	c = ft_v_dot_prod(sphere_to_ray, sphere_to_ray) - 1;
