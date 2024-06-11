@@ -12,13 +12,13 @@
 
 #include "vector.h"
 
-t_vector	ft_v_cross_prod(t_vector vector1, t_vector vector2)
+t_vector	ft_v_cross_prod(t_vector a, t_vector b)
 {
 	t_vector	vector_res;
 
-	vector_res.x = vector1.y * vector2.z - vector1.z * vector2.y;
-	vector_res.y = vector1.z * vector2.x - vector1.x * vector2.z;
-	vector_res.z = vector1.x * vector2.y - vector1.y * vector2.x;
+	vector_res.x = a.y * b.z - a.z * b.y;
+	vector_res.y = a.z * b.x - a.x * b.z;
+	vector_res.z = a.x * b.y - a.y * b.x;
 	vector_res.w = 0;
 	return (vector_res);
 }

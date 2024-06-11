@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/11 17:31:04 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:44:45 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "matrix.h"
 # include <stdio.h>
 # define SIZE_H 800
-# define SIZE_V 400
+# define SIZE_V 600
 # define M_PI 3.14159265358979323846
 
 typedef struct s_inters
