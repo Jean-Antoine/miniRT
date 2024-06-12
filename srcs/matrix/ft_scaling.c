@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_scaling.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:12:34 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/10 14:03:17 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:42:23 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-t_mat	ft_scaling(int x, int y, int z)
+t_mat	ft_scaling(double x, double y, double z)
 {
 	t_mat	scaling;
 

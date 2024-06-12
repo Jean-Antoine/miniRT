@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mat_sphere.c                                    :+:      :+:    :+:   */
+/*   ft_reflect.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 12:24:08 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/11 18:01:48 by lpaquatt         ###   ########.fr       */
+/*   Created: 2024/06/11 17:52:46 by lpaquatt          #+#    #+#             */
+/*   Updated: 2024/06/11 17:53:10 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
 
-void	ft_mat_sphere(t_object *sphere)
+
+t_vector	ft_reflect(t_vector light, t_vector normal)
 {
-	sphere->transform = ft_mat_prod(
-			sphere->transform,
-			ft_translation(
-				sphere->position.x, sphere->position.y, sphere->position.z));
-	sphere->transform = ft_mat_prod(
-			sphere->transform,
-			ft_scaling(sphere->diameter, sphere->diameter, sphere->diameter));
-	sphere->transform = ft_mat_inv(sphere->transform);
+	t_vector	reflection;
+
+	reflection = ft_v_scalar_prod(-2 * ft_v_dot_prod(light, normal), normal);
+	reflection = ft_v_add(light, reflection);
+	return (reflection);
 }

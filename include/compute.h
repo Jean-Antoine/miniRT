@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/10 15:02:09 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:06:14 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ t_ray		ft_create_ray(t_point origin, t_vector direction);
 int			ft_new_inters(t_inters **lst, t_object *object, double t);
 t_inters	*ft_hit(t_inters **lst);
 void		ft_free_inters_lst(t_inters *inters);
+t_vector	ft_get_normal_at_sp(t_object sphere, t_point world_point);
+t_vector	ft_reflect(t_vector in, t_vector normal);
+
 
 
 #endif

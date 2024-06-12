@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/10 15:08:13 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:49:36 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	ft_get_color_pixel(t_scene *scene, size_t x, size_t y)
 	t_ray		ray;
 	t_vector	direction;
 
-	direction = ft_v_set((double)x * 10 / (double)SIZE_Y - 5 * (double)SIZE_X / (double)SIZE_Y, (double)y * 10 / (double)SIZE_Y - 5 , 15);
+	direction = ft_v_set((double)x * 10 / (double)SIZE_Y - 5 * (double)SIZE_X / (double)SIZE_Y, 
+		(double)y * 10 / (double)SIZE_Y - 5 , 15);
 	ray = ft_create_ray(scene->camera.position, direction);
 	ft_inters_sphere(scene->objects, &ray);
 	if (ft_hit(&ray.inters_lst))

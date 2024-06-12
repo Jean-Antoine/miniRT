@@ -33,7 +33,9 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_new_inters.c\
 								ft_inters_sphere.c\
 								ft_mat_obj.c\
-								ft_mat_sphere.c)\
+								ft_mat_sphere.c\
+								ft_get_normal_at_sp.c\
+								ft_reflect.c)\
 							$(addprefix /matrix/,\
 								ft_mat_id.c\
 								ft_mat_print.c\
@@ -45,21 +47,14 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_scaling.c)\
 							ft_display.c\
 							main.c
-
 OBJS_F = 					$(SRCS_F:.c=.o)
 SRCS_D =					./srcs/
 OBJS_D =					./objs/
 SRCS =						$(addprefix $(SRCS_D), $(SRCS_F))
 OBJS =						$(addprefix $(OBJS_D), $(OBJS_F))
-HEADERS_D =					./include/
-HEADERS_F =					vector.h\
-							parsing.h\
-							matrix.h\
-							compute.h\
-							display.h
-HEADERS =					$(addprefix $(HEADERS_D), $(HEADERS_F))
+DEP =						$(OBJS:%.o=%.d)
 CC = 						cc
-CPPFLAGS =					-I./libft/include -I./include -I./mlx/
+CPPFLAGS =					-MMD -I./libft/include -I./include -I./mlx/
 CFLAGS =					-Wall -Werror -Wextra -g3
 LIB_FT_D =					./libft/
 LIB_MLX_D =					./mlx/
@@ -80,7 +75,7 @@ $(NAME):					mlx $(LIBFT) $(OBJS)
 							@echo "$(LIB_COLOR)[$(NAME)] Compiling$(NO_COLOR) $(LIB_COLOR)binary$(NO_COLOR)"
 							@$(CC) $(CPPFLAGS) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIB_FT_D) -L$(LIB_MLX_D) -lft -lm -lmlx -lX11 -lXext
 
-$(OBJS_D)%.o:				$(SRCS_D)%.c $(HEADERS)
+$(OBJS_D)%.o:				$(SRCS_D)%.c
 							@mkdir -p $(dir $@)
 							@echo "$(LIB_COLOR)[miniRT] $(NO_COLOR)Compiling $(OBJ_COLOR)$(notdir $<)$(NO_COLOR)"
 							@$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
@@ -125,5 +120,7 @@ update_libft:
 							git push
 
 debug:						clean_local $(NAME)
+
+-include $(DEP)
 
 .PHONY:						all clean fclean re

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_translation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:45:15 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/10 14:04:34 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:42:12 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 #include "vector.h"
 
-t_mat	ft_translation(int x, int y, int z)
+t_mat	ft_translation(double x, double y, double z)
 {
 	t_mat	translation;
 
