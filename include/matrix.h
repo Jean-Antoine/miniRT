@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:23:04 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/11 18:02:26 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/12 12:14:29 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_matrix
 	double	mat[MAT_MAX_SIZE][MAT_MAX_SIZE];
 }	t_mat;
 
+t_mat	ft_matrix(int row, int col);
 void	ft_mat_print(t_mat A);
 t_mat	ft_mat_prod(t_mat A, t_mat B);
 t_mat	ft_mat_trans(t_mat A);

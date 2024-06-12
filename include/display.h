@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:00:46 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/30 17:01:06 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:04:24 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ typedef struct s_mlx
 	int		line_length;
 }	t_mlx;
 
-void	ft_display(int canvas[SIZE_X][SIZE_Y], int scene_y);
+void	ft_display(int canvas[SIZE_H][SIZE_V]);
 
 #endif

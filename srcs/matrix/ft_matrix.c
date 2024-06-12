@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_v_cross_prod.c                         :+:      :+:    :+:   */
+/*   ft_matrix.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 16:55:39 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/23 17:09:03 by lpaquatt         ###   ########.fr       */
+/*   Created: 2024/06/11 14:03:33 by jeada-si          #+#    #+#             */
+/*   Updated: 2024/06/11 14:07:28 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "matrix.h"
 
-t_vector	ft_v_cross_prod(t_vector a, t_vector b)
+t_mat	ft_matrix(int row, int col)
 {
-	t_vector	vector_res;
+	t_mat	mat;
 
-	vector_res.x = a.y * b.z - a.z * b.y;
-	vector_res.y = a.z * b.x - a.x * b.z;
-	vector_res.z = a.x * b.y - a.y * b.x;
-	vector_res.w = 0;
-	return (vector_res);
+	ft_bzero(&mat, sizeof(t_mat));
+	mat.row = row;
+	mat.col = col;
+	return (mat);
 }

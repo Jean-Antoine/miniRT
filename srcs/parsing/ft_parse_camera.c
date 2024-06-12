@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:26:11 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/30 12:53:09 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:19:16 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	ft_parse_camera(char **args, t_camera *dest)
 			|| ft_set_vector(&dest->direction, args[2])
 			|| ft_set_scalar(&dest->fov, args[3]));
 	if (exit_code == EXIT_SUCCESS
-		&& (dest->fov < 0
-			|| dest->fov > 180))
+		&& (dest->fov <= 0
+			|| dest->fov >= 180))
 		return (ft_error("FOV must be between 0 and 180", FALSE));
 	return (exit_code);
 }

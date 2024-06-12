@@ -1,6 +1,6 @@
 SRCS_F =					$(addprefix /vector/,\
-								ft_p_set.c\
-								ft_v_set.c\
+								ft_point.c\
+								ft_vector.c\
 								ft_v_norm.c\
 								ft_p_to_v.c\
 								ft_p_translate.c\
@@ -26,7 +26,8 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_free_scene.c)\
 							$(addprefix /compute/,\
 								ft_compute.c\
-								ft_create_ray.c\
+								ft_ray.c\
+								ft_pixel_to_ray.c\
 								ft_transform.c\
 								ft_hit.c\
 								ft_free_inters_lst.c\
@@ -37,6 +38,7 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_get_normal_at_sp.c\
 								ft_reflect.c)\
 							$(addprefix /matrix/,\
+								ft_matrix.c\
 								ft_mat_id.c\
 								ft_mat_print.c\
 								ft_mat_prod.c\
@@ -93,7 +95,7 @@ valgrind:					$(NAME)
 								--show-reachable=yes \
 								--track-fds=yes\
 								--track-origins=yes \
-								./$(NAME) test.rt
+								./$(NAME) test_sp.rt
 
 clean:						
 							@make --no-print-directory -C $(LIB_FT_D) clean

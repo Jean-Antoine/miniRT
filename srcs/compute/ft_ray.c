@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_v_set.c                                 :+:      :+:    :+:   */
+/*   ft_ray.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 16:54:48 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/27 10:12:38 by jeada-si         ###   ########.fr       */
+/*   Created: 2024/06/05 15:25:29 by lpaquatt          #+#    #+#             */
+/*   Updated: 2024/06/10 14:18:36 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "compute.h"
 
-t_vector	ft_v_set(double x, double y, double z)
+t_ray	ft_ray(t_point origin, t_vector direction)
 {
-	t_vector	vector;
+	t_ray	ray;
 
-	vector.x = x;
-	vector.y = y;
-	vector.z = z;
-	vector.w = 0;
-	return (vector);
+	ray.origin = origin;
+	ray.direction = direction;
+	ray.inters_lst = NULL;
+	return (ray);
 }

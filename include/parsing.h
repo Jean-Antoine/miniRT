@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/10 15:04:48 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/11 13:23:07 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ typedef struct s_camera
 	t_point			position;
 	t_vector		direction;
 	double			fov;
+	double			half_width;
+	double			half_height;
+	double			pixel_size;
+	t_mat			view_inv;
 }	t_camera;
 
 typedef struct s_scene
@@ -68,12 +72,10 @@ typedef struct s_scene
 	t_camera		camera;
 	t_light			*lights;
 	t_object		*objects;
-	double			vertical_vision;
 }	t_scene;
 
 size_t	ft_tabsize(char	**tab);
 int		ft_error(char *str, int use_errno);
-
 int		ft_open_file(char *file_name);
 int		ft_parse(t_scene *scene, char *file);
 int		ft_parse_line(char *line, t_scene *scene);

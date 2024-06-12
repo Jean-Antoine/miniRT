@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/11 15:06:14 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/12 12:14:19 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 # include "vector.h"
 # include "matrix.h"
 # include <stdio.h>
-# define SIZE_X 800
-# define SIZE_Y 450
-# define RADIUS_VISION 15
-# define HEIGHT_VISION 10
+# define SIZE_H 800
+# define SIZE_V 600
+# define M_PI 3.14159265358979323846
 
 typedef struct s_inters
 {
@@ -37,17 +36,16 @@ typedef struct s_ray
 
 void		ft_mat_sphere(t_object *sphere);
 void		ft_mat_obj(t_object *list);
-int			ft_compute(t_scene *scene, int canvas[SIZE_X][SIZE_Y]);
-void		ft_set_transform_sp(t_object *sphere);
+t_ray		ft_ray(t_point origin, t_vector direction);
+t_ray		ft_pixel_to_ray(int px, int py, t_camera *camera);
 t_ray		ft_transform(t_ray ray, t_mat mat);
-int			ft_inters_sphere(t_object *sphere, t_ray *ray);
-t_ray		ft_create_ray(t_point origin, t_vector direction);
+int			ft_compute(t_scene *scene, int canvas[SIZE_H][SIZE_V]);
 int			ft_new_inters(t_inters **lst, t_object *object, double t);
+int			ft_inters_sphere(t_object *sphere, t_ray *ray);
 t_inters	*ft_hit(t_inters **lst);
 void		ft_free_inters_lst(t_inters *inters);
 t_vector	ft_get_normal_at_sp(t_object sphere, t_point world_point);
 t_vector	ft_reflect(t_vector in, t_vector normal);
-
 
 
 #endif
