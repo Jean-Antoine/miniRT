@@ -36,7 +36,8 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_mat_obj.c\
 								ft_mat_sphere.c\
 								ft_get_normal_at_sp.c\
-								ft_reflect.c)\
+								ft_reflect.c\
+								ft_get_color_at_point.c)\
 							$(addprefix /matrix/,\
 								ft_matrix.c\
 								ft_mat_id.c\

@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/12 12:14:19 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/18 15:48:15 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 # include "vector.h"
 # include "matrix.h"
 # include <stdio.h>
+# include <math.h>
 # define SIZE_H 800
-# define SIZE_V 600
+# define SIZE_V 800
 # define M_PI 3.14159265358979323846
 
 typedef struct s_inters
@@ -46,6 +47,8 @@ t_inters	*ft_hit(t_inters **lst);
 void		ft_free_inters_lst(t_inters *inters);
 t_vector	ft_get_normal_at_sp(t_object sphere, t_point world_point);
 t_vector	ft_reflect(t_vector in, t_vector normal);
+t_color	ft_get_color_at_point(t_object obj, t_point pt, t_light light, t_scene scene);
+
 
 
 #endif
