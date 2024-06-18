@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_object.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:53:37 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/10 14:29:13 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/18 14:26:21 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_parse_sp(char **args, t_object *dest)
 	dest->type = sphere;
 	return (ft_set_point(&dest->position, args[0])
 		|| ft_set_scalar(&dest->diameter, args[1])
-		|| ft_set_color(&dest->color, args[2]));
+		|| ft_set_color(&dest->material.color, args[2]));
 }
 
 static int	ft_parse_pl(char **args, t_object *dest)
@@ -29,7 +29,7 @@ static int	ft_parse_pl(char **args, t_object *dest)
 	dest->type = plan;
 	return (ft_set_point(&dest->position, args[0])
 		|| ft_set_vector(&dest->direction, args[1])
-		|| ft_set_color(&dest->color, args[2]));
+		|| ft_set_color(&dest->material.color, args[2]));
 }
 
 static int	ft_parse_cy(char **args, t_object *dest)
@@ -41,7 +41,19 @@ static int	ft_parse_cy(char **args, t_object *dest)
 		|| ft_set_vector(&dest->direction, args[1])
 		|| ft_set_scalar(&dest->diameter, args[2])
 		|| ft_set_scalar(&dest->height, args[3])
-		|| ft_set_color(&dest->color, args[4]));
+		|| ft_set_color(&dest->material.color, args[4]));
+}
+
+static	t_material	ft_default_material(void)
+{
+	t_material	material;
+
+	material.ambiant = 0.1;
+	material.diffuse = 0.9;
+	material.specular = 0.9;
+	material.shininess = 0.9;
+	ft_set_color(&material.color, "255,255,255");
+	return (material);
 }
 
 static t_object	*ft_add_object(t_object **dest)
@@ -53,6 +65,7 @@ static t_object	*ft_add_object(t_object **dest)
 	if (!object)
 		return (NULL);
 	object->transform = ft_mat_id(4);
+	object->material = ft_default_material();
 	if (!*dest)
 		*dest = object;
 	else

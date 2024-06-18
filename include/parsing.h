@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/11 13:23:07 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/18 14:17:22 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,22 @@
 # define FALSE 0
 
 typedef int					t_bool;
+
 typedef struct s_color
 {
 	int	r;
 	int	g;
 	int	b;
 }	t_color;
+
+typedef struct s_material
+{
+	t_color	color;
+	double	ambiant;
+	double	diffuse;
+	double	specular;
+	double	shininess;
+}	t_material;
 
 typedef enum e_object_type
 {
@@ -42,7 +52,7 @@ typedef struct s_object
 	double			diameter;
 	double			height;
 	t_vector		direction;
-	t_color			color;
+	t_material		material;
 	t_mat			transform;
 	struct s_object	*next;
 }	t_object;
