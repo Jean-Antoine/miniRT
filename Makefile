@@ -25,6 +25,7 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_tabsize.c\
 								ft_free_scene.c)\
 							$(addprefix /compute/,\
+								ft_eq.c\
 								ft_compute.c\
 								ft_ray.c\
 								ft_pixel_to_ray.c\

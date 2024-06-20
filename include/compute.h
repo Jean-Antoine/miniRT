@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/18 15:48:15 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/20 11:45:21 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "matrix.h"
 # include <stdio.h>
 # include <math.h>
-# define SIZE_H 800
-# define SIZE_V 800
+# define SIZE_H 600
+# define SIZE_V 600
 # define M_PI 3.14159265358979323846
 
 typedef struct s_inters
@@ -35,6 +35,7 @@ typedef struct s_ray
 	t_inters	*inters_lst;
 }	t_ray;
 
+int			ft_eq(double a, double b);
 void		ft_mat_sphere(t_object *sphere);
 void		ft_mat_obj(t_object *list);
 t_ray		ft_ray(t_point origin, t_vector direction);
