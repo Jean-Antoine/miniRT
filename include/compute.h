@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/20 11:45:21 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/20 11:48:08 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_ray
 	t_inters	*inters_lst;
 }	t_ray;
 
-int			ft_eq(double a, double b);
 void		ft_mat_sphere(t_object *sphere);
 void		ft_mat_obj(t_object *list);
 t_ray		ft_ray(t_point origin, t_vector direction);

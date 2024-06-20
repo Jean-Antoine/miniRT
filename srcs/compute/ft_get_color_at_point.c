@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_color_at_point.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:46:10 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/18 15:48:06 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:34:26 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,4 @@ t_color	ft_get_color_at_point(t_object obj, t_point pt, t_light light, t_scene s
 	}
 	//return (ft_sum_colors(ambiant, diffuse));
 	return (ft_sum_colors(ambiant, ft_sum_colors(diffuse, specular)));
-}
-
-int	ft_color_to_int(t_color color) 
-{
-	return ((color.r << 16) | (color.g << 8) | color.b);
 }

@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:35:06 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/11 15:08:44 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/20 11:48:36 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ int	ft_is_triplet(char **tab)
 
 int	ft_is_normalized(t_vector vector)
 {
-	return (ft_abs(ft_v_norm(vector) - 1) < TOLERANCE);
+	return (ft_eq(ft_v_norm(vector), 1));
 }

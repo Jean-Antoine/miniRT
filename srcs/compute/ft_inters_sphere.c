@@ -12,7 +12,7 @@
 
 #include "compute.h"
 
-static double	ft_discriminant(t_ray ray, double *t1, double *t2)
+static int	ft_is_inters(t_ray ray, double *t1, double *t2)
 {
 	double		a;
 	double		b;
@@ -26,23 +26,22 @@ static double	ft_discriminant(t_ray ray, double *t1, double *t2)
 	c = ft_v_dot_prod(sphere_to_ray, sphere_to_ray) - 1;
 	discr = pow(b, 2) - 4 * a * c;
 	if (discr < 0)
-		return (discr);
+		return (EXIT_FAILURE);
 	*t1 = (-b - sqrt(discr)) / (2 * a);
 	*t2 = (-b + sqrt(discr)) / (2 * a);
-	return (discr);
+	return (EXIT_SUCCESS);
 }
 
 int	ft_inters_sphere(t_object *sphere, t_ray *ray)
 {
 	t_ray		ray2;
-	double		discriminant;
 	double		t1;
 	double		t2;
 
 	ray2 = ft_transform(*ray, sphere->transform);
-	discriminant = ft_discriminant(ray2, &t1, &t2);
-	if (discriminant < 0)
-		return (EXIT_SUCCESS);
-	return (ft_new_inters(&ray->inters_lst, sphere, t1) ||
+	if (ft_is_inters(ray2, &t1, &t2))
+		return (EXIT_FAILURE);
+	return (
+		ft_new_inters(&ray->inters_lst, sphere, t1) ||
 		ft_new_inters(&ray->inters_lst, sphere, t2));
 }

@@ -27,6 +27,7 @@ typedef struct s_tuple
 typedef t_tuple	t_vector;
 typedef t_tuple	t_point;
 
+int			ft_eq(double a, double b);
 t_point		ft_point(double x, double y, double z);
 t_point		ft_p_translate(t_point starting_point, t_vector vector);
 t_vector	ft_p_to_v(t_point starting_point, t_point end_point);
