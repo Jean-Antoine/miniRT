@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/20 11:45:21 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:42:32 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 # include "matrix.h"
 # include <stdio.h>
 # include <math.h>
-# define SIZE_H 600
+# define SIZE_H 1000
 # define SIZE_V 600
 # define M_PI 3.14159265358979323846
-
+# define BLACK (t_color){0,0,0}
+# define WHITE (t_color){255,255,255}
 typedef struct s_inters
 {
 	t_object			*object;

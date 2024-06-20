@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:46:10 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/18 15:48:06 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:52:56 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int	ft_min(int a, int b)
 
 t_color ft_sum_colors(t_color col1, t_color col2)
 {
-	return ((t_color){ft_min(col1.r + col2.r, 255), ft_min(col1.g + col2.g, 255), ft_min(col1.b + col2.b, 255)});
-	//return ((t_color){col1.r + col2.r, col1.g + col2.g, col1.b + col2.b});
+	return ((t_color){col1.r + col2.r, col1.g + col2.g, col1.b + col2.b});
 }
 
 t_color	ft_get_color_at_point(t_object obj, t_point pt, t_light light, t_scene scene)
@@ -51,8 +50,8 @@ t_color	ft_get_color_at_point(t_object obj, t_point pt, t_light light, t_scene s
 	light_dot_normal = ft_v_dot_prod(light_v, normal_v); //sp only
 	if (light_dot_normal < 0)
 	{
-		diffuse = (t_color){0,0,0};
-		specular = (t_color){0,0,0};
+		diffuse = BLACK;
+		specular = BLACK;
 	}
 	else
 	{
@@ -60,16 +59,10 @@ t_color	ft_get_color_at_point(t_object obj, t_point pt, t_light light, t_scene s
 		reflect_v = ft_reflect(ft_v_scalar_prod(-1, light_v), normal_v);
 		reflect_dot_eye = ft_v_dot_prod(reflect_v, scene.camera.direction);
 		if (reflect_dot_eye <= 0)
-			specular = (t_color){0,0,0};
+			specular = BLACK;
 		else
-			specular = ft_apply_light_to_color(eff_color, light.brightness_ratio *
-				obj.material.diffuse * pow(reflect_dot_eye, obj.material.shininess));
+			specular = ft_apply_light_to_color(WHITE, light.brightness_ratio * obj.material.specular * pow(reflect_dot_eye, obj.material.shininess));
+			// specular = ft_apply_light_to_color(eff_color, light.brightness_ratio * obj.material.specular * pow(reflect_dot_eye, obj.material.shininess));
 	}
-	//return (ft_sum_colors(ambiant, diffuse));
 	return (ft_sum_colors(ambiant, ft_sum_colors(diffuse, specular)));
-}
-
-int	ft_color_to_int(t_color color) 
-{
-	return ((color.r << 16) | (color.g << 8) | color.b);
 }
