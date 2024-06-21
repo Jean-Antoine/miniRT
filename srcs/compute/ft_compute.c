@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/21 15:32:49 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:15:19 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@ int	ft_get_color_pixel(t_scene *scene, size_t x, size_t y)
 	t_ray		ray;
 	t_inters	*hit;
 	t_color		color;
-	t_inters	*hit;
-	t_color		color;	
 
-	static	int	i = -1;
-	i++;
+	// static	int	i = -1;
+	// i++;
 	ray = ft_pixel_to_ray(x, y, &scene->camera);
+	ft_inters_sphere(scene->objects, &ray);
 	// if(i %1 == 0) //tests github
 	// {
 	// 	double t;
@@ -72,6 +71,7 @@ int	ft_get_color_pixel(t_scene *scene, size_t x, size_t y)
 	// 		}
 	// 	}
 	// }
+	// // tests 2
 	// if(i %100 == 0)
 	// {
 	// 	if (ray.inters_lst)
@@ -84,7 +84,6 @@ int	ft_get_color_pixel(t_scene *scene, size_t x, size_t y)
 	// 	else
 	// 		printf("Autre :	none\n\n");
 	// }
-	ft_inters_sphere(scene->objects, &ray);
 	hit = ft_hit(&ray.inters_lst);
 	if (hit)
 	{
