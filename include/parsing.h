@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/18 14:17:22 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:30:17 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,6 @@
 # define FALSE 0
 
 typedef int					t_bool;
-
-typedef struct s_color
-{
-	int	r;
-	int	g;
-	int	b;
-}	t_color;
 
 typedef struct s_material
 {

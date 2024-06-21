@@ -45,3 +45,31 @@ int	ft_inters_sphere(t_object *sphere, t_ray *ray)
 		ft_new_inters(&ray->inters_lst, sphere, t1) ||
 		ft_new_inters(&ray->inters_lst, sphere, t2));
 }
+
+// int main(void)
+// {
+// 	double	t1;
+// 	double	t2;
+//  t_ray	ray;
+
+// 	ray = ft_ray(ft_point(0, 0, 5), ft_vector(0, 0, 1));
+// 	if (!ft_is_inters(ray, &t1, &t2))
+// 		printf("values are %f and %f", t1, t2);
+// }
+
+// int main(void)
+// {
+// 	t_object sp;
+// 	t_ray		ray;
+
+// 	sp.type = sphere;
+// 	sp.transform = ft_mat_inv(ft_scaling(2, 2, 2));
+// 	ray = ft_ray(ft_point(0, 0, -5), ft_vector(0, 0, 1));
+// 	ft_inters_sphere(&sp, &ray);
+// 	printf("%f and %f\n", ray.inters_lst->t, ray.inters_lst->next->t);
+
+// 	sp.transform = ft_mat_inv(ft_scaling(5, 0, 0));
+// 	ray = ft_ray(ft_point(0, 0, -5), ft_vector(0, 0, 1));
+// 	ft_inters_sphere(&sp, &ray);
+// 	printf("%f and %f\n", ray.inters_lst->t, ray.inters_lst->next->t);
+// }

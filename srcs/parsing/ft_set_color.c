@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:04:21 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/30 13:00:04 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:31:27 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ int	ft_set_color(t_color *color, char *arg)
 		ft_free_tab((void **) rgb);
 		return (ft_error("wrong color format", FALSE));
 	}
-	color->r = ft_atoi(rgb[0]);
-	color->g = ft_atoi(rgb[1]);
-	color->b = ft_atoi(rgb[2]);
+	*color = ft_color(ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));
 	ft_free_tab((void **)rgb);
 	return (EXIT_SUCCESS);
 }

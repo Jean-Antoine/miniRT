@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_object.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:53:37 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/18 14:26:21 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/20 16:05:19 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static	t_material	ft_default_material(void)
 	material.ambiant = 0.1;
 	material.diffuse = 0.9;
 	material.specular = 0.9;
-	material.shininess = 0.9;
+	material.shininess = 200;
 	ft_set_color(&material.color, "255,255,255");
 	return (material);
 }

@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mat_sphere.c                                    :+:      :+:    :+:   */
+/*   ft_v_diff.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 12:24:08 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/20 14:32:14 by jeada-si         ###   ########.fr       */
+/*   Created: 2024/06/20 15:22:51 by jeada-si          #+#    #+#             */
+/*   Updated: 2024/06/20 15:23:54 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "compute.h"
+#include "vector.h"
 
-void	ft_mat_sphere(t_object *sphere)
+t_vector	ft_v_diff(t_vector v1, t_vector v2)
 {
-	sphere->transform = ft_mat_prod(
-			sphere->transform,
-			ft_translation(
-				sphere->position.x, sphere->position.y, sphere->position.z));
-	sphere->transform = ft_mat_prod(
-			sphere->transform,
-			ft_scaling(sphere->diameter, sphere->diameter, sphere->diameter));
-	sphere->transform = ft_mat_inv(sphere->transform);
+	v1.x -= v2.x;
+	v1.y -= v2.y;
+	v1.z -= v2.z;
+	return (v1);
 }

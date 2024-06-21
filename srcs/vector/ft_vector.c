@@ -22,3 +22,8 @@ t_vector	ft_vector(double x, double y, double z)
 	vector.w = 0;
 	return (vector);
 }
+
+t_color	ft_color(double r, double g, double b)
+{
+	return ((t_color) ft_vector(r, g, b));
+}
