@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/21 15:13:15 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:32:49 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,19 @@
 t_ray		ray_to_pixel(int x, int y, t_camera *camera1);//
 int			intersect_sphere(t_ray ray, t_object sphere, double *t);
 
-
-t_point	ft_compute_point_on_ray(t_ray ray, double t)
-{
-	return (ft_p_translate(ray.origin, ft_v_scalar_prod(t, ray.direction)));
-}
-
 int	ft_color_to_int(t_color color) 
 {
-	return ((color.r << 16) | (color.g << 8) | color.b);
+	return (((int) color.x << 16) | (((int) color.y / 255) << 8) | ((int)color.z / 255));
 }
+
 
 int	ft_get_color_pixel(t_scene *scene, size_t x, size_t y)
 {
 	t_ray		ray;
 	t_inters	*hit;
 	t_color		color;
+	t_inters	*hit;
+	t_color		color;	
 
 	static	int	i = -1;
 	i++;
@@ -91,9 +88,11 @@ int	ft_get_color_pixel(t_scene *scene, size_t x, size_t y)
 	hit = ft_hit(&ray.inters_lst);
 	if (hit)
 	{
-		// if (i % 10 == 0)
-		// 	printf("(%f, %f)\n", ray.direction.x, ray.direction.y);
-		color = ft_get_color_at_point(*hit->object, ft_compute_point_on_ray(ray, hit->t), *scene->lights, *scene); //lights
+		color = ft_get_color_at_point(
+			*hit->object,
+			ft_position(ray, hit->t),
+			*scene->lights,
+			scene->camera.direction);
 		ft_free_inters_lst(ray.inters_lst);
 		return (ft_color_to_int(color));
 		//return(0xFF0000);

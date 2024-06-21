@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:28:55 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/21 15:09:21 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:49:29 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static void	ft_pixel_size(t_camera *camera)
 	double	half_view;
 	double	aspect;
 	double	fov_radian;
-
-	camera->view_inv = ft_mat_view_inv(camera->direction, camera->position);	
+	
+	camera->view_inv = ft_mat_view_inv(camera->direction, camera->position);
 	aspect = (double) SIZE_H / (double) SIZE_V;
 	fov_radian = camera->fov / 180 * M_PI;
 	half_view = tan(fov_radian / 2);
@@ -53,7 +53,7 @@ static void	ft_pixel_size(t_camera *camera)
 		camera->half_width = half_view * aspect;
 		camera->half_height= half_view;
 	}
-	camera->pixel_size = camera->half_width * 2 / SIZE_H;
+	camera->pixel_size = (camera->half_height * 2) / (double) SIZE_V;
 }
 
 static t_ray	ft_compute_ray(double x, double y, t_mat view_inv, t_point origin)
@@ -73,12 +73,12 @@ t_ray	ft_pixel_to_ray(int px, int py, t_camera *camera)
 	double			x_offset;
 	double			y_offset;
 	double			x;
-	double			y;	
+	double			y;
 
 	if (!tbd++)
 		ft_pixel_size(camera);
-	x_offset = ((double) px + 0.5) * camera->pixel_size;
-	y_offset = ((double) py + 0.5) * camera->pixel_size;
+	x_offset = ((double) px + (double) 0.5) * camera->pixel_size;
+	y_offset = ((double) py + (double) 0.5) * camera->pixel_size;
 	x = camera->half_width - x_offset;
 	y = camera->half_height - y_offset;
 	return (ft_compute_ray(x, y, camera->view_inv, camera->position));

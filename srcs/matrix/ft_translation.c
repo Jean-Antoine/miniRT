@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_translation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:45:15 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/11 14:42:12 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:57:13 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ t_mat	ft_translation(double x, double y, double z)
 {
 	t_mat	translation;
 
-	ft_bzero(&translation, sizeof(translation));
-	translation.col = 4;
-	translation.row = 4;
+	translation = ft_matrix(4, 4);
 	translation.mat[0][0] = 1;
 	translation.mat[1][1] = 1;
 	translation.mat[2][2] = 1;

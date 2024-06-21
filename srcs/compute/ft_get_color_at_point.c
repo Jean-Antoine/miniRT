@@ -6,47 +6,38 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:46:10 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/20 15:52:56 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:43:51 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
 
-t_color	ft_apply_light_to_color(t_color color, double brightness)
+double	ft_color_brightness(t_color color)
 {
-	return ((t_color)
-		{color.r * brightness, color.g * brightness, color.b * brightness});
+	return (0.2126 * color.x / 255 + 0.7152 * color.y / 255 + 0.0722 * color.y / 255);
 }
 
-int	ft_min(int a, int b)
+t_color	ft_apply_brightness(t_color color, double brightness)
 {
-	if (a < b)
-		return (a);
-	else
-		return (b);
+	return (ft_v_scalar_prod(brightness, color));
 }
 
-t_color ft_sum_colors(t_color col1, t_color col2)
+t_color	ft_get_color_at_point(t_object obj, t_point pt, t_light light, t_vector camera_dir)
 {
-	return ((t_color){col1.r + col2.r, col1.g + col2.g, col1.b + col2.b});
-}
-
-t_color	ft_get_color_at_point(t_object obj, t_point pt, t_light light, t_scene scene)
-{
-	t_color	eff_color;
-	t_color	ambiant;
-	t_color diffuse;
-	t_color	specular;
+	t_color		eff_color;
+	t_color		ambiant;
+	t_color		diffuse;
+	t_color		specular;
 	t_vector	light_v;
 	t_vector	normal_v;
 	t_vector	reflect_v;
-	double	light_dot_normal;
-	double	reflect_dot_eye;
+	double		light_dot_normal;
+	double		reflect_dot_eye;
 
-	eff_color = ft_apply_light_to_color(obj.material.color, light.brightness_ratio);
+	eff_color = ft_apply_brightness(obj.material.color, light.brightness_ratio);
 	light_v = ft_v_normalize(ft_p_to_v(pt, light.position));
-	ambiant = ft_apply_light_to_color(eff_color, obj.material.ambiant);
-	normal_v = ft_get_normal_at_sp(obj, pt);
+	ambiant = ft_apply_brightness(eff_color, obj.material.ambiant);
+	normal_v = ft_normal_at(obj, pt);
 	light_dot_normal = ft_v_dot_prod(light_v, normal_v); //sp only
 	if (light_dot_normal < 0)
 	{
@@ -55,14 +46,15 @@ t_color	ft_get_color_at_point(t_object obj, t_point pt, t_light light, t_scene s
 	}
 	else
 	{
-		diffuse = ft_apply_light_to_color(eff_color, obj.material.diffuse * light_dot_normal);
+		diffuse = ft_apply_brightness(eff_color, obj.material.diffuse * light_dot_normal);
 		reflect_v = ft_reflect(ft_v_scalar_prod(-1, light_v), normal_v);
-		reflect_dot_eye = ft_v_dot_prod(reflect_v, scene.camera.direction);
+		reflect_dot_eye = ft_v_dot_prod(reflect_v, camera_dir);
 		if (reflect_dot_eye <= 0)
 			specular = BLACK;
 		else
-			specular = ft_apply_light_to_color(WHITE, light.brightness_ratio * obj.material.specular * pow(reflect_dot_eye, obj.material.shininess));
-			// specular = ft_apply_light_to_color(eff_color, light.brightness_ratio * obj.material.specular * pow(reflect_dot_eye, obj.material.shininess));
+			specular = ft_apply_brightness(
+				WHITE, 
+				light.brightness_ratio * obj.material.specular * pow(reflect_dot_eye, obj.material.shininess));
 	}
-	return (ft_sum_colors(ambiant, ft_sum_colors(diffuse, specular)));
+	return (ft_v_add(ambiant, ft_v_add(diffuse, specular)));
 }

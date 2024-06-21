@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:28:20 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/30 16:03:02 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:23:00 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,13 @@ t_mat	ft_mat_prod(t_mat A, t_mat B)
 	int		i;
 	int		j;
 	int		k;
-
-	ft_bzero(&result, sizeof(result));
+	
+	result = ft_matrix(A.row, B.col);
 	if (A.col != B.row)
 	{
 		ft_putstr_fd("Matrix not compatible\n", STDERR_FILENO);
 		return (result);
-	}		
-	result.row = A.row;
-	result.col = B.col;
+	}	
 	i = -1;
 	while (++i < result.row)
 	{

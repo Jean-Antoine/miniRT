@@ -26,11 +26,14 @@ typedef struct s_tuple
 
 typedef t_tuple	t_vector;
 typedef t_tuple	t_point;
+typedef	t_tuple	t_color;
 
+int			ft_eq(double a, double b);
 t_point		ft_point(double x, double y, double z);
 t_point		ft_p_translate(t_point starting_point, t_vector vector);
 t_vector	ft_p_to_v(t_point starting_point, t_point end_point);
 t_vector	ft_vector(double x, double y, double z);
+t_color		ft_color(double r, double g, double b);
 t_vector	ft_v_add(t_vector v1, t_vector v2);
 t_vector	ft_v_scalar_prod(double scalar, t_vector vector);
 t_vector	ft_v_normalize(t_vector vector);

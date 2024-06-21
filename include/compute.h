@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/20 15:42:32 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:23:03 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ typedef struct s_ray
 	t_inters	*inters_lst;
 }	t_ray;
 
-int			ft_eq(double a, double b);
 void		ft_mat_sphere(t_object *sphere);
 void		ft_mat_obj(t_object *list);
 t_ray		ft_ray(t_point origin, t_vector direction);
+t_point		ft_position(t_ray ray, double t);
 t_ray		ft_pixel_to_ray(int px, int py, t_camera *camera);
 t_ray		ft_transform(t_ray ray, t_mat mat);
 int			ft_compute(t_scene *scene, int canvas[SIZE_H][SIZE_V]);
@@ -47,10 +47,8 @@ int			ft_new_inters(t_inters **lst, t_object *object, double t);
 int			ft_inters_sphere(t_object *sphere, t_ray *ray);
 t_inters	*ft_hit(t_inters **lst);
 void		ft_free_inters_lst(t_inters *inters);
-t_vector	ft_get_normal_at_sp(t_object sphere, t_point world_point);
+t_vector	ft_normal_at(t_object sphere, t_point world_point);
 t_vector	ft_reflect(t_vector in, t_vector normal);
-t_color	ft_get_color_at_point(t_object obj, t_point pt, t_light light, t_scene scene);
-
-
+t_color		ft_get_color_at_point(t_object obj, t_point pt, t_light light, t_vector camera_dir);
 
 #endif

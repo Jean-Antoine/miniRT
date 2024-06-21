@@ -12,7 +12,7 @@
 
 #include "compute.h"
 
-static double	ft_discriminant(t_ray ray, double *t1, double *t2)
+static int	ft_is_inters(t_ray ray, double *t1, double *t2)
 {
 	double		a;
 	double		b;
@@ -39,24 +39,23 @@ static double	ft_discriminant(t_ray ray, double *t1, double *t2)
 	// }
 	i++;
 	if (discr < 0)
-		return (discr);
+		return (EXIT_FAILURE);
 	*t1 = (-b - sqrt(discr)) / (2 * a);
 	*t2 = (-b + sqrt(discr)) / (2 * a);
-	return (discr);
+	return (EXIT_SUCCESS);
 }
 
 int	ft_inters_sphere(t_object *sphere, t_ray *ray)
 {
 	t_ray		ray2;
-	double		discriminant;
 	double		t1;
 	double		t2;
 
 	ray2 = ft_transform(*ray, sphere->transform);
-	discriminant = ft_discriminant(ray2, &t1, &t2);
-	if (discriminant < 0)
-		return (EXIT_SUCCESS);
-	return (ft_new_inters(&ray->inters_lst, sphere, t1) ||
+	if (ft_is_inters(ray2, &t1, &t2))
+		return (EXIT_FAILURE);
+	return (
+		ft_new_inters(&ray->inters_lst, sphere, t1) ||
 		ft_new_inters(&ray->inters_lst, sphere, t2));
 }
 
@@ -153,4 +152,34 @@ int	ft_inters_sphere(t_object *sphere, t_ray *ray)
 // 	}
 // 	*t = t0;
 // 	return (1);
+// }
+
+
+
+// int main(void)
+// {
+// 	double	t1;
+// 	double	t2;
+//  t_ray	ray;
+
+// 	ray = ft_ray(ft_point(0, 0, 5), ft_vector(0, 0, 1));
+// 	if (!ft_is_inters(ray, &t1, &t2))
+// 		printf("values are %f and %f", t1, t2);
+// }
+
+// int main(void)
+// {
+// 	t_object sp;
+// 	t_ray		ray;
+
+// 	sp.type = sphere;
+// 	sp.transform = ft_mat_inv(ft_scaling(2, 2, 2));
+// 	ray = ft_ray(ft_point(0, 0, -5), ft_vector(0, 0, 1));
+// 	ft_inters_sphere(&sp, &ray);
+// 	printf("%f and %f\n", ray.inters_lst->t, ray.inters_lst->next->t);
+
+// 	sp.transform = ft_mat_inv(ft_scaling(5, 0, 0));
+// 	ray = ft_ray(ft_point(0, 0, -5), ft_vector(0, 0, 1));
+// 	ft_inters_sphere(&sp, &ray);
+// 	printf("%f and %f\n", ray.inters_lst->t, ray.inters_lst->next->t);
 // }
