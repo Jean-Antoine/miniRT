@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/21 11:43:24 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/21 11:51:41 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ t_inters	*ft_hit(t_inters **lst);
 void		ft_free_inters_lst(t_inters *inters);
 t_vector	ft_normal_at(t_object sphere, t_point world_point);
 t_vector	ft_reflect(t_vector in, t_vector normal);
-t_color		ft_get_color_at_point(t_object obj, t_point pt, t_light light, t_scene scene);
+t_color		ft_get_color_at_point(t_object obj, t_point pt, t_light light, t_vector camera_dir);
 
 #endif
