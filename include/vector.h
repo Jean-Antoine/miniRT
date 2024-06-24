@@ -33,7 +33,6 @@ t_point		ft_point(double x, double y, double z);
 t_point		ft_p_translate(t_point starting_point, t_vector vector);
 t_vector	ft_p_to_v(t_point starting_point, t_point end_point);
 t_vector	ft_vector(double x, double y, double z);
-t_color		ft_color(double r, double g, double b);
 t_vector	ft_v_add(t_vector v1, t_vector v2);
 t_vector	ft_v_scalar_prod(double scalar, t_vector vector);
 t_vector	ft_v_normalize(t_vector vector);
@@ -41,5 +40,10 @@ t_vector	ft_v_cross_prod(t_vector v1, t_vector v2);
 double		ft_v_norm(t_vector vect);
 double		ft_v_dot_prod(t_vector v1, t_vector v2);
 void		ft_tuple_print(t_tuple tup);
+
+t_color		ft_color(double r, double g, double b);
+t_color		ft_color_mix(t_color color1, t_color color2);
+t_color		ft_color_brightness(double brightness, t_color color);
+t_color		ft_color_add(t_color color1, t_color color2);
 
 #endif

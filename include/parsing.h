@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/20 15:30:17 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/24 11:55:45 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,21 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef int					t_bool;
+typedef int			t_bool;
 
 typedef struct s_material
 {
-	t_color	color;
-	double	ambiant;
-	double	diffuse;
-	double	specular;
-	double	shininess;
+	t_color			color;
+	double			diffuse;
+	double			specular;
+	double			shininess;
 }	t_material;
 
 typedef enum e_object_type
 {
-	plan,
-	sphere,
-	cylinder
+					plan,
+					sphere,
+					cylinder
 }	t_object_type;
 
 typedef struct s_object
@@ -52,7 +51,6 @@ typedef struct s_object
 
 typedef struct s_light
 {
-	t_bool			ambient_light;
 	t_point			position;
 	double			brightness_ratio;
 	t_color			color;
@@ -72,30 +70,32 @@ typedef struct s_camera
 
 typedef struct s_scene
 {
+	double			ambient_brightness;
+	t_color			ambient_color;
 	t_camera		camera;
 	t_light			*lights;
 	t_object		*objects;
 }	t_scene;
 
-size_t	ft_tabsize(char	**tab);
-int		ft_error(char *str, int use_errno);
-int		ft_open_file(char *file_name);
-int		ft_parse(t_scene *scene, char *file);
-int		ft_parse_line(char *line, t_scene *scene);
-int		ft_parse_object(char **args, t_object **dest);
-int		ft_parse_light(char **args, t_light **dest);
-int		ft_parse_camera(char **args, t_camera *dest);
+size_t		ft_tabsize(char **tab);
+int			ft_error(char *str, int use_errno);
+int			ft_open_file(char *file_name);
+int			ft_parse(t_scene *scene, char *file);
+int			ft_parse_line(char *line, t_scene *scene);
+int			ft_parse_object(char **args, t_object **dest);
+int			ft_parse_light(char **args, t_scene *scene);
+int			ft_parse_camera(char **args, t_camera *dest);
 
-int		ft_set_point(t_point *dest, char *str);
-int		ft_set_vector(t_vector *dest, char *str);
-int		ft_set_scalar(double *dest, char *str);
-int		ft_set_color(t_color *color, char *str);
+int			ft_set_point(t_point *dest, char *str);
+int			ft_set_vector(t_vector *dest, char *str);
+int			ft_set_scalar(double *dest, char *str);
+int			ft_set_color(t_color *color, char *str);
 
-int		ft_is_numeric(char *str);
-int		ft_is_float(char *str);
-int		ft_is_triplet(char **tab);
-int		ft_is_normalized(t_vector vector);
+int			ft_is_numeric(char *str);
+int			ft_is_float(char *str);
+int			ft_is_triplet(char **tab);
+int			ft_is_normalized(t_vector vector);
 
-void	ft_free_scene(t_scene scene);
+void		ft_free_scene(t_scene scene);
 
 #endif

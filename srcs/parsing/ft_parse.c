@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:35:36 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/05/30 12:53:09 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/24 10:22:30 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ static void	ft_error_line(int i, char *str)
 static int	ft_min_scene(char *line)
 {
 	static int	camera = 0;
-	static int	ambiant = 0;
+	static int	ambient = 0;
 
 	if (!line)
 	{
-		if (camera && ambiant)
+		if (camera && ambient)
 			return (EXIT_SUCCESS);
 		return (ft_error("there must be at least one camera "
-				"and one ambiant light", FALSE));
+				"and one ambient light", FALSE));
 	}
 	camera += line[0] == 'C';
-	ambiant += line[0] == 'A';
+	ambient += line[0] == 'A';
 	free(line);
 	return (EXIT_FAILURE);
 }

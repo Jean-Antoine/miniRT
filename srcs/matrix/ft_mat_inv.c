@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:46:48 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/30 12:01:21 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/24 17:54:07 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,3 +78,15 @@ t_mat	ft_mat_inv(t_mat A)
 	}
 	return (inv);
 }
+
+// int	main(void)
+// {
+// 	t_mat	A;
+
+// 	A = ft_matrix(4, 4);
+// 	A.mat[0][0] = 9; A.mat[0][1] = 25; A.mat[0][2] = 2; A.mat[0][3] = 1;
+// 	A.mat[1][0] = 3; A.mat[1][1] = 1; A.mat[1][2] = 5; A.mat[1][3] = 7;
+// 	A.mat[2][0] = 1; A.mat[2][1] = 5; A.mat[2][2] = 5; A.mat[2][3] = 3;
+// 	A.mat[3][0] = 1; A.mat[3][1] = 2; A.mat[3][2] = 3; A.mat[3][3] = 4;
+// 	ft_mat_print(ft_mat_inv(A));
+// }

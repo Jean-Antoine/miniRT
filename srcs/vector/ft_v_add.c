@@ -22,3 +22,31 @@ t_vector	ft_v_add(t_vector vector1, t_vector vector2)
 	vector_res.w = 0;
 	return (vector_res);
 }
+
+static double	ft_dmax(double x, double y)
+{
+	if (x < y)
+		return (y);
+	return (x);
+}
+
+t_color	ft_color_rescale(t_color color)
+{
+	double	max;
+
+	max = ft_dmax(color.x, color.y);
+	max = ft_dmax(max, color.z);
+	if (max > 1)
+		return (ft_v_scalar_prod(1 / max, color));
+	return (color);
+}
+
+t_color	ft_color_add(t_color color1, t_color color2)
+{
+	return (ft_v_add(color1, color2));
+}
+
+t_color	ft_color_brightness(double brightness, t_color color)
+{
+	return (ft_v_scalar_prod(brightness, color));
+}

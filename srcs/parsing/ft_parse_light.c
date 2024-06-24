@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:44:35 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/30 14:23:34 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/24 16:15:57 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static int	ft_set_brightness(double *brightness, char *arg)
 
 static int	ft_parse_spot_light(char **args, t_light *light)
 {
-	static int	i = 0;
+	// static int	i = 0;
 
-	if (i++)
-		return (ft_error("more than one spot light", FALSE));
+	// if (i++)
+	// 	return (ft_error("more than one spot light", FALSE));
 	if (ft_tabsize(args) != 4)
 		return (ft_error("wrong number of parameters", FALSE));
 	if (ft_set_point(&light->position, args[1]))
@@ -39,7 +39,7 @@ static int	ft_parse_spot_light(char **args, t_light *light)
 	return (EXIT_SUCCESS);
 }
 
-static int	ft_parse_ambiant_light(char **args, t_light *light)
+static int	ft_parse_ambiant_light(char **args, t_scene *scene)
 {
 	static int	i = 0;
 
@@ -47,10 +47,9 @@ static int	ft_parse_ambiant_light(char **args, t_light *light)
 		return (ft_error("more than one ambiant light", FALSE));
 	if (ft_tabsize(args) != 3)
 		return (ft_error("wrong number of parameters", FALSE));
-	light->ambient_light = TRUE;
-	if (ft_set_brightness(&light->brightness_ratio, args[1]))
+	if (ft_set_brightness(&scene->ambient_brightness, args[1]))
 		return (EXIT_FAILURE);
-	if (ft_set_color(&light->color, args[2]))
+	if (ft_set_color(&scene->ambient_color, args[2]))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -75,19 +74,17 @@ static t_light	*ft_new_light_addback(t_light **light_lst)
 	return (new_light);
 }
 
-int	ft_parse_light(char **args, t_light **dest)
+int	ft_parse_light(char **args, t_scene *scene)
 {
 	t_light	*light;
 
 	if (ft_strcmp(args[0], "L")
 		&& ft_strcmp(args[0], "A"))
 		return (2);
-	light = ft_new_light_addback(dest);
+	if (!ft_strcmp(args[0], "A"))
+		return (ft_parse_ambiant_light(args, scene));
+	light = ft_new_light_addback(&scene->lights);	
 	if (!light)
 		return (ft_error("ft_parse_light", TRUE));
-	if (!ft_strcmp(args[0], "A"))
-		return (ft_parse_ambiant_light(args, light));
-	if (!ft_strcmp(args[0], "L"))
-		return (ft_parse_spot_light(args, light));
-	return (EXIT_FAILURE);
+	return (ft_parse_spot_light(args, light));
 }

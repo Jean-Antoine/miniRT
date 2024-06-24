@@ -6,28 +6,28 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:06:22 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/20 15:18:17 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/24 12:28:12 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
 
-static t_vector	ft_get_normal_at_sp(t_object sphere, t_point world_point)
+static t_vector	ft_get_normal_at_sp(t_object *sphere, t_point world_point)
 {
 	t_point		obj_point;
 	t_vector	obj_normal;
 	t_vector	world_normal;
 
-	obj_point = ft_mat_prod_tup(sphere.transform, world_point);
+	obj_point = ft_mat_prod_tup(sphere->transform, world_point);
 	obj_normal = ft_p_to_v(ft_point(0, 0, 0), obj_point);
-	world_normal = ft_mat_prod_tup(ft_mat_trans(sphere.transform), obj_normal);
+	world_normal = ft_mat_prod_tup(ft_mat_trans(sphere->transform), obj_normal);
 	world_normal.w = 0;
 	return (ft_v_normalize(world_normal));
 }
 
-t_vector	ft_normal_at(t_object object, t_point point)
+t_vector	ft_normal_at(t_object *object, t_point point)
 {
-	if (object.type == sphere)
+	if (object->type == sphere)
 		return (ft_get_normal_at_sp(object, point));
 	return (ft_vector(0, 0, 0));
 }

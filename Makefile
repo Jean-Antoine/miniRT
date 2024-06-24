@@ -10,7 +10,8 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_v_normalize.c\
 								ft_v_dot_prod.c\
 								ft_v_cross_prod.c\
-								ft_tuple_print.c)\
+								ft_tuple_print.c\
+								ft_color_mix.c)\
 							$(addprefix /parsing/,\
 								ft_error.c\
 								ft_open_file.c\

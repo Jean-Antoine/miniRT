@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/20 16:04:18 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/24 17:54:14 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 static int	ft_exit(int exit_code, t_scene scene)
 {
-	printf("freeing\n");
 	ft_free_scene(scene);
 	return (exit_code);
 }

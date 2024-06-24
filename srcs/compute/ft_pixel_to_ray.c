@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:28:55 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/20 12:25:54 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/24 17:32:14 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static t_mat	ft_mat_view_inv(t_vector dir, t_point position)
 	t_mat		view;
 
 	view = ft_matrix(4, 4);
+	dir = ft_v_normalize(dir);
 	left = ft_v_cross_prod(dir, ft_vector(0, 1, 0));
 	up = ft_v_cross_prod(left, dir);
 	view.mat[0][0] = left.x; view.mat[0][1] = left.y; view.mat[0][2] = left.z;
@@ -44,24 +45,27 @@ static void	ft_pixel_size(t_camera *camera)
 	
 	camera->view_inv = ft_mat_view_inv(camera->direction, camera->position);
 	aspect = (double) SIZE_H / (double) SIZE_V;
-	fov_radian = camera->fov / 180 * M_PI;
-	half_view = tan(fov_radian / 2);
+	fov_radian = (camera->fov / 180.0) * M_PI;
+	half_view = tan(fov_radian / 2.0);
 	camera->half_width = half_view;
 	camera->half_height = half_view / aspect;
-	if (aspect > 1)
+	if (aspect < 1.0)
 	{
 		camera->half_width = half_view * aspect;
 		camera->half_height= half_view;
 	}
-	camera->pixel_size = (camera->half_height * 2) / (double) SIZE_V;
+	camera->pixel_size = (camera->half_width * 2.0) / (double) SIZE_H;
+	printf("%f\n", camera->pixel_size);
 }
 
-static t_ray	ft_compute_ray(double x, double y, t_mat view_inv, t_point origin)
+static t_ray	ft_compute_ray(double x, double y, t_mat view_inv)
 {
 	t_point			pixel;
 	t_vector		direction;
+	t_point			origin;
 
 	pixel = ft_mat_prod_tup(view_inv, ft_point(x, y, -1));
+	origin = ft_mat_prod_tup(view_inv, ft_point(0, 0, 0));
 	direction = ft_p_to_v(origin, pixel);
 	direction = ft_v_normalize(direction);
 	return (ft_ray(origin, direction));
@@ -81,5 +85,5 @@ t_ray ft_pixel_to_ray(int px, int py, t_camera *camera)
 	y_offset = ((double) py + (double) 0.5) * camera->pixel_size;
 	x = camera->half_width - x_offset;
 	y = camera->half_height - y_offset;
-	return (ft_compute_ray(x, y, camera->view_inv, camera->position));
+	return (ft_compute_ray(x, y, camera->view_inv));
 }

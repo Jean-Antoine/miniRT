@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/21 11:51:41 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/24 17:30:23 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,18 @@
 # include "matrix.h"
 # include <stdio.h>
 # include <math.h>
-# define SIZE_H 600
-# define SIZE_V 600
+# define SIZE_H 800
+# define SIZE_V 800
 # define M_PI 3.14159265358979323846
+
+typedef struct s_light_comp
+{
+	t_vector	normal_v;
+	t_vector	light_v;
+	t_vector	reflect_v;
+	double		light_dot_normal;
+	double		reflect_dot_eye;
+}	t_light_comp;
 
 typedef struct s_inters
 {
@@ -30,13 +39,14 @@ typedef struct s_inters
 
 typedef struct s_ray
 {
-	t_point		origin;
-	t_vector	direction;
-	t_inters	*inters_lst;
+	t_point				origin;
+	t_vector			direction;
+	t_inters			*inters_lst;
 }	t_ray;
 
 void		ft_mat_sphere(t_object *sphere);
 void		ft_mat_obj(t_object *list);
+void		ft_ambient_obj(t_object *object, double brightness,	t_color color);
 t_ray		ft_ray(t_point origin, t_vector direction);
 t_point		ft_position(t_ray ray, double t);
 t_ray		ft_pixel_to_ray(int px, int py, t_camera *camera);
@@ -46,8 +56,8 @@ int			ft_new_inters(t_inters **lst, t_object *object, double t);
 int			ft_inters_sphere(t_object *sphere, t_ray *ray);
 t_inters	*ft_hit(t_inters **lst);
 void		ft_free_inters_lst(t_inters *inters);
-t_vector	ft_normal_at(t_object sphere, t_point world_point);
+t_vector	ft_normal_at(t_object *sphere, t_point world_point);
 t_vector	ft_reflect(t_vector in, t_vector normal);
-t_color		ft_get_color_at_point(t_object obj, t_point pt, t_light light, t_vector camera_dir);
+t_color		ft_get_color_at_point(t_object *object, t_point point, t_vector eye_v, t_scene *scene);
 
 #endif

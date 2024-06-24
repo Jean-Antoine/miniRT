@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hit.c                                           :+:      :+:    :+:   */
+/*   ft_color_mix.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 15:52:08 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/24 17:37:15 by jeada-si         ###   ########.fr       */
+/*   Created: 2024/06/24 11:35:18 by jeada-si          #+#    #+#             */
+/*   Updated: 2024/06/24 11:36:29 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "compute.h"
+#include "vector.h"
 
-t_inters	*ft_hit(t_inters **lst)
+t_color	ft_color_mix(t_color color1, t_color color2)
 {
-	t_inters	*inters;
-	t_inters	*hit;
-
-	if (!lst || !*lst)
-		return (NULL);
-	inters = *lst;
-	hit = inters;
-	while (inters->next)
-	{
-		inters = inters->next;
-		if (inters->t >= 0 && (inters->t < hit->t || hit->t < 0))
-			hit = inters;
-	}
-	if (hit->t < 0)
-		return (NULL);
-	return (hit);
+	color1.x *= color2.x;
+	color1.y *= color2.y;
+	color1.z *= color2.z;
+	return (color1);
 }

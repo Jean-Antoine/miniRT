@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:24:08 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/20 14:32:14 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/24 18:00:26 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	ft_mat_sphere(t_object *sphere)
 {
 	sphere->transform = ft_mat_prod(
 			sphere->transform,
-			ft_translation(
-				sphere->position.x, sphere->position.y, sphere->position.z));
+			ft_scaling(sphere->diameter / 2.0, sphere->diameter / 2.0, sphere->diameter / 2.0));
 	sphere->transform = ft_mat_prod(
 			sphere->transform,
-			ft_scaling(sphere->diameter, sphere->diameter, sphere->diameter));
+			ft_translation(
+				sphere->position.x, sphere->position.y, sphere->position.z));
 	sphere->transform = ft_mat_inv(sphere->transform);
 }

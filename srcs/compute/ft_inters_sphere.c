@@ -22,13 +22,13 @@ static int	ft_is_inters(t_ray ray, double *t1, double *t2)
 
 	sphere_to_ray = ft_p_to_v(ft_point(0, 0, 0), ray.origin);
 	a = ft_v_dot_prod(ray.direction, ray.direction);
-	b = 2 * ft_v_dot_prod(ray.direction, sphere_to_ray);
-	c = ft_v_dot_prod(sphere_to_ray, sphere_to_ray) - 1;
-	discr = pow(b, 2) - 4 * a * c;
+	b = 2.0 * ft_v_dot_prod(ray.direction, sphere_to_ray);
+	c = ft_v_dot_prod(sphere_to_ray, sphere_to_ray) - 1.0;
+	discr = b * b - 4.0 * a * c;
 	if (discr < 0)
 		return (EXIT_FAILURE);
-	*t1 = (-b - sqrt(discr)) / (2 * a);
-	*t2 = (-b + sqrt(discr)) / (2 * a);
+	*t1 = (-b - sqrt(discr)) / (2.0 * a);
+	*t2 = (-b + sqrt(discr)) / (2.0 * a);
 	return (EXIT_SUCCESS);
 }
 
