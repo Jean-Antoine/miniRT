@@ -19,7 +19,6 @@ static int	ft_is_inters(t_ray ray, double *t1, double *t2)
 	double		c;
 	double		discr;
 	t_vector	sphere_to_ray;
-	static int	i;//
 
 	sphere_to_ray = ft_p_to_v(ft_point(0, 0, 0), ray.origin);
 	a = ft_v_dot_prod(ray.direction, ray.direction);

@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:28:55 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/24 18:04:59 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/24 18:06:11 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static void	ft_pixel_size(t_camera *camera)
 		camera->half_height= half_view;
 	}
 	camera->pixel_size = (camera->half_width * 2.0) / (double) SIZE_H;
-	printf("%f\n", camera->pixel_size);
 }
 
 static t_ray	ft_compute_ray(double x, double y, t_mat view_inv)
