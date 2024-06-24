@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:26:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/24 17:54:14 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/24 18:05:07 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	main(int ac, char **av)
 		return (ft_exit(EXIT_FAILURE, scene));
 	if (ft_compute(&scene, canvas))
 		return (ft_exit(EXIT_FAILURE, scene));
-	ft_free_scene(scene);	
-	ft_display(canvas);// a changer	
+	ft_free_scene(scene);
+	ft_display(canvas);
 	return (ft_exit(EXIT_SUCCESS, scene));
 }
 

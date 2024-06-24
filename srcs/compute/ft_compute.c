@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/24 17:59:21 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/24 18:04:25 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	ft_color_at(t_scene *scene, t_ray ray)
 			scene);
 		ft_free_inters_lst(ray.inters_lst);
 		return (ft_color_to_int(color));
+		//return(0xFF0000);
 	}
 	ft_free_inters_lst(ray.inters_lst);
 	return (0x000000);
