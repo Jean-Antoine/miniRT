@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mat_sphere.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:24:08 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/24 18:00:26 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/25 16:47:55 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	ft_mat_sphere(t_object *sphere)
 {
 	sphere->transform = ft_mat_prod(
 			sphere->transform,
-			ft_scaling(sphere->diameter / 2.0, sphere->diameter / 2.0, sphere->diameter / 2.0));
+			ft_scaling(sphere->diameter / 2.0, sphere->diameter / 2.0,
+				sphere->diameter / 2.0));
 	sphere->transform = ft_mat_prod(
 			sphere->transform,
 			ft_translation(

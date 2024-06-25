@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_compute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/24 18:04:25 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/25 16:40:53 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static double	ft_dmin(double x, double y)
 	return (x);
 }
 
-int	ft_color_to_int(t_color color) 
+int	ft_color_to_int(t_color color)
 {	
 	return (((int)(ft_dmin(color.x * 255.0, 255)) << 16)
 		+ ((int)(ft_dmin(color.y * 255.0, 255)) << 8)
@@ -39,14 +39,14 @@ t_ray	ft_manual_ray(int x, int y)
 	world_y = half - pixel_size * y;
 	world_x = -half + pixel_size * x;
 	ray = ft_ray(
-		ft_point(0, 0, -5),
-		ft_v_normalize(
-			ft_p_to_v(
-				ft_point(0, 0, -5),
-				ft_point(world_x, world_y, 7)
-			)
-		)
-	);
+			ft_point(0, 0, -5),
+			ft_v_normalize(
+				ft_p_to_v(
+					ft_point(0, 0, -5),
+					ft_point(world_x, world_y, 7)
+					)
+				)
+			);
 	return (ray);
 }
 
@@ -54,25 +54,18 @@ int	ft_color_at(t_scene *scene, t_ray ray)
 {
 	t_inters	*hit;
 	t_color		color;	
-	t_object	*object;
 
-	object = scene->objects;
-	while (object)
-	{
-		ft_inters_sphere(object, &ray);
-		object = object->next;
-	}
+	ft_inters(*scene, &ray);
 	hit = ft_hit(&ray.inters_lst);
 	if (hit)
 	{
 		color = ft_get_color_at_point(
-			hit->object,
-			ft_position(ray, hit->t),
-			ft_v_scalar_prod(-1.0, ft_v_normalize(ray.direction)),
-			scene);
+				hit->object,
+				ft_position(ray, hit->t),
+				ft_v_scalar_prod(-1.0, ft_v_normalize(ray.direction)),
+				scene);
 		ft_free_inters_lst(ray.inters_lst);
 		return (ft_color_to_int(color));
-		//return(0xFF0000);
 	}
 	ft_free_inters_lst(ray.inters_lst);
 	return (0x000000);
@@ -91,7 +84,6 @@ int	ft_compute(t_scene *scene, int canvas[SIZE_H][SIZE_V])
 		y = -1;
 		while (++y < SIZE_V)
 		{
-			
 			ray = ft_pixel_to_ray(x, y, &scene->camera);
 			// ray = ft_manual_ray(x, y);
 			canvas[x][y] = ft_color_at(scene, ray);

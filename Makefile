@@ -34,12 +34,13 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_hit.c\
 								ft_free_inters_lst.c\
 								ft_new_inters.c\
-								ft_inters_sphere.c\
+								ft_inters.c\
 								ft_mat_obj.c\
 								ft_mat_sphere.c\
 								ft_normal_at.c\
 								ft_reflect.c\
-								ft_get_color_at_point.c)\
+								ft_get_color_at_point.c\
+								ft_colors.c)\
 							$(addprefix /matrix/,\
 								ft_matrix.c\
 								ft_mat_id.c\

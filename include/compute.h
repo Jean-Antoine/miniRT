@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/24 18:03:59 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:33:54 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,13 @@ t_ray		ft_pixel_to_ray(int px, int py, t_camera *camera);
 t_ray		ft_transform(t_ray ray, t_mat mat);
 int			ft_compute(t_scene *scene, int canvas[SIZE_H][SIZE_V]);
 int			ft_new_inters(t_inters **lst, t_object *object, double t);
-int			ft_inters_sphere(t_object *sphere, t_ray *ray);
+int			ft_inters(t_scene scene, t_ray *ray);
 t_inters	*ft_hit(t_inters **lst);
 void		ft_free_inters_lst(t_inters *inters);
 t_vector	ft_normal_at(t_object *sphere, t_point world_point);
 t_vector	ft_reflect(t_vector in, t_vector normal);
 t_color		ft_get_color_at_point(t_object *object, t_point point, t_vector eye_v, t_scene *scene);
+t_color		ft_white(void);
+t_color		ft_black(void);
 
 #endif

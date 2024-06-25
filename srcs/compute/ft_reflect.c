@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reflect.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:52:46 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/24 14:16:22 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/25 16:49:05 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,3 @@ t_vector	ft_reflect(t_vector light, t_vector normal)
 	reflection = ft_v_add(light, reflection);
 	return (reflection);
 }
-
-// int main(void)
-// {
-// 	ft_tuple_print(
-// 		ft_reflect(
-// 			ft_vector(1, -1, 0),
-// 			ft_vector(0, 1, 0)
-// 		)
-// 	);
-// 	ft_tuple_print(
-// 		ft_reflect(
-// 			ft_vector(0, -1, 0),
-// 			ft_vector(sqrt(2)/2, sqrt(2)/2, 0)
-// 		)
-// 	);
-// }
