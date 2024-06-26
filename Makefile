@@ -100,6 +100,7 @@ valgrind:					$(NAME)
 								--show-reachable=yes \
 								--track-fds=yes\
 								--track-origins=yes \
+								--max-stackframe=2560592 \
 								./$(NAME) test_sp.rt
 
 clean:						

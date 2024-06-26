@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/25 16:40:53 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:33:35 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,7 @@ int	ft_color_at(t_scene *scene, t_ray ray)
 	hit = ft_hit(&ray.inters_lst);
 	if (hit)
 	{
-		color = ft_get_color_at_point(
-				hit->object,
-				ft_position(ray, hit->t),
-				ft_v_scalar_prod(-1.0, ft_v_normalize(ray.direction)),
-				scene);
+		color = ft_get_color_at_point(*hit, scene);
 		ft_free_inters_lst(ray.inters_lst);
 		return (ft_color_to_int(color));
 	}

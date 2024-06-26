@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 14:09:07 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/25 16:47:18 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:20:06 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static int	ft_inters_sphere(t_object *sphere, t_ray *ray)
 	if (ft_is_inters(ray2, &t1, &t2))
 		return (EXIT_FAILURE);
 	return (
-		ft_new_inters(&ray->inters_lst, sphere, t1) ||
-		ft_new_inters(&ray->inters_lst, sphere, t2));
+		ft_new_inters(ray, sphere, t1) ||
+		ft_new_inters(ray, sphere, t2));
 }
 
 int	ft_inters(t_scene scene, t_ray *ray)
