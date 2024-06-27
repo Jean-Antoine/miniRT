@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_object.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:53:37 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/24 18:05:16 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:06:28 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_parse_pl(char **args, t_object *dest)
 {
 	if (ft_tabsize(args) != 3)
 		return (ft_error("wrong number of parameters", FALSE));
-	dest->type = plan;
+	dest->type = plane;
 	return (ft_set_point(&dest->position, args[0])
 		|| ft_set_vector(&dest->direction, args[1])
 		|| ft_set_color(&dest->material.color, args[2]));

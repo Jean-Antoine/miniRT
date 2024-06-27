@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rotation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 17:01:18 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/20 15:07:38 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:33:55 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,14 @@ t_mat	ft_rotation_z(double r)
 	mat.mat[0][1] = -sin(r);
 	mat.mat[1][0] = sin(r);
 	return (mat);
+}
+
+t_mat	ft_rotation(double x, double y, double z) // pas sure
+{
+	t_mat	scaling;
+
+	scaling = ft_rotation_x(x);
+	scaling = ft_mat_prod(scaling, ft_rotation_y(y));
+	scaling = ft_mat_prod(scaling, ft_rotation_z(z));
+	return (scaling);
 }

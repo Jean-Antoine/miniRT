@@ -58,7 +58,7 @@ void	ft_prepare_computations(t_ray ray, t_inters *inters)
 	inters->comp.eye_v = ft_v_scalar_prod(-1, ray.direction);//ft_v_normalize(ft_p_to_v(ray.origin, inters->comp.point));
 	inters->comp.normal_v = ft_normal_at(inters->object, inters->comp.point);
 	inters->comp.inside = FALSE;
-	if (ft_v_dot_prod(inters->comp.normal_v, inters->comp.eye_v) < 0)
+	if (inters->object->type == sphere && ft_v_dot_prod(inters->comp.normal_v, inters->comp.eye_v) < 0)// vrai pour les spheres uniquement ?
 	{
 		inters->comp.inside = TRUE;
 		inters->comp.normal_v = ft_v_scalar_prod(-1, inters->comp.normal_v);

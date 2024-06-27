@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/26 16:33:35 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:16:00 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,6 @@ int	ft_color_to_int(t_color color)
 	return (((int)(ft_dmin(color.x * 255.0, 255)) << 16)
 		+ ((int)(ft_dmin(color.y * 255.0, 255)) << 8)
 		+ (int)(ft_dmin(color.z * 255.0, 255)));
-}
-
-t_ray	ft_manual_ray(int x, int y)
-{
-	double		world_x;
-	double		world_y;
-	double		half;
-	double		pixel_size;
-	t_ray		ray;
-
-	pixel_size = 7.0 / (double) SIZE_V;
-	half = 7.0 / 2.0;
-	world_y = half - pixel_size * y;
-	world_x = -half + pixel_size * x;
-	ray = ft_ray(
-			ft_point(0, 0, -5),
-			ft_v_normalize(
-				ft_p_to_v(
-					ft_point(0, 0, -5),
-					ft_point(world_x, world_y, 7)
-					)
-				)
-			);
-	return (ray);
 }
 
 int	ft_color_at(t_scene *scene, t_ray ray)
@@ -81,7 +57,6 @@ int	ft_compute(t_scene *scene, int canvas[SIZE_H][SIZE_V])
 		while (++y < SIZE_V)
 		{
 			ray = ft_pixel_to_ray(x, y, &scene->camera);
-			// ray = ft_manual_ray(x, y);
 			canvas[x][y] = ft_color_at(scene, ray);
 		}
 	}

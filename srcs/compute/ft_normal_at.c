@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_normal_at.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:06:22 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/24 12:28:12 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:48:49 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ t_vector	ft_normal_at(t_object *object, t_point point)
 {
 	if (object->type == sphere)
 		return (ft_get_normal_at_sp(object, point));
+	else if (object->type == plane)
+		return (object->direction);
 	return (ft_vector(0, 0, 0));
 }
 
@@ -36,7 +38,7 @@ t_vector	ft_normal_at(t_object *object, t_point point)
 // {
 // 	t_object sp;
 // 	t_vector vector;
-	
+
 // 	sp.type = sphere;
 // 	sp.transform = ft_mat_inv(ft_translation(0, 1, 0));
 // 	vector = ft_normal_at(sp, ft_point(0, 1.70711, -0.70711));

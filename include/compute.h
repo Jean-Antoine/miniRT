@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/26 17:46:08 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:47:06 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_ray
 	t_inters			*inters_lst;
 }	t_ray;
 
-void		ft_mat_sphere(t_object *sphere);
+void		ft_mat_sp(t_object *sphere);
 void		ft_mat_obj(t_object *list);
 void		ft_ambient_obj(t_object *object, double brightness,	t_color color);
 t_ray		ft_ray(t_point origin, t_vector direction);

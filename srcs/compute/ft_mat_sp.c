@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mat_sphere.c                                    :+:      :+:    :+:   */
+/*   ft_mat_sp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 12:24:08 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/26 14:41:38 by lpaquatt         ###   ########.fr       */
+/*   Created: 2024/06/27 16:48:13 by lpaquatt          #+#    #+#             */
+/*   Updated: 2024/06/27 16:48:19 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
 
-void	ft_mat_sphere(t_object *sphere)
+void	ft_mat_sp(t_object *sphere)
 {
 	sphere->transform = ft_mat_prod(
 			sphere->transform,

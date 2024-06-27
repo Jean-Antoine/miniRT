@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 14:09:07 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/26 15:20:06 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:09:50 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,39 @@ static int	ft_is_inters(t_ray ray, double *t1, double *t2)
 	c = ft_v_dot_prod(sphere_to_ray, sphere_to_ray) - 1.0;
 	discr = b * b - 4.0 * a * c;
 	if (discr < 0)
-		return (EXIT_FAILURE);
+		return (FALSE);
 	*t1 = (-b - sqrt(discr)) / (2.0 * a);
 	*t2 = (-b + sqrt(discr)) / (2.0 * a);
-	return (EXIT_SUCCESS);
+	return (TRUE);
 }
 
-static int	ft_inters_sphere(t_object *sphere, t_ray *ray)
+static int	ft_inters_sp(t_object *sphere, t_ray *ray)
 {
 	t_ray		ray2;
 	double		t1;
 	double		t2;
 
 	ray2 = ft_transform(*ray, sphere->transform);
-	if (ft_is_inters(ray2, &t1, &t2))
-		return (EXIT_FAILURE);
+	if (ft_is_inters(ray2, &t1, &t2) == FALSE)
+		return (EXIT_FAILURE); //success ?
 	return (
 		ft_new_inters(ray, sphere, t1) ||
 		ft_new_inters(ray, sphere, t2));
+}
+
+static int	ft_inters_pl(t_object *plane, t_ray *ray)
+{
+	t_ray		ray2;
+	double		t;
+
+
+	ray2 = ft_transform(*ray, plane->transform);
+	if (ft_eq(ray2.direction.y,0))
+		return (EXIT_FAILURE); //success ?
+	t = -ray2.origin.y / ray2.direction.y;
+	if (ft_eq(t,0)) //cracra ?
+		return (EXIT_FAILURE); //success ?
+	return (ft_new_inters(ray, plane, t));
 }
 
 int	ft_inters(t_scene scene, t_ray *ray)
@@ -54,7 +69,9 @@ int	ft_inters(t_scene scene, t_ray *ray)
 	while (object)
 	{
 		if (object->type == sphere)
-			ft_inters_sphere(object, ray); // check failure ?
+			ft_inters_sp(object, ray); // check failure ?
+		else if (object->type == plane)
+			ft_inters_pl(object, ray);
 		object = object->next;
 	}
 	return (EXIT_SUCCESS);

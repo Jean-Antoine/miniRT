@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:28:55 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/27 18:47:15 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:48:01 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	ft_pixel_size(t_camera *camera)
 	if (aspect < 1.0)
 	{
 		camera->half_width = half_view * aspect;
-		camera->half_height= half_view;
+		camera->half_height = half_view;
 	}
 	camera->pixel_size = (camera->half_width * 2.0) / (double) SIZE_H;
 }

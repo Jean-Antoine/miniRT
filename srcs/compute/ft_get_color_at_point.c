@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:46:10 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/26 17:45:35 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:10:33 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_bool	ft_is_shadowed(t_point pt, t_light light, t_scene scene)
 	pt_to_light = ft_p_to_v(pt, light.position);
 	distance = ft_v_norm(pt_to_light);
 	ray = ft_ray(pt, ft_v_normalize(pt_to_light));
-	ft_inters(scene, &ray);
+	ft_inters(scene, &ray); //faut pas qu'il intersecte avec lui même
 	hit = ft_hit(&ray.inters_lst);
 	if (hit && hit->t < distance)
 	{
