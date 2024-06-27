@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:28:55 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/27 17:17:06 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:47:15 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_mat	ft_mat_view_inv(t_vector dir, t_point position)
 	dir = ft_v_normalize(dir);
 	left = ft_v_cross_prod(dir, ft_vector(0, 1, 0));
 	if (ft_v_norm(left) == 0)
-		left = ft_v_cross_prod(dir, ft_vector(1, 0, 0));
+		left = ft_v_cross_prod(dir, ft_vector(0, 0, 1));
 	up = ft_v_cross_prod(left, dir);
 	view.mat[0][0] = left.x; 	view.mat[0][1] = left.y; 	view.mat[0][2] = left.z;
 	view.mat[1][0] = up.x; 		view.mat[1][1] = up.y; 		view.mat[1][2] = up.z;
