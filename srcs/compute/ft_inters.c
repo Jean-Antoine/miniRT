@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 14:09:07 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/28 11:30:01 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/28 18:14:57 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,41 @@ static int	ft_inters_pl(t_object *plane, t_ray *ray)
 
 
 	ray2 = ft_transform(*ray, plane->transform);
+	///*tests leontine*/
+	// static int i = 0;
+	// if (i == 0 && plane->position.z == 10)
+	// {
+	// 	printf("plane.position.z = %f\n", plane->position.z);
+	// 	printf("ray.origin = ");
+	// 	ft_tuple_print(ray->origin);
+	// 	printf("ray.direction = ");
+	// 	ft_tuple_print(ray->direction);
+
+
+	// 	printf("ray2.origin = ");
+	// 	ft_tuple_print(ray2.origin);
+	// 	printf("ray2.direction = ");
+	// 	ft_tuple_print(ray2.direction);
+	// 	printf("\n");
+	// 	i++;
+	// }
+	// 	static int j = 0;
+	// if (j == 0 && plane->position.x == -1)
+	// {
+	// 	printf("plane.position.x = %f\n", plane->position.x);
+	// 	printf("ray.origin = ");
+	// 	ft_tuple_print(ray->origin);
+	// 	printf("ray.direction = ");
+	// 	ft_tuple_print(ray->direction);
+
+
+	// 	printf("ray2.origin = ");
+	// 	ft_tuple_print(ray2.origin);
+	// 	printf("ray2.direction = ");
+	// 	ft_tuple_print(ray2.direction);
+	// 	printf("\n");
+	// 	j++;
+	// }
 	if (ft_eq(ray2.direction.y,0))
 		return (EXIT_FAILURE); //success ?
 	t = -ray2.origin.y / ray2.direction.y;

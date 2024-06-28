@@ -6,23 +6,39 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:44:24 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/27 17:48:33 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/28 18:13:53 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
 
+
+// vecteur unitaire = (0,1,0)
+
+
 void	ft_mat_pl(t_object *plane)
 {
-	plane->transform = ft_mat_prod(
-			plane->transform,
-			ft_translation(
-				plane->position.x, plane->position.y, plane->position.z));
-	// plane->transform = ft_mat_prod(
-	// 		plane->transform,
-	// 		ft_rotation(plane->direction.x, plane->direction.y, plane->direction.z));
-	// //vecteur direction doit devenir (0,1,0)
-	plane->transform = ft_mat_inv(plane->transform);
+ 	double theta_x, theta_y;
+    t_mat rotation_x, rotation_y,  combined_rotation, translation;
+
+    // Calculate rotation angles
+    theta_x = atan2(sqrt(pow(plane->direction.x, 2) + pow(plane->direction.z, 2)), plane->direction.y);
+    theta_y = atan2(plane->direction.x, plane->direction.z);
+
+    // Create rotation matrices
+    rotation_x = ft_rotation_x(theta_x);
+    rotation_y = ft_rotation_y(theta_y);
+    combined_rotation = ft_mat_prod(rotation_x, rotation_y);
+
+    // Create translation matrices
+    translation = ft_translation(plane->position.x, plane->position.y, plane->position.z);
+
+    // Apply transformation and invert
+	plane->transform = ft_mat_prod(combined_rotation, translation);
+    plane->transform = ft_mat_inv(plane->transform);
+
+    // Print the transformation matrix
+    ft_mat_print(plane->transform);
 }
 
 void	ft_mat_obj(t_object *list)

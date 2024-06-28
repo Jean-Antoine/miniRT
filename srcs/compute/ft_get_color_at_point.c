@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:46:10 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/27 19:10:33 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:04:52 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_color	ft_diffuse(double light_dot_normal,	double mat_diffuse,
 	t_color eff_color)
 {
-	if (light_dot_normal < 0)
+	if (light_dot_normal < TOLERANCE)
 		return (ft_black());
 	return (ft_color_brightness(light_dot_normal * mat_diffuse, eff_color));
 }
@@ -46,7 +46,7 @@ t_bool	ft_is_shadowed(t_point pt, t_light light, t_scene scene)
 	pt_to_light = ft_p_to_v(pt, light.position);
 	distance = ft_v_norm(pt_to_light);
 	ray = ft_ray(pt, ft_v_normalize(pt_to_light));
-	ft_inters(scene, &ray); //faut pas qu'il intersecte avec lui même
+	ft_inters(scene, &ray);
 	hit = ft_hit(&ray.inters_lst);
 	if (hit && hit->t < distance)
 	{
@@ -99,9 +99,10 @@ t_color	ft_get_color_at_point(t_inters hit, t_scene *scene)
 	while (light)
 	{
 		comp.light_v = ft_v_normalize(ft_p_to_v(hit.comp.point, light->position));
-		//comp.normal_v = ft_normal_at(hit.object, hit.comp.point);
 		comp.reflect_v = ft_reflect(ft_v_scalar_prod(-1, comp.light_v), hit.comp.normal_v);
 		comp.light_dot_normal = ft_v_dot_prod(comp.light_v, hit.comp.normal_v);
+		if (hit.object->type == plane && comp.light_dot_normal < 0) // pour un plan il n'y a pas d'interieur / exterieur ..?
+			comp.light_dot_normal = -comp.light_dot_normal;
 		comp.reflect_dot_eye = ft_v_dot_prod(comp.reflect_v, hit.comp.eye_v);
 		out = ft_color_add(out, ft_lighting(comp, hit, light, scene));
 		light = light->next;
