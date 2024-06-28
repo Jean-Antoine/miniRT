@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 14:09:07 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/27 19:09:50 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/28 11:30:01 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ static int	ft_inters_pl(t_object *plane, t_ray *ray)
 	if (ft_eq(ray2.direction.y,0))
 		return (EXIT_FAILURE); //success ?
 	t = -ray2.origin.y / ray2.direction.y;
-	if (ft_eq(t,0)) //cracra ?
-		return (EXIT_FAILURE); //success ?
 	return (ft_new_inters(ray, plane, t));
 }
 

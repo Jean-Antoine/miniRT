@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:52:08 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/25 14:51:22 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/06/28 11:31:05 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ t_inters	*ft_hit(t_inters **lst)
 	while (inters->next)
 	{
 		inters = inters->next;
-		if (inters->t >= TOLERANCE && (inters->t < hit->t || hit->t < 0))
+		if (inters->t >= TOLERANCE
+			&& (inters->t < hit->t || hit->t < TOLERANCE))
 			hit = inters;
 	}
-	if (hit->t < 0)
+	if (hit->t < TOLERANCE)
 		return (NULL);
 	return (hit);
 }
