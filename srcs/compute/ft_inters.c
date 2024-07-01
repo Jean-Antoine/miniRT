@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 14:09:07 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/01 14:13:02 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:30:51 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ static int	ft_inters_pl(t_object *plane, t_ray *ray)
 	t_ray		ray2;
 	double		t;
 
-
 	ray2 = ft_transform(*ray, plane->transform);
-	if (ft_eq(ray2.direction.y,0))
+	if (ft_eq(ray2.direction.y, 0))
 		return (EXIT_FAILURE); //success ?
 	t = -ray2.origin.y / ray2.direction.y;
 	return (ft_new_inters(ray, plane, t));

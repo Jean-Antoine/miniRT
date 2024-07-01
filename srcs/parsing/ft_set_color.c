@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:04:21 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/24 13:11:31 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:20:39 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	ft_set_color(t_color *color, char *arg)
 		return (ft_error("wrong color format", FALSE));
 	}
 	*color = ft_color(
-		(double) ft_atoi(rgb[0]) / 255.0,
-		(double) ft_atoi(rgb[1]) / 255.0,
-		(double) ft_atoi(rgb[2]) / 255.0);
+			(double) ft_atoi(rgb[0]) / 255.0,
+			(double) ft_atoi(rgb[1]) / 255.0,
+			(double) ft_atoi(rgb[2]) / 255.0);
 	ft_free_tab((void **)rgb);
 	return (EXIT_SUCCESS);
 }

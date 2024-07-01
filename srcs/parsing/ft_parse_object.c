@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:53:37 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/07/01 17:09:22 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:19:28 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static t_object	*ft_add_object(t_object **dest)
 	if (!object)
 		return (NULL);
 	object->transform = ft_mat_id(4);
-	object->material = ft_default_material(); //
+	object->material = ft_default_material();
 	if (!*dest)
 		*dest = object;
 	else

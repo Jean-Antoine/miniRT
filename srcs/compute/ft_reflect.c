@@ -6,12 +6,11 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:52:46 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/25 16:49:05 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:26:54 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
-
 
 t_vector	ft_reflect(t_vector light, t_vector normal)
 {

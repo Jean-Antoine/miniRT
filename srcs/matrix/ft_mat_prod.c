@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mat_prod.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:28:20 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/18 17:23:00 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:21:11 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_mat	ft_mat_prod(t_mat A, t_mat B)
 	int		i;
 	int		j;
 	int		k;
-	
+
 	result = ft_matrix(A.row, B.col);
 	if (A.col != B.row)
 	{
