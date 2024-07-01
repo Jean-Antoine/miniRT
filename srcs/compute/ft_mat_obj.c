@@ -1,44 +1,45 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_mat_obj.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 12:44:24 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/28 18:13:53 by lpaquatt         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   ft_mat_obj.c									   :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: lpaquatt <marvin@42.fr>					+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2024/06/10 12:44:24 by jeada-si		  #+#	#+#			 */
+/*   Updated: 2024/07/01 14:06:04 by lpaquatt		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "compute.h"
 
-
-// vecteur unitaire = (0,1,0)
-
-
-void	ft_mat_pl(t_object *plane)
+static void	ft_mat_sp(t_object *sphere)
 {
- 	double theta_x, theta_y;
-    t_mat rotation_x, rotation_y,  combined_rotation, translation;
+	sphere->transform = ft_mat_prod(
+			sphere->transform,
+			ft_translation(
+				sphere->position.x, sphere->position.y, sphere->position.z));
+	sphere->transform = ft_mat_prod(
+			sphere->transform,
+			ft_scaling(sphere->diameter / 2.0, sphere->diameter / 2.0,
+				sphere->diameter / 2.0));
+	sphere->transform = ft_mat_inv(sphere->transform);
+}
 
-    // Calculate rotation angles
-    theta_x = atan2(sqrt(pow(plane->direction.x, 2) + pow(plane->direction.z, 2)), plane->direction.y);
-    theta_y = atan2(plane->direction.x, plane->direction.z);
+static void	ft_mat_pl(t_object *plane)
+{
+	double	theta_x;
+	double	theta_z;
+	t_mat	rotation;
+	t_mat	translation;
 
-    // Create rotation matrices
-    rotation_x = ft_rotation_x(theta_x);
-    rotation_y = ft_rotation_y(theta_y);
-    combined_rotation = ft_mat_prod(rotation_x, rotation_y);
-
-    // Create translation matrices
-    translation = ft_translation(plane->position.x, plane->position.y, plane->position.z);
-
-    // Apply transformation and invert
-	plane->transform = ft_mat_prod(combined_rotation, translation);
-    plane->transform = ft_mat_inv(plane->transform);
-
-    // Print the transformation matrix
-    ft_mat_print(plane->transform);
+	translation = ft_translation(plane->position.x, plane->position.y,
+			plane->position.z);
+	theta_x = atan2(plane->direction.z,
+			sqrt(pow(plane->direction.x, 2) + pow(plane->direction.y, 2)));
+	theta_z = atan2(plane->direction.x, plane->direction.y);
+	rotation = ft_mat_prod(ft_rotation_x(theta_x), ft_rotation_z(theta_z));
+	plane->transform = ft_mat_prod(translation, rotation);
+	plane->transform = ft_mat_inv(plane->transform);
 }
 
 void	ft_mat_obj(t_object *list)

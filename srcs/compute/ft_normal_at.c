@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:06:22 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/28 17:53:57 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:13:26 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_vector	ft_normal_at(t_object *object, t_point point)
 	if (object->type == sphere)
 		return (ft_get_normal_at_sp(object, point));
 	else if (object->type == plane)
-		return (object->direction); // a inverser ?
+		return (object->direction);
 	return (ft_vector(0, 0, 0));
 }
 
