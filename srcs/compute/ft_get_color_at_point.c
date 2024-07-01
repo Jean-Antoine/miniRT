@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:46:10 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/28 14:04:52 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:10:57 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,21 @@ t_bool	ft_is_shadowed(t_point pt, t_light light, t_scene scene)
 	return (FALSE);
 }
 
+t_color	ft_color_at_point(t_object *object, t_point point)
+{
+	if (object->material.pattern == TRUE)
+	{
+		point = ft_mat_prod_tup(object->transform, point);
+		point = ft_v_scalar_prod(4, point);
+		if ((int)(floor(point.x + TOLERANCE) + floor(point.y + TOLERANCE)
+			+ floor(point.z + TOLERANCE)) % 2 == 0)
+			return (ft_color_mix(object->material.color, (t_color){0.5, 0.5, 0.5, 0}));
+		return (object->material.color);
+	}
+	return (object->material.color);
+}
+
+
 t_color	ft_lighting(t_light_comp l, t_inters hit, t_light *light,
 	t_scene *scene)
 {
@@ -69,7 +84,7 @@ t_color	ft_lighting(t_light_comp l, t_inters hit, t_light *light,
 	material = hit.object->material;
 	eff_color = ft_color_mix(
 			ft_color_brightness(light->brightness_ratio, light->color),
-			material.color);
+			ft_color_at_point(hit.object,hit.comp.point)); // la lumiere affecte la couleur de l'objet meme quand il y a un objet entre les deux .. normal ?
 	ambient = ft_color_mix(
 			eff_color,
 			ft_color_brightness(scene->ambient_brightness,
@@ -81,6 +96,31 @@ t_color	ft_lighting(t_light_comp l, t_inters hit, t_light *light,
 			ft_color_brightness(light->brightness_ratio, light->color));
 	return (ft_color_add(ambient, ft_color_add(diffuse, specular)));
 }
+
+// t_color	ft_lighting(t_light_comp l, t_inters hit, t_light *light,
+// 	t_scene *scene)
+// {
+// 	t_material	material;
+// 	t_color		ambient;
+// 	t_color		eff_color;
+// 	t_color		diffuse;
+// 	t_color		specular;
+
+// 	material = hit.object->material;
+// 	ambient = ft_color_mix(
+// 			hit.object->material.color,
+// 			ft_color_brightness(scene->ambient_brightness,
+// 				scene->ambient_color));
+// 	if (ft_is_shadowed(hit.comp.point, *light, *scene) == TRUE)
+// 		return (ambient);
+// 	eff_color = ft_color_mix(
+// 			ft_color_brightness(light->brightness_ratio, light->color),
+// 			ambient);
+// 	diffuse = ft_diffuse(l.light_dot_normal, material.diffuse, eff_color);
+// 	specular = ft_specular(l, material.shininess, material.specular,
+// 			ft_color_brightness(light->brightness_ratio, light->color));
+// 	return (ft_color_add(ambient, ft_color_add(diffuse, specular)));
+// }
 
 t_color	ft_get_color_at_point(t_inters hit, t_scene *scene)
 {

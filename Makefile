@@ -21,6 +21,7 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_parse_object.c\
 								ft_parse_camera.c\
 								ft_set_color.c\
+								ft_set_material.c\
 								ft_set_point.c\
 								ft_set_scalar.c\
 								ft_is_numeric.c\
@@ -100,7 +101,7 @@ valgrind:					$(NAME)
 								--track-fds=yes\
 								--track-origins=yes \
 								--max-stackframe=2560592 \
-								./$(NAME) test_sp.rt
+								./$(NAME) test_checkers.rt
 
 clean:						
 							@make --no-print-directory -C $(LIB_FT_D) clean

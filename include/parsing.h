@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/27 16:55:59 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/01 16:44:10 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_material
 	double			diffuse;
 	double			specular;
 	double			shininess;
+	t_bool			pattern;
 }	t_material;
 
 typedef enum e_object_type
@@ -90,6 +91,7 @@ int			ft_set_point(t_point *dest, char *str);
 int			ft_set_vector(t_vector *dest, char *str);
 int			ft_set_scalar(double *dest, char *str);
 int			ft_set_color(t_color *color, char *str);
+int			ft_set_material(t_material *material, char *arg);
 
 int			ft_is_numeric(char *str);
 int			ft_is_float(char *str);

@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:53:37 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/27 17:06:28 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:09:22 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,57 @@
 
 static int	ft_parse_sp(char **args, t_object *dest)
 {
-	if (ft_tabsize(args) != 3)
+	int	ac;
+
+	ac = ft_tabsize(args);
+	if (ac != 3 && ac != 4)
 		return (ft_error("wrong number of parameters", FALSE));
 	dest->type = sphere;
 	return (ft_set_point(&dest->position, args[0])
 		|| ft_set_scalar(&dest->diameter, args[1])
-		|| ft_set_color(&dest->material.color, args[2]));
+		|| ft_set_color(&dest->material.color, args[2])
+		|| (ac == 4 && ft_set_material(&dest->material, args[3])));
 }
 
 static int	ft_parse_pl(char **args, t_object *dest)
 {
-	if (ft_tabsize(args) != 3)
+	int	ac;
+
+	ac = ft_tabsize(args);
+	if (ac != 3 && ac != 4)
 		return (ft_error("wrong number of parameters", FALSE));
 	dest->type = plane;
 	return (ft_set_point(&dest->position, args[0])
 		|| ft_set_vector(&dest->direction, args[1])
-		|| ft_set_color(&dest->material.color, args[2]));
+		|| ft_set_color(&dest->material.color, args[2])
+		|| (ac == 4 && ft_set_material(&dest->material, args[3])));
 }
 
 static int	ft_parse_cy(char **args, t_object *dest)
 {
-	if (ft_tabsize(args) != 5)
+	int	ac;
+
+	ac = ft_tabsize(args);
+	if (ac != 4 && ac != 5)
 		return (ft_error("wrong number of parameters", FALSE));
 	dest->type = cylinder;
 	return (ft_set_point(&dest->position, args[0])
 		|| ft_set_vector(&dest->direction, args[1])
 		|| ft_set_scalar(&dest->diameter, args[2])
 		|| ft_set_scalar(&dest->height, args[3])
-		|| ft_set_color(&dest->material.color, args[4]));
+		|| ft_set_color(&dest->material.color, args[4])
+		|| (ac == 5 && ft_set_material(&dest->material, args[3])));
 }
 
 static	t_material	ft_default_material(void)
 {
 	t_material	material;
 
+	ft_bzero(&material, sizeof(t_material));
 	material.diffuse = 0.9;
 	material.specular = 0.9;
 	material.shininess = 200;
+	material.pattern = FALSE;
 	return (material);
 }
 
