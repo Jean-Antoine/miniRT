@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/02 13:42:22 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/02 17:43:38 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,15 @@ typedef struct s_ray
 	t_inters			*inters_lst;
 }	t_ray;
 
+typedef struct s_disc
+{
+	double	a;
+	double	b;
+	double	c;
+	double	d;
+}	t_disc;
+
+
 void		ft_mat_obj(t_object *list);
 void		ft_ambient_obj(t_object *object, double brightness,	t_color color);
 t_ray		ft_ray(t_point origin, t_vector direction);
@@ -63,6 +72,7 @@ t_ray		ft_transform(t_ray ray, t_mat mat);
 int			ft_compute(t_scene *scene, int canvas[SIZE_H][SIZE_V]);
 int			ft_new_inters(t_ray *ray, t_object *object, double t);
 int			ft_inters(t_scene scene, t_ray *ray);
+int			ft_inters_cyl(t_object *cyl, t_ray *ray);
 t_inters	*ft_hit(t_inters **lst);
 void		ft_free_inters_lst(t_inters *inters);
 t_vector	ft_normal_at(t_object *sphere, t_point world_point);
