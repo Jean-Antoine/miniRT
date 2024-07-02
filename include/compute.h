@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/01 14:14:32 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/02 13:42:22 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define SIZE_H 800
 # define SIZE_V 800
 # define M_PI 3.14159265358979323846
+# define CHECKERS_BY_UNIT 10
 
 typedef struct s_light_comp
 {
@@ -69,5 +70,6 @@ t_vector	ft_reflect(t_vector in, t_vector normal);
 t_color		ft_get_color_at_point(t_inters hit, t_scene *scene);
 t_color		ft_white(void);
 t_color		ft_black(void);
+t_color		ft_grey(void);
 
 #endif

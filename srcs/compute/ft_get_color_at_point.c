@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:46:10 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/01 17:10:57 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/02 13:43:16 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,34 @@ t_bool	ft_is_shadowed(t_point pt, t_light light, t_scene scene)
 	return (FALSE);
 }
 
+t_color	ft_checker_at_point_sp(t_object *sphere, t_point point)
+{
+	double	u;
+	double	v;
+	double	theta;
+	double	phi;
+
+	theta = atan2(point.x, point.z);
+	phi = acos(point.y);
+	u = 1 - (theta / (2 * M_PI) + 0.5);
+	v = 1 - phi / M_PI;
+	if ((int)(floor(u * CHECKERS_BY_UNIT)
+		+ floor(v * CHECKERS_BY_UNIT)) % 2 == 0)
+		return (ft_color_mix(sphere->material.color, ft_grey()));
+	return (sphere->material.color);
+}
+
 t_color	ft_color_at_point(t_object *object, t_point point)
 {
 	if (object->material.pattern == TRUE)
 	{
 		point = ft_mat_prod_tup(object->transform, point);
-		point = ft_v_scalar_prod(4, point);
+		if (object->type == sphere)
+			return (ft_checker_at_point_sp(object, point));
+		point = ft_v_scalar_prod(CHECKERS_BY_UNIT, point);
 		if ((int)(floor(point.x + TOLERANCE) + floor(point.y + TOLERANCE)
 			+ floor(point.z + TOLERANCE)) % 2 == 0)
-			return (ft_color_mix(object->material.color, (t_color){0.5, 0.5, 0.5, 0}));
+			return (ft_color_mix(object->material.color, ft_grey()));
 		return (object->material.color);
 	}
 	return (object->material.color);
