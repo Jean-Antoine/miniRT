@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_inters.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 14:09:07 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/01 17:30:51 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/02 13:10:20 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	ft_inters_sp(t_object *sphere, t_ray *ray)
 
 	ray2 = ft_transform(*ray, sphere->transform);
 	if (ft_is_inters(ray2, &t1, &t2) == FALSE)
-		return (EXIT_FAILURE); //success ?
+		return (EXIT_SUCCESS);
 	return (
 		ft_new_inters(ray, sphere, t1) ||
 		ft_new_inters(ray, sphere, t2));
@@ -53,7 +53,7 @@ static int	ft_inters_pl(t_object *plane, t_ray *ray)
 
 	ray2 = ft_transform(*ray, plane->transform);
 	if (ft_eq(ray2.direction.y, 0))
-		return (EXIT_FAILURE); //success ?
+		return (EXIT_FAILURE);
 	t = -ray2.origin.y / ray2.direction.y;
 	return (ft_new_inters(ray, plane, t));
 }
@@ -69,6 +69,8 @@ int	ft_inters(t_scene scene, t_ray *ray)
 			ft_inters_sp(object, ray); // check failure ?
 		else if (object->type == plane)
 			ft_inters_pl(object, ray);
+		else if (object->type == cylinder)
+			ft_inters_cyl(object, ray);
 		object = object->next;
 	}
 	return (EXIT_SUCCESS);

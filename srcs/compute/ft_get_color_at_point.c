@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:46:10 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/03 23:27:58 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/03 23:39:24 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,16 @@ t_bool	ft_is_shadowed(t_point pt, t_light light, t_scene scene)
 	double		distance;
 	t_ray		ray;
 	t_inters	*hit;
+	t_bool		out;
 
 	pt_to_light = ft_p_to_v(pt, light.position);
 	distance = ft_v_norm(pt_to_light);
 	ray = ft_ray(pt, ft_v_normalize(pt_to_light));
 	ft_inters(scene, &ray);
 	hit = ft_hit(&ray.inters_lst);
-	if (hit && hit->t < distance)
-	{
-		ft_free_inters_lst(ray.inters_lst);
-		return (TRUE);
-	}
+	out = hit && hit->t < distance;
 	ft_free_inters_lst(ray.inters_lst);
-	return (FALSE);
+	return (out);
 }
 
 t_color	ft_checker_at_point_sp(t_object *sphere, t_point point)

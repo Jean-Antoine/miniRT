@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/03 15:38:56 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/03 23:39:08 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "matrix.h"
 # define TRUE 1
 # define FALSE 0
+# define NORMALIZE_VECTOR 1
 
 typedef int			t_bool;
 

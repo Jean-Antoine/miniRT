@@ -38,6 +38,7 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_free_inters_lst.c\
 								ft_new_inters.c\
 								ft_inters.c\
+								ft_inters_cyl.c\
 								ft_mat_obj.c\
 								ft_normal_at.c\
 								ft_reflect.c\

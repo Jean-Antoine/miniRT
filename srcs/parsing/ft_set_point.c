@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:04:28 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/10 16:37:39 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/02 15:47:27 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	ft_set_vector(t_vector *dest, char *str)
 {
 	if (ft_set_point((t_point *) dest, str))
 		return (EXIT_FAILURE);
+	if (NORMALIZE_VECTOR)
+		*dest = ft_v_normalize(*dest);
 	dest->w = 0;
 	if (!ft_is_normalized(*dest))
 		return (ft_error("vector is not normalized", FALSE));

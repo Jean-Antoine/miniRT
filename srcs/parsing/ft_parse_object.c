@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:53:37 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/07/03 23:29:49 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/03 23:42:13 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	ft_parse_cy(char **args, t_object *dest)
 		|| ft_set_scalar(&dest->diameter, args[2])
 		|| ft_set_scalar(&dest->height, args[3])
 		|| ft_set_color(&dest->material.color, args[4])
-		|| (ac == 5 && ft_set_material(&dest->material, args[3])));
+		|| (ac == 6 && ft_set_material(&dest->material, args[3])));
 }
 
 static	t_material	ft_default_material(void) // a deplacer
