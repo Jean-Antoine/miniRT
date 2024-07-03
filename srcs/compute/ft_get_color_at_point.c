@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:46:10 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/03 23:39:24 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/03 23:47:55 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,12 @@ t_color	ft_lighting_ambient(t_inters hit, t_scene *scene)
 			hit.comp.color_at_pt,
 			ft_color_brightness(scene->ambient_brightness,
 				scene->ambient_color));
-	if (material.texture.path) // bricolage
-	{
-		t_color diffuse = ft_diffuse(ft_v_dot_prod(hit.comp.normal_v, hit.comp.eye_v), material.diffuse, hit.comp.color_at_pt);
-		// t_color specular = ft_specular((t_light_comp){0}, material.shininess, material.specular, scene->ambient_color);
-		ambient = ft_color_add(ambient, ft_color_mix(diffuse, ft_grey()));
-	}
+	// if (material.texture.path) // bricolage
+	// {
+	// 	t_color diffuse = ft_diffuse(ft_v_dot_prod(hit.comp.normal_v, hit.comp.eye_v), material.diffuse, hit.comp.color_at_pt);
+	// 	// t_color specular = ft_specular((t_light_comp){0}, material.shininess, material.specular, scene->ambient_color);
+	// 	ambient = ft_color_add(ambient, ft_color_mix(diffuse, ft_grey()));
+	// }
 	return (ambient);
 }
 
