@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/01 16:44:10 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:38:56 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@
 
 typedef int			t_bool;
 
+typedef struct s_img
+{
+	char		*path;
+	void		*img_ptr;
+	char		*img_pixels_ptr;
+	int			bits_per_pixel;
+	int			line_len;
+	int			endian;
+	int			width;
+	int			height;
+	char		*img_buff;
+}	t_img;
+
 typedef struct s_material
 {
 	t_color			color;
@@ -29,6 +42,7 @@ typedef struct s_material
 	double			specular;
 	double			shininess;
 	t_bool			pattern;
+	t_img			texture;
 }	t_material;
 
 typedef enum e_object_type

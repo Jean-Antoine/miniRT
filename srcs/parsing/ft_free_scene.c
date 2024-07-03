@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_scene.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:34:44 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/05/30 12:53:09 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:42:03 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static void	ft_free_objects(t_object *object)
 	while (object)
 	{
 		next = object->next;
+		if (object->material.texture.img_buff)
+			free(object->material.texture.img_buff);
 		free(object);
 		object = next;
 	}

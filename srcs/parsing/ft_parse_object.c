@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:53:37 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/07/01 17:19:28 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/03 23:29:49 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	ft_parse_cy(char **args, t_object *dest)
 		|| (ac == 5 && ft_set_material(&dest->material, args[3])));
 }
 
-static	t_material	ft_default_material(void)
+static	t_material	ft_default_material(void) // a deplacer
 {
 	t_material	material;
 
@@ -64,7 +64,8 @@ static	t_material	ft_default_material(void)
 	material.diffuse = 0.9;
 	material.specular = 0.9;
 	material.shininess = 200;
-	material.pattern = FALSE;
+	material.pattern = FALSE; //inutile ?
+	ft_bzero(&material.texture, sizeof(t_img)); //inutile ?
 	return (material);
 }
 
