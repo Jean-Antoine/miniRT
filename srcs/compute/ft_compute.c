@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/27 18:16:00 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:08:33 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	ft_compute(t_scene *scene, int canvas[SIZE_H][SIZE_V])
 
 	ft_mat_obj(scene->objects);
 	x = -1;
+	printf("Computing...\n");
 	while (++x < SIZE_H)
 	{
 		y = -1;
@@ -60,5 +61,6 @@ int	ft_compute(t_scene *scene, int canvas[SIZE_H][SIZE_V])
 			canvas[x][y] = ft_color_at(scene, ray);
 		}
 	}
+	printf("Computing done\n");
 	return (EXIT_SUCCESS);
 }

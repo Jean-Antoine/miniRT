@@ -31,8 +31,10 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_compute.c\
 								ft_ray.c\
 								ft_pixel_to_ray.c\
+								ft_mat_view.c\
 								ft_transform.c\
 								ft_hit.c\
+								ft_get_uv_sp.c\
 								ft_free_inters_lst.c\
 								ft_new_inters.c\
 								ft_inters.c\

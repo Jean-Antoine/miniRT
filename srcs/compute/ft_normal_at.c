@@ -6,11 +6,62 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:06:22 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/01 17:26:42 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/03 19:31:23 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
+
+t_color	ft_int_to_color(unsigned int color) // deja defini ailleurs ..?
+{
+	t_color	rgb;
+
+	rgb.x = (color >> 16) & 0xFF;
+	rgb.y = (color >> 8) & 0xFF;
+	rgb.z = color & 0xFF;
+	return (rgb);
+}
+
+unsigned int	ft_get_color_from_img(t_img img, int x, int y)
+{
+	char	*color;
+	int		offset;
+
+	offset = (img.line_len * y) + (x * (img.bits_per_pixel / 8));
+	color = img.img_buff + offset;
+	return (*((unsigned int *)color));
+}
+
+t_color	ft_get_uv_color_at(t_img texture, double u, double v)
+{
+	int		color;
+
+	u *= texture.width;
+	v *= texture.height;
+	color = ft_get_color_from_img(texture, u, v);
+	return (ft_int_to_color(color));
+}
+
+static t_vector	ft_get_bump_normal_sp(t_object *sphere, t_point point, t_vector normal)
+{
+	t_point		uv;
+	t_mat		tbn;
+	t_vector	tangent;
+	t_vector	bitangent;
+	t_color		map_color;
+
+	uv = ft_get_uv_sp(point);
+	tangent = ft_v_cross_prod(normal, ft_vector(0, 1, 0));
+	if (ft_v_norm(tangent) < TOLERANCE)
+		tangent = ft_v_cross_prod(normal, ft_vector(0, 0, 1));
+	tangent = ft_v_normalize(tangent);
+	bitangent = ft_v_normalize(ft_v_cross_prod(normal, tangent));
+	tbn = ft_mat_view(normal, bitangent, tangent, ft_point(0, 0, 0));
+	map_color = ft_get_uv_color_at(sphere->material.texture, uv.x, uv.y);
+	map_color = ft_v_add(ft_v_scalar_prod(2, map_color), ft_vector(-1, -1, -1));
+	normal = ft_mat_prod_tup(tbn, map_color);
+	return (ft_v_normalize(normal));
+}
 
 static t_vector	ft_get_normal_at_sp(t_object *sphere, t_point world_point)
 {
@@ -20,6 +71,8 @@ static t_vector	ft_get_normal_at_sp(t_object *sphere, t_point world_point)
 
 	obj_point = ft_mat_prod_tup(sphere->transform, world_point);
 	obj_normal = ft_p_to_v(ft_point(0, 0, 0), obj_point);
+	if (sphere->material.texture.path)
+		return (ft_get_bump_normal_sp(sphere, obj_point, obj_normal));
 	world_normal = ft_mat_prod_tup(ft_mat_trans(sphere->transform), obj_normal);
 	world_normal.w = 0;
 	return (ft_v_normalize(world_normal));
@@ -33,18 +86,3 @@ t_vector	ft_normal_at(t_object *object, t_point point)
 		return (object->direction);
 	return (ft_vector(0, 0, 0));
 }
-
-// int main(void)
-// {
-// 	t_object sp;
-// 	t_vector vector;
-
-// 	sp.type = sphere;
-// 	sp.transform = ft_mat_inv(ft_translation(0, 1, 0));
-// 	vector = ft_normal_at(sp, ft_point(0, 1.70711, -0.70711));
-// 	ft_tuple_print(vector);
-
-// 	sp.transform = ft_mat_inv(ft_mat_prod(ft_scaling(1, 0.5, 1), ft_rotation_z(M_PI/5)));
-// 	vector = ft_normal_at(sp, ft_point(0, sqrt(2)/2, -sqrt(2)/2));
-// 	ft_tuple_print(vector);
-// }
