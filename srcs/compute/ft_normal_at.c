@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:06:22 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/03 23:41:36 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/04 02:19:14 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 t_color	ft_int_to_color(unsigned int color) // deja defini ailleurs ..?
 {
-	t_color	rgb;
+	t_color		rgb;
 
-	rgb.x = (color >> 16) & 0xFF;
-	rgb.y = (color >> 8) & 0xFF;
-	rgb.z = color & 0xFF;
+	rgb.x = ((color >> 16) & 0xFF) / 255.0;
+	rgb.y = ((color >> 8) & 0xFF) / 255.0;
+	rgb.z = ((color) & 0xFF) / 255.0;
+	rgb.w = 0;
 	return (rgb);
 }
 
@@ -38,8 +39,21 @@ t_color	ft_get_uv_color_at(t_img texture, double u, double v)
 
 	u *= texture.width;
 	v *= texture.height;
-	color = ft_get_color_from_img(texture, u, v);
+	color = ft_get_color_from_img(texture, (int)round(u), (int)(round(v)));
 	return (ft_int_to_color(color));
+}
+
+t_vector	mat4_mult_dir(t_mat matrix, t_vector dir) // a renommer/ a deplacer/ a retravailler
+{
+	t_vector	new;
+
+	new.x = dir.x * matrix.mat[0][0] + dir.y
+		* matrix.mat[1][0] + dir.z * matrix.mat[2][0];
+	new.y = dir.x * matrix.mat[0][1] + dir.y
+		* matrix.mat[1][1] + dir.z * matrix.mat[2][1];
+	new.z = dir.x * matrix.mat[0][2] + dir.y
+		* matrix.mat[1][2] + dir.z * matrix.mat[2][2];
+	return (new);
 }
 
 static t_vector	ft_get_bump_normal_sp(t_object *sphere, t_point point, t_vector normal)
@@ -59,7 +73,8 @@ static t_vector	ft_get_bump_normal_sp(t_object *sphere, t_point point, t_vector 
 	tbn = ft_mat_view(normal, bitangent, tangent, ft_point(0, 0, 0));
 	map_color = ft_get_uv_color_at(sphere->material.texture, uv.x, uv.y);
 	map_color = ft_v_add(ft_v_scalar_prod(2, map_color), ft_vector(-1, -1, -1));
-	normal = ft_mat_prod_tup(tbn, map_color);
+	normal = mat4_mult_dir(tbn, map_color);
+	// normal = ft_mat_prod_tup(tbn, map_color);
 	return (ft_v_normalize(normal));
 }
 
@@ -73,7 +88,8 @@ static t_vector	ft_normal_at_sp(t_object *sphere, t_point world_point)
 	obj_point = ft_mat_prod_tup(sphere->transform, world_point);
 	obj_normal = ft_p_to_v(ft_point(0, 0, 0), obj_point);
 	if (sphere->material.texture.path)
-		return (ft_get_bump_normal_sp(sphere, obj_point, obj_normal));
+		// return(ft_get_bump_normal_sp(sphere, obj_point, obj_normal));
+		obj_normal = ft_get_bump_normal_sp(sphere, obj_point, obj_normal);
 	world_normal = ft_mat_prod_tup(ft_mat_trans(sphere->transform), obj_normal);
 	world_normal.w = 0;
 	return (ft_v_normalize(world_normal));

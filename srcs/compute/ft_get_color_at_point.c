@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:46:10 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/03 23:47:55 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/04 02:46:51 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_bool	ft_is_shadowed(t_point pt, t_light light, t_scene scene)
 	return (out);
 }
 
-t_color	ft_checker_at_point_sp(t_object *sphere, t_point point)
+static t_color	ft_checker_at_point_sp(t_object *sphere, t_point point) // avec ft_color_at_point
 {
 	t_point	uv;
 
@@ -94,12 +94,6 @@ t_color	ft_lighting_ambient(t_inters hit, t_scene *scene)
 			hit.comp.color_at_pt,
 			ft_color_brightness(scene->ambient_brightness,
 				scene->ambient_color));
-	// if (material.texture.path) // bricolage
-	// {
-	// 	t_color diffuse = ft_diffuse(ft_v_dot_prod(hit.comp.normal_v, hit.comp.eye_v), material.diffuse, hit.comp.color_at_pt);
-	// 	// t_color specular = ft_specular((t_light_comp){0}, material.shininess, material.specular, scene->ambient_color);
-	// 	ambient = ft_color_add(ambient, ft_color_mix(diffuse, ft_grey()));
-	// }
 	return (ambient);
 }
 
@@ -111,9 +105,14 @@ t_color	ft_lighting(t_light_comp l, t_inters hit, t_light *light,
 	t_color		diffuse;
 	t_color		specular;
 
-	if (ft_is_shadowed(hit.comp.point, *light, *scene) == TRUE)
-		return (ambient);
 	material = hit.object->material;
+	if (ft_is_shadowed(hit.comp.point, *light, *scene) == TRUE)
+	{
+		if (!material.texture.path)
+			return (ambient);
+		return(ft_color_add(ambient, ft_diffuse(l.light_dot_normal,
+			material.diffuse, hit.comp.color_at_pt)));
+	}
 	eff_color = ft_color_mix(
 			ft_color_brightness(light->brightness_ratio, light->color),
 			hit.comp.color_at_pt);
@@ -168,8 +167,6 @@ t_color	ft_get_color_at_point(t_inters hit, t_scene *scene)
 		comp.light_v = ft_v_normalize(ft_p_to_v(hit.comp.point, light->position));
 		comp.reflect_v = ft_reflect(ft_v_scalar_prod(-1, comp.light_v), hit.comp.normal_v);
 		comp.light_dot_normal = ft_v_dot_prod(comp.light_v, hit.comp.normal_v);
-		// if (hit.object->type == plane && comp.light_dot_normal < TOLERANCE) // pour un plan il n'y a pas d'interieur / exterieur ..?
-		// 	comp.light_dot_normal = -comp.light_dot_normal;
 		comp.reflect_dot_eye = ft_v_dot_prod(comp.reflect_v, hit.comp.eye_v);
 		// out = ft_color_add(out, ft_lighting(comp, hit, light, scene));
 		out = ft_color_add(out, ft_lighting(comp, hit, light, scene, ambient));
