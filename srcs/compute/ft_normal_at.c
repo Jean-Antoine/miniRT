@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:06:22 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/04 02:19:14 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/04 02:52:33 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_vector	mat4_mult_dir(t_mat matrix, t_vector dir) // a renommer/ a deplacer/ a 
 		* matrix.mat[1][1] + dir.z * matrix.mat[2][1];
 	new.z = dir.x * matrix.mat[0][2] + dir.y
 		* matrix.mat[1][2] + dir.z * matrix.mat[2][2];
+	new.w = 0;
 	return (new);
 }
 
