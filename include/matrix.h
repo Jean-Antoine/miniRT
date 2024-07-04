@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:23:04 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/28 13:56:32 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/04 17:31:07 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_mat	ft_mat_trans(t_mat A);
 t_mat	ft_mat_inv(t_mat A);
 int		ft_is_inv(t_mat A);
 t_tuple	ft_mat_prod_tup(t_mat A, t_tuple tuple);
+t_tuple	ft_tup_prod_mat(t_mat A, t_tuple tuple);
 t_mat	ft_translation(double x, double y, double z);
 t_mat	ft_scaling(double x, double y, double z);
 t_mat	ft_rotation_x(double r);

@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:46:10 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/04 02:46:51 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/04 16:22:57 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_bool	ft_is_shadowed(t_point pt, t_light light, t_scene scene)
 	ray = ft_ray(pt, ft_v_normalize(pt_to_light));
 	ft_inters(scene, &ray);
 	hit = ft_hit(&ray.inters_lst);
-	out = hit && hit->t < distance;
+	out = hit && hit->t < distance + TOLERANCE;
 	ft_free_inters_lst(ray.inters_lst);
 	return (out);
 }
@@ -106,16 +106,18 @@ t_color	ft_lighting(t_light_comp l, t_inters hit, t_light *light,
 	t_color		specular;
 
 	material = hit.object->material;
+	eff_color = ft_color_mix(
+			ft_color_brightness(light->brightness_ratio, light->color),
+			hit.comp.color_at_pt);
 	if (ft_is_shadowed(hit.comp.point, *light, *scene) == TRUE)
 	{
 		if (!material.texture.path)
 			return (ambient);
-		return(ft_color_add(ambient, ft_diffuse(l.light_dot_normal,
-			material.diffuse, hit.comp.color_at_pt)));
+		diffuse = ft_diffuse(l.light_dot_normal, material.diffuse, eff_color);
+		diffuse = ft_color_brightness(0.5, diffuse);
+		// return(ambient);
+		return (ft_color_add(ambient, diffuse));
 	}
-	eff_color = ft_color_mix(
-			ft_color_brightness(light->brightness_ratio, light->color),
-			hit.comp.color_at_pt);
 	diffuse = ft_diffuse(l.light_dot_normal, material.diffuse, eff_color);
 	specular = ft_specular(l, material.shininess, material.specular,
 			ft_color_brightness(light->brightness_ratio, light->color));

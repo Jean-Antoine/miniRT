@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/03 23:38:43 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/04 17:48:43 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "matrix.h"
 # include <stdio.h>
 # include <math.h>
-# define SIZE_H 800
-# define SIZE_V 800
+# define SIZE_H 600
+# define SIZE_V 600
 # define M_PI 3.14159265358979323846
 # define CHECKERS_BY_UNIT 2
 
@@ -78,9 +78,13 @@ int			ft_inters_cyl(t_object *cyl, t_ray *ray);
 t_inters	*ft_hit(t_inters **lst);
 void		ft_free_inters_lst(t_inters *inters);
 t_vector	ft_normal_at(t_object *sphere, t_point world_point);
+t_vector	ft_normal_at_sp(t_object *sphere, t_point world_point);
 t_vector	ft_reflect(t_vector in, t_vector normal);
 t_color		ft_get_color_at_point(t_inters hit, t_scene *scene);
+t_color		ft_get_uv_color_img(t_img texture, double u, double v);
 t_point		ft_get_uv_sp(t_point point);
+int			ft_color_to_int(t_color color);
+t_color		ft_int_to_color(unsigned int color);
 t_color		ft_white(void);
 t_color		ft_black(void);
 t_color		ft_grey(void);
