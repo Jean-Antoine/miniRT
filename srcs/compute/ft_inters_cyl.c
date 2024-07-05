@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_inters_cyl.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 11:15:36 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/07/05 11:40:01 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/05 16:31:40 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
-
 
 static int	ft_add_inters_c(t_ray *ray, t_ray *dest, t_object *object, double t)
 {
@@ -55,9 +54,9 @@ int	ft_inters_cyl(t_object *object, t_ray *ray, t_ray *dest)
 {
 	t_discr	disc;
 
-	if (object->type == cylinder && 
-		(ft_add_cap_inters(ray, dest, object, -0.5)
-		|| ft_add_cap_inters(ray, dest, object, 0.5)))
+	if (object->type == cylinder
+		&& (ft_add_cap_inters(ray, dest, object, -0.5)
+			|| ft_add_cap_inters(ray, dest, object, 0.5)))
 		return (EXIT_FAILURE);
 	if (object->type == cone
 		&& ft_add_cap_inters(ray, dest, object, -0.5))
@@ -68,7 +67,7 @@ int	ft_inters_cyl(t_object *object, t_ray *ray, t_ray *dest)
 		return (EXIT_SUCCESS);
 	if (disc.n == 1)
 		return (ft_add_inters_c(ray, dest, object,
-			-disc.c / (2.0 * disc.b)));
+				-disc.c / (2.0 * disc.b)));
 	return (
 		ft_add_inters_c(ray, dest, object,
 			(-disc.b - sqrt(disc.d)) / (2.0 * disc.a))

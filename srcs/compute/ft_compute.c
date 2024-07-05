@@ -6,22 +6,50 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 15:19:56 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/05 16:28:35 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
 
+static t_color	ft_checker_at_point_sp(t_object *sphere, t_point point)
+{
+	t_point	uv;
+
+	uv = ft_get_uv_sp(point);
+	if ((int)(floor(uv.x * CHECKERS_BY_UNIT * 5)
+		+ floor(uv.y * CHECKERS_BY_UNIT * 5)) % 2 == 0)
+		return (ft_color_mix(sphere->material.color, ft_grey()));
+	return (sphere->material.color);
+}
+
+static t_color	ft_color_at_point(t_object *object, t_point point)
+{
+	if (object->material.pattern == TRUE)
+	{
+		point = ft_mat_prod_tup(object->transform, point);
+		if (object->type == sphere)
+			return (ft_checker_at_point_sp(object, point));
+		point = ft_v_scalar_prod(CHECKERS_BY_UNIT, point);
+		if ((int)(floor(point.x + TOLERANCE) + floor(point.y + TOLERANCE)
+			+ floor(point.z + TOLERANCE)) % 2 == 0)
+			return (ft_color_mix(object->material.color, ft_grey()));
+		return (object->material.color);
+	}
+	return (object->material.color);
+}
+
 void	ft_prepare_computations(t_ray ray, t_inters *inters)
 {
 	inters->comp.point = ft_position(ray, inters->t);
 	inters->comp.eye_v = ft_v_scalar_prod(-1, ray.direction);
-	inters->comp.color_at_pt = ft_color_at_point(inters->object, inters->comp.point);
+	inters->comp.color_at_pt = ft_color_at_point(inters->object,
+			inters->comp.point);
 	inters->comp.normal_v = ft_normal_at(inters->object, inters->comp.point);
 	inters->comp.inside = FALSE;
 	if ((inters->object->type == sphere
-		|| inters->object->type == cylinder
-		|| inters->object->type == cone)
+			|| inters->object->type == cylinder
+			|| inters->object->type == cone)
 		&& ft_v_dot_prod(inters->comp.normal_v, inters->comp.eye_v) < TOLERANCE)
 	{
 		inters->comp.inside = TRUE;

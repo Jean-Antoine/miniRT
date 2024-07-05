@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_inters.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 14:09:07 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 14:02:59 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/05 16:32:17 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ static int	ft_cap_inters(t_ray *ray, t_ray *dest, t_object *obj)
 static int	ft_inters_(t_object *object, t_ray *ray, t_ray *dest)
 {
 	t_discr	discr;
-	
+
 	if ((object->type == cylinder || object->type == cone)
 		&& ft_cap_inters(ray, dest, object))
-			return (EXIT_FAILURE);
-	discr = ft_discriminant(object, ray);	
+		return (EXIT_FAILURE);
+	discr = ft_discriminant(object, ray);
 	if (discr.n == 0)
 		return (EXIT_SUCCESS);
 	if (discr.n > 0 && ft_add_inters(dest, object, discr.t0))
 		return (EXIT_FAILURE);
 	if (discr.n == 2 && ft_add_inters(dest, object, discr.t1))
-		return (EXIT_FAILURE);	
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -89,6 +89,5 @@ int	ft_inters(t_scene *scene, t_ray *ray)
 		}
 		object = object->next;
 	}
-	
 	return (EXIT_SUCCESS);
 }

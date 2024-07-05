@@ -24,6 +24,7 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_set_material.c\
 								ft_set_point.c\
 								ft_set_scalar.c\
+								ft_default_material.c\
 								ft_is_numeric.c\
 								ft_tabsize.c\
 								ft_free_scene.c)\
@@ -44,8 +45,8 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_reflect.c\
 								ft_int_to_color.c\
 								ft_get_color_at_point.c\
+								ft_lighting.c\
 								ft_get_uv_color_img.c\
-								ft_int_to_color.c\
 								ft_colors.c)\
 							$(addprefix /matrix/,\
 								ft_matrix.c\
@@ -57,7 +58,8 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_mat_prod_tup.c\
 								ft_translation.c\
 								ft_scaling.c\
-								ft_rotation.c)\
+								ft_rotation.c\
+								ft_rotate.c)\
 							ft_display.c\
 							main.c
 OBJS_F = 					$(SRCS_F:.c=.o)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_object.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:53:37 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/07/05 14:47:01 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/05 16:54:45 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,6 @@ static int	ft_parse_cy(char **args, t_object *dest, t_bool is_cone)
 		|| ft_set_scalar(&dest->height, args[3])
 		|| ft_set_color(&dest->material.color, args[4])
 		|| (ac == 6 && ft_set_material(&dest->material, args[3])));
-}
-
-static	t_material	ft_default_material(void) // a deplacer
-{
-	t_material	material;
-
-	ft_bzero(&material, sizeof(t_material));
-	material.diffuse = 0.9;
-	material.specular = 0.9;
-	material.shininess = 200;
-	material.pattern = FALSE; //inutile ?
-	ft_bzero(&material.texture, sizeof(t_img)); //inutile ?
-	return (material);
 }
 
 static t_object	*ft_add_object(t_object **dest)

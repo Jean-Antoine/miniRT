@@ -26,7 +26,7 @@ typedef struct s_tuple
 
 typedef t_tuple	t_vector;
 typedef t_tuple	t_point;
-typedef	t_tuple	t_color;
+typedef t_tuple	t_color;
 
 int			ft_eq(double a, double b);
 t_point		ft_point(double x, double y, double z);

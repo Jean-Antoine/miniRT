@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_normal_at.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:06:22 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 14:55:15 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/05 16:29:34 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_vector	ft_get_bump_normal_sp(t_object *sphere, t_point point,
 	map_color = ft_v_add(ft_v_scalar_prod(2, map_color), ft_vector(-1, -1, -1));
 	normal = ft_tup_prod_mat(tbn, map_color);
 	return (ft_v_normalize(normal));
-} 
+}
 
 static t_vector	ft_normal_at_sp(t_point obj_point, t_object *sphere)
 {
@@ -47,31 +47,31 @@ static t_vector	ft_normal_at_sp(t_point obj_point, t_object *sphere)
 static t_vector	ft_normal_at_cyl(t_point obj_point)
 {
 	double	dist;
-	
-	dist = pow(obj_point.x, 2) +  pow(obj_point.z, 2);
+
+	dist = pow(obj_point.x, 2) + pow(obj_point.z, 2);
 	if (dist < 1.0 && obj_point.y >= (0.5 - 0.001))
-		return(ft_vector(0, 1, 0));
+		return (ft_vector(0, 1, 0));
 	else if (dist < 1.0 && obj_point.y <= (-0.5 + 0.001))
-		return(ft_vector(0, -1, 0));
+		return (ft_vector(0, -1, 0));
 	else
-		return(ft_vector(obj_point.x, 0, obj_point.z));
+		return (ft_vector(obj_point.x, 0, obj_point.z));
 }
 
 static t_vector	ft_normal_at_cone(t_point obj_point)
 {
 	double	dist;
 	double	y;
-	
-	dist = pow(obj_point.x, 2) +  pow(obj_point.z, 2);
+
+	dist = pow(obj_point.x, 2) + pow(obj_point.z, 2);
 	y = sqrt(dist);
 	if (obj_point.y > 0)
 		y = -y;
 	if (dist < 1.0 && obj_point.y >= (0.5 - 0.001))
-		return(ft_vector(0, 1, 0));
+		return (ft_vector(0, 1, 0));
 	else if (dist < 1.0 && obj_point.y <= (-0.5 + 0.001))
-		return(ft_vector(0, -1, 0));
+		return (ft_vector(0, -1, 0));
 	else
-		return(ft_vector(obj_point.x, y, obj_point.z));
+		return (ft_vector(obj_point.x, y, obj_point.z));
 }
 
 t_vector	ft_normal_at(t_object *object, t_point world_point)

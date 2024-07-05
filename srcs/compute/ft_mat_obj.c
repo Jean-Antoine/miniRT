@@ -16,7 +16,7 @@ static void	ft_mat_sp(t_object *sphere)
 {
 	sphere->transform = ft_translate(sphere->transform, sphere->position);
 	sphere->transform = ft_scale(sphere->transform,
-		sphere->diameter / 2, sphere->diameter / 2, sphere->diameter / 2);
+			sphere->diameter / 2, sphere->diameter / 2, sphere->diameter / 2);
 	sphere->transform = ft_mat_inv(sphere->transform);
 }
 
@@ -28,7 +28,7 @@ static t_mat	ft_rotate(t_mat mat, t_vector vector)
 	theta_x = atan2(vector.z, sqrt(pow(vector.x, 2) + pow(vector.y, 2)));
 	theta_z = atan2(vector.x, vector.y);
 	mat = ft_rotate_z(mat, theta_z);
-	mat = ft_rotate_x(mat, theta_x);	
+	mat = ft_rotate_x(mat, theta_x);
 	return (mat);
 }
 
@@ -39,25 +39,25 @@ static void	ft_mat_pl(t_object *plane)
 	plane->transform = ft_mat_inv(plane->transform);
 }
 
-static void ft_mat_cyl(t_object *cyl)
+static void	ft_mat_cyl(t_object *cyl)
 {
 	cyl->transform = ft_translate(cyl->transform, cyl->position);
-	cyl->transform = ft_translate(cyl->transform, 
-		ft_v_scalar_prod(cyl->height / 2, cyl->direction));
+	cyl->transform = ft_translate(cyl->transform,
+			ft_v_scalar_prod(cyl->height / 2, cyl->direction));
 	cyl->transform = ft_rotate(cyl->transform, cyl->direction);
-	cyl->transform = ft_scale(cyl->transform, 
-		cyl->diameter / 2.0, cyl->height, cyl->diameter / 2.0);	
+	cyl->transform = ft_scale(cyl->transform,
+			cyl->diameter / 2.0, cyl->height, cyl->diameter / 2.0);
 	cyl->transform = ft_mat_inv(cyl->transform);
 }
 
-static void ft_mat_cone(t_object *cone)
+static void	ft_mat_cone(t_object *cone)
 {
 	cone->transform = ft_translate(cone->transform, cone->position);
 	cone->transform = ft_translate(cone->transform,
-		ft_v_scalar_prod(cone->height, cone->direction));
+			ft_v_scalar_prod(cone->height, cone->direction));
 	cone->transform = ft_rotate(cone->transform, cone->direction);
-	cone->transform = ft_scale(cone->transform, 
-		cone->diameter, cone->height * 2, cone->diameter);	
+	cone->transform = ft_scale(cone->transform,
+			cone->diameter, cone->height * 2, cone->diameter);
 	cone->transform = ft_mat_inv(cone->transform);
 }
 

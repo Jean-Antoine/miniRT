@@ -66,9 +66,7 @@ static void	ft_inters_add_ordered(t_inters **lst, t_inters *new)
 int	ft_add_inters(t_ray *ray, t_object *object, double t)
 {
 	t_inters	*new_inters;
-	
-	// if (t < TOLERANCE)
-	// 	return (EXIT_SUCCESS);
+
 	new_inters = ft_create_inters(object, t);
 	if (!new_inters)
 		return (EXIT_FAILURE);

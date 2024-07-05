@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:23:04 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/07/05 14:54:58 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/05 16:48:14 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ t_mat	ft_scale(t_mat matrix, double x, double y, double z);
 t_mat	ft_rotate_x(t_mat matrix, double r);
 t_mat	ft_rotate_y(t_mat matrix, double r);
 t_mat	ft_rotate_z(t_mat matrix, double r);
+t_mat	ft_rotation_x(double r);
+t_mat	ft_rotation_y(double r);
+t_mat	ft_rotation_z(double r);
 t_mat	ft_mat_id(int size);
 
 #endif

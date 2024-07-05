@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 14:43:33 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/05 16:59:22 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ typedef struct s_material
 
 typedef enum e_object_type
 {
-					plane,
-					sphere,
-					cylinder,
-					cone
+	plane,
+	sphere,
+	cylinder,
+	cone
 }	t_object_type;
 
 typedef struct s_object
@@ -108,6 +108,7 @@ int			ft_set_vector(t_vector *dest, char *str);
 int			ft_set_scalar(double *dest, char *str);
 int			ft_set_color(t_color *color, char *str);
 int			ft_set_material(t_material *material, char *arg);
+t_material	ft_default_material(void);
 
 int			ft_is_numeric(char *str);
 int			ft_is_float(char *str);
