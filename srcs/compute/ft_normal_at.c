@@ -6,22 +6,20 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:06:22 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 16:29:34 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/05 18:18:27 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
 
-static t_vector	ft_get_bump_normal_sp(t_object *sphere, t_point point,
+static t_vector	ft_get_bump_normal(t_object *sphere, t_point uv,
 	t_vector normal)
 {
-	t_point		uv;
 	t_mat		tbn;
 	t_vector	tangent;
 	t_vector	bitangent;
 	t_color		map_color;
 
-	uv = ft_get_uv_sp(point);
 	tangent = ft_v_cross_prod(normal, ft_vector(0, 1, 0));
 	if (ft_v_norm(tangent) < TOLERANCE)
 		tangent = ft_v_cross_prod(normal, ft_vector(0, 0, 1));
@@ -40,21 +38,27 @@ static t_vector	ft_normal_at_sp(t_point obj_point, t_object *sphere)
 
 	obj_normal = ft_p_to_v(ft_point(0, 0, 0), obj_point);
 	if (sphere->material.texture.path)
-		obj_normal = ft_get_bump_normal_sp(sphere, obj_point, obj_normal);
+		obj_normal = ft_get_bump_normal(sphere,
+				ft_get_uv_sp(obj_point), obj_normal);
 	return (obj_normal);
 }
 
-static t_vector	ft_normal_at_cyl(t_point obj_point)
+static t_vector	ft_normal_at_cyl(t_point obj_point, t_object *cylinder)
 {
-	double	dist;
+	t_vector	obj_normal;
+	double		dist;
 
 	dist = pow(obj_point.x, 2) + pow(obj_point.z, 2);
 	if (dist < 1.0 && obj_point.y >= (0.5 - 0.001))
-		return (ft_vector(0, 1, 0));
+		obj_normal = ft_vector(0, 1, 0);
 	else if (dist < 1.0 && obj_point.y <= (-0.5 + 0.001))
-		return (ft_vector(0, -1, 0));
+		obj_normal = ft_vector(0, -1, 0);
 	else
-		return (ft_vector(obj_point.x, 0, obj_point.z));
+		obj_normal = ft_vector(obj_point.x, 0, obj_point.z);
+	if (cylinder->material.texture.path)
+		obj_normal = ft_get_bump_normal(cylinder,
+				ft_get_uv_cy(obj_point), obj_normal);
+	return (obj_normal);
 }
 
 static t_vector	ft_normal_at_cone(t_point obj_point)
@@ -87,7 +91,7 @@ t_vector	ft_normal_at(t_object *object, t_point world_point)
 	if (object->type == sphere)
 		obj_normal = ft_normal_at_sp(obj_point, object);
 	else if (object->type == cylinder)
-		obj_normal = ft_normal_at_cyl(obj_point);
+		obj_normal = ft_normal_at_cyl(obj_point, object);
 	else if (object->type == cone)
 		obj_normal = ft_normal_at_cone(obj_point);
 	world_normal = ft_mat_prod_tup(ft_mat_trans(object->transform), obj_normal);

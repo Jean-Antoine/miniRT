@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:53:37 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/07/05 16:54:45 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/05 17:20:49 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	ft_parse_cy(char **args, t_object *dest, t_bool is_cone)
 	int	ac;
 
 	ac = ft_tabsize(args);
-	if (ac != 4 && ac != 5)
+	if (ac != 5 && ac != 6)
 		return (ft_error("wrong number of parameters", FALSE));
 	dest->type = cylinder;
 	if (is_cone)
@@ -55,7 +55,7 @@ static int	ft_parse_cy(char **args, t_object *dest, t_bool is_cone)
 		|| ft_set_scalar(&dest->diameter, args[2])
 		|| ft_set_scalar(&dest->height, args[3])
 		|| ft_set_color(&dest->material.color, args[4])
-		|| (ac == 6 && ft_set_material(&dest->material, args[3])));
+		|| (ac == 6 && ft_set_material(&dest->material, args[5])));
 }
 
 static t_object	*ft_add_object(t_object **dest)

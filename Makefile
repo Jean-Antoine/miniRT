@@ -109,7 +109,7 @@ valgrind:					$(NAME)
 								--track-fds=yes\
 								--track-origins=yes \
 								--max-stackframe=2560592 \
-								./$(NAME) test_checkers.rt
+								./$(NAME) scenes/textured_sphere_two_spots.rt
 
 clean:						
 							@make --no-print-directory -C $(LIB_FT_D) clean

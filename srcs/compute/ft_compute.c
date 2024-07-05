@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 16:28:35 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/05 17:45:38 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,19 @@ static t_color	ft_checker_at_point_sp(t_object *sphere, t_point point)
 	t_point	uv;
 
 	uv = ft_get_uv_sp(point);
-	if ((int)(floor(uv.x * CHECKERS_BY_UNIT * 5)
-		+ floor(uv.y * CHECKERS_BY_UNIT * 5)) % 2 == 0)
+	if ((int)(floor(uv.x * CHECKERS_BY_UNIT * 6)
+		+ floor(uv.y * CHECKERS_BY_UNIT * 6)) % 2 == 0)
+		return (ft_color_mix(sphere->material.color, ft_grey()));
+	return (sphere->material.color);
+}
+
+static t_color	ft_checker_at_point_cy(t_object *sphere, t_point point)
+{
+	t_point	uv;
+
+	uv = ft_get_uv_cy(point);
+	if ((int)(floor(uv.x * CHECKERS_BY_UNIT * 6)
+		+ floor(uv.y * CHECKERS_BY_UNIT * 3)) % 2 == 0)
 		return (ft_color_mix(sphere->material.color, ft_grey()));
 	return (sphere->material.color);
 }
@@ -30,6 +41,8 @@ static t_color	ft_color_at_point(t_object *object, t_point point)
 		point = ft_mat_prod_tup(object->transform, point);
 		if (object->type == sphere)
 			return (ft_checker_at_point_sp(object, point));
+		if (object->type == cylinder)
+			return (ft_checker_at_point_cy(object, point));
 		point = ft_v_scalar_prod(CHECKERS_BY_UNIT, point);
 		if ((int)(floor(point.x + TOLERANCE) + floor(point.y + TOLERANCE)
 			+ floor(point.z + TOLERANCE)) % 2 == 0)

@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 16:57:22 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/05 17:28:46 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ t_color		ft_get_color_at_point(t_inters hit, t_scene *scene);
 t_color		ft_lighting(t_light_comp l, t_inters hit, t_light *light,
 				t_scene *scene);
 t_color		ft_get_uv_color_img(t_img texture, double u, double v);
+t_point		ft_get_uv_cy(t_point point);
 t_point		ft_get_uv_sp(t_point point);
 int			ft_color_to_int(t_color color);
 t_color		ft_int_to_color(unsigned int color);
