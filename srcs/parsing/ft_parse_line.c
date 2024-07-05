@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:04:33 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/06/24 10:29:00 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/04 14:34:30 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_parse_line(char *line, t_scene *scene)
 		return (EXIT_SUCCESS);
 	if (line[ft_strlen(line) - 1] == '\n')
 		line[ft_strlen(line) - 1] = 0;
-	args = ft_split(line, ' ');
+	args = ft_split(line, '	');
 	if (!args)
 		return (ft_error("ft_split", TRUE));
 	exit_code = ft_args_to_scene(args, scene);

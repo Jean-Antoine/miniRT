@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:34:23 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/03 23:39:08 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:43:33 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ typedef enum e_object_type
 {
 					plane,
 					sphere,
-					cylinder
+					cylinder,
+					cone
 }	t_object_type;
 
 typedef struct s_object

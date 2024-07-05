@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_color_at_point.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:46:10 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/04 16:22:57 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:46:01 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_color	ft_specular(t_light_comp l, double shininess, double specular,
 	return (specular_);
 }
 
-t_bool	ft_is_shadowed(t_point pt, t_light light, t_scene scene)
+t_bool	ft_is_shadowed(t_point pt, t_light *light, t_scene *scene)
 {
 	t_vector	pt_to_light;
 	double		distance;
@@ -44,7 +44,7 @@ t_bool	ft_is_shadowed(t_point pt, t_light light, t_scene scene)
 	t_inters	*hit;
 	t_bool		out;
 
-	pt_to_light = ft_p_to_v(pt, light.position);
+	pt_to_light = ft_p_to_v(pt, light->position);
 	distance = ft_v_norm(pt_to_light);
 	ray = ft_ray(pt, ft_v_normalize(pt_to_light));
 	ft_inters(scene, &ray);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/04 17:48:43 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:43:22 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "matrix.h"
 # include <stdio.h>
 # include <math.h>
-# define SIZE_H 600
-# define SIZE_V 600
+# define SIZE_H 400
+# define SIZE_V 400
 # define M_PI 3.14159265358979323846
 # define CHECKERS_BY_UNIT 2
 
@@ -55,13 +55,16 @@ typedef struct s_ray
 	t_inters			*inters_lst;
 }	t_ray;
 
-typedef struct s_disc
+typedef struct s_discr
 {
 	double	a;
 	double	b;
 	double	c;
 	double	d;
-}	t_disc;
+	int		n;
+	double	t0;
+	double	t1;
+}	t_discr;
 
 
 void		ft_mat_obj(t_object *list);
@@ -72,9 +75,10 @@ t_ray		ft_pixel_to_ray(int px, int py, t_camera *camera);
 t_mat		ft_mat_view(t_vector forward, t_vector left, t_vector up, t_point origin);
 t_ray		ft_transform(t_ray ray, t_mat mat);
 int			ft_compute(t_scene *scene, int canvas[SIZE_H][SIZE_V]);
-int			ft_new_inters(t_ray *ray, t_object *object, double t);
-int			ft_inters(t_scene scene, t_ray *ray);
-int			ft_inters_cyl(t_object *cyl, t_ray *ray);
+int			ft_add_inters(t_ray *ray, t_object *object, double t);
+t_discr		ft_discriminant(t_object *object, t_ray *ray);
+int			ft_inters(t_scene *scene, t_ray *ray);
+int			ft_inters_cyl(t_object *cyl, t_ray *ray, t_ray *dest);
 t_inters	*ft_hit(t_inters **lst);
 void		ft_free_inters_lst(t_inters *inters);
 t_vector	ft_normal_at(t_object *sphere, t_point world_point);

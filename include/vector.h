@@ -14,7 +14,7 @@
 # define VECTOR_H
 # include <math.h>
 # include <stdio.h>
-# define TOLERANCE 0.01
+# define TOLERANCE 0.0001
 
 typedef struct s_tuple
 {
@@ -40,7 +40,6 @@ t_vector	ft_v_cross_prod(t_vector v1, t_vector v2);
 double		ft_v_norm(t_vector vect);
 double		ft_v_dot_prod(t_vector v1, t_vector v2);
 void		ft_tuple_print(t_tuple tup);
-
 t_color		ft_color(double r, double g, double b);
 t_color		ft_color_mix(t_color color1, t_color color2);
 t_color		ft_color_brightness(double brightness, t_color color);

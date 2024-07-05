@@ -36,9 +36,9 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_hit.c\
 								ft_get_uv_sp.c\
 								ft_free_inters_lst.c\
-								ft_new_inters.c\
+								ft_add_inters.c\
 								ft_inters.c\
-								ft_inters_cyl.c\
+								ft_discriminant.c\
 								ft_mat_obj.c\
 								ft_normal_at.c\
 								ft_normal_at_sp.c\

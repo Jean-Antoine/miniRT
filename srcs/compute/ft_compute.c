@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_compute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/04 17:47:05 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:44:00 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,42 @@ static double	ft_dmin(double x, double y)
 	return (x);
 }
 
-int	ft_color_at(t_scene *scene, t_ray ray)
+static int	ft_color_to_int(t_color color)
+{	
+	return (((int)(ft_dmin(color.x * 255.0, 255.0)) << 16)
+		+ ((int)(ft_dmin(color.y * 255.0, 255.0)) << 8)
+		+ (int)(ft_dmin(color.z * 255.0, 255.0)));
+}
+
+void	ft_prepare_computations(t_ray ray, t_inters *inters)
+{
+	inters->comp.point = ft_position(ray, inters->t);
+	inters->comp.eye_v = ft_v_scalar_prod(-1, ray.direction);
+	inters->comp.normal_v = ft_normal_at(inters->object, inters->comp.point);
+	inters->comp.inside = FALSE;
+	if ((inters->object->type == sphere
+		|| inters->object->type == cylinder
+		|| inters->object->type == cone)
+		&& ft_v_dot_prod(inters->comp.normal_v, inters->comp.eye_v) < TOLERANCE)
+	{
+		inters->comp.inside = TRUE;
+		inters->comp.normal_v = ft_v_scalar_prod(-1, inters->comp.normal_v);
+	}
+}
+
+static void	ft_color_at(t_scene *scene, t_ray ray, int *dest)
 {
 	t_inters	*hit;
 	t_color		color;	
 
-	ft_inters(*scene, &ray);
 	hit = ft_hit(&ray.inters_lst);
-	if (hit)
-	{
-		color = ft_get_color_at_point(*hit, scene);
-		ft_free_inters_lst(ray.inters_lst);
-		return (ft_color_to_int(color));
-	}
+	*dest = ft_color_to_int(ft_black());
+	if (!hit)
+		return (ft_free_inters_lst(ray.inters_lst));
+	ft_prepare_computations(ray, hit);
+	color = ft_get_color_at_point(*hit, scene);
+	*dest = ft_color_to_int(color);
 	ft_free_inters_lst(ray.inters_lst);
-	return (0x000000);
 }
 
 int	ft_compute(t_scene *scene, int canvas[SIZE_H][SIZE_V])
@@ -51,7 +72,9 @@ int	ft_compute(t_scene *scene, int canvas[SIZE_H][SIZE_V])
 		while (++y < SIZE_V)
 		{
 			ray = ft_pixel_to_ray(x, y, &scene->camera);
-			canvas[x][y] = ft_color_at(scene, ray);
+			if (ft_inters(scene, &ray))
+				return (EXIT_FAILURE);
+			ft_color_at(scene, ray, &(canvas[x][y]));
 		}
 	}
 	printf("Computing done\n");

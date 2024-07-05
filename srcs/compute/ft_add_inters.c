@@ -27,6 +27,21 @@ static t_inters	*ft_create_inters(t_object *object, double t)
 	return (inters);
 }
 
+static void	ft_insert(t_inters *new, t_inters *inters)
+{
+	while (inters)
+	{
+		if (!inters->next)
+			break ;
+		if (inters->t < new->t
+			&& new->t < inters->next->t)
+			break ;
+		inters = inters->next;
+	}
+	new->next = inters->next;
+	inters->next = new;
+}
+
 static void	ft_inters_add_ordered(t_inters **lst, t_inters *new)
 {
 	t_inters	*inters;
@@ -45,34 +60,18 @@ static void	ft_inters_add_ordered(t_inters **lst, t_inters *new)
 		new->next = inters;
 		return ;
 	}
-	while (inters->next && inters->t < new->t)
-		inters = inters->next;
-	new->next = inters->next;
-	inters->next = new;
+	ft_insert(new, inters);
 }
 
-void	ft_prepare_computations(t_ray ray, t_inters *inters)
-{
-	inters->comp.point = ft_position(ray, inters->t);
-	inters->comp.color_at_pt = ft_color_at_point(inters->object, inters->comp.point);
-	inters->comp.eye_v = ft_v_scalar_prod(-1, ray.direction);
-	inters->comp.normal_v = ft_normal_at(inters->object, inters->comp.point);
-	inters->comp.inside = FALSE;
-	if (ft_v_dot_prod(inters->comp.normal_v, inters->comp.eye_v) < 0) // vrai pour les spheres uniquement ? a priori non
-	{
-		inters->comp.inside = TRUE;
-		inters->comp.normal_v = ft_v_scalar_prod(-1, inters->comp.normal_v);
-	}
-}
-
-int	ft_new_inters(t_ray *ray, t_object *object, double t)
+int	ft_add_inters(t_ray *ray, t_object *object, double t)
 {
 	t_inters	*new_inters;
-
+	
+	// if (t < TOLERANCE)
+	// 	return (EXIT_SUCCESS);
 	new_inters = ft_create_inters(object, t);
 	if (!new_inters)
 		return (EXIT_FAILURE);
 	ft_inters_add_ordered(&ray->inters_lst, new_inters);
-	ft_prepare_computations(*ray, new_inters);
 	return (EXIT_SUCCESS);
 }
