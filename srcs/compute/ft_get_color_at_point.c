@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:46:10 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 15:18:37 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/05 15:20:17 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_color	ft_specular(t_light_comp l, double shininess, double specular,
 	return (specular_);
 }
 
-t_bool	ft_is_shadowed(t_point pt, t_light light, t_scene scene)
+t_bool	ft_is_shadowed(t_point pt, t_light *light, t_scene *scene)
 {
 	t_vector	pt_to_light;
 	double		distance;
@@ -44,7 +44,7 @@ t_bool	ft_is_shadowed(t_point pt, t_light light, t_scene scene)
 	t_inters	*hit;
 	t_bool		out;
 
-	pt_to_light = ft_p_to_v(pt, light.position);
+	pt_to_light = ft_p_to_v(pt, light->position);
 	distance = ft_v_norm(pt_to_light);
 	ray = ft_ray(pt, ft_v_normalize(pt_to_light));
 	ft_inters(scene, &ray);
@@ -81,9 +81,6 @@ t_color	ft_color_at_point(t_object *object, t_point point) //a mettre ailleurs
 	return (object->material.color);
 }
 
-
-/*good ?*/
-
 t_color	ft_lighting_ambient(t_inters hit, t_scene *scene)
 {
 	t_material	material;
@@ -109,7 +106,7 @@ t_color	ft_lighting(t_light_comp l, t_inters hit, t_light *light,
 	eff_color = ft_color_mix(
 			ft_color_brightness(light->brightness_ratio, light->color),
 			hit.comp.color_at_pt);
-	if (ft_is_shadowed(hit.comp.point, *light, *scene) == TRUE)
+	if (ft_is_shadowed(hit.comp.point, light, scene) == TRUE)
 	{
 		if (!material.texture.path)
 			return (ambient);

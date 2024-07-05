@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_object.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:53:37 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/07/03 23:42:13 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:47:01 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	ft_parse_pl(char **args, t_object *dest)
 		|| (ac == 4 && ft_set_material(&dest->material, args[3])));
 }
 
-static int	ft_parse_cy(char **args, t_object *dest)
+static int	ft_parse_cy(char **args, t_object *dest, t_bool is_cone)
 {
 	int	ac;
 
@@ -48,6 +48,8 @@ static int	ft_parse_cy(char **args, t_object *dest)
 	if (ac != 4 && ac != 5)
 		return (ft_error("wrong number of parameters", FALSE));
 	dest->type = cylinder;
+	if (is_cone)
+		dest->type = cone;
 	return (ft_set_point(&dest->position, args[0])
 		|| ft_set_vector(&dest->direction, args[1])
 		|| ft_set_scalar(&dest->diameter, args[2])
@@ -97,7 +99,8 @@ int	ft_parse_object(char **args, t_object **dest)
 
 	if (ft_strcmp(args[0], "sp")
 		&& ft_strcmp(args[0], "pl")
-		&& ft_strcmp(args[0], "cy"))
+		&& ft_strcmp(args[0], "cy")
+		&& ft_strcmp(args[0], "co"))
 		return (2);
 	object = ft_add_object(dest);
 	if (!object)
@@ -106,7 +109,7 @@ int	ft_parse_object(char **args, t_object **dest)
 		return (ft_parse_sp(args + 1, object));
 	if (!ft_strcmp(args[0], "pl"))
 		return (ft_parse_pl(args + 1, object));
-	if (!ft_strcmp(args[0], "cy"))
-		return (ft_parse_cy(args + 1, object));
+	if (!ft_strcmp(args[0], "cy") || !ft_strcmp(args[0], "co"))
+		return (ft_parse_cy(args + 1, object, !ft_strcmp(args[0], "co")));
 	return (EXIT_FAILURE);
 }

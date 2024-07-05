@@ -6,14 +6,14 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:45:15 by jeada-si          #+#    #+#             */
-/*   Updated: 2024/06/18 16:57:13 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:27:20 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 #include "vector.h"
 
-t_mat	ft_translation(double x, double y, double z)
+static t_mat	ft_translation(double x, double y, double z)
 {
 	t_mat	translation;
 
@@ -26,4 +26,17 @@ t_mat	ft_translation(double x, double y, double z)
 	translation.mat[1][3] = y;
 	translation.mat[2][3] = z;
 	return (translation);
+}
+
+t_mat	ft_translate(t_mat matrix, t_tuple translation)
+{
+	return (
+		ft_mat_prod(
+			matrix,
+			ft_translation(
+				translation.x,
+				translation.y,
+				translation.z
+			))
+	);
 }

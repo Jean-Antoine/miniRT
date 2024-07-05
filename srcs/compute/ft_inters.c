@@ -6,72 +6,89 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 14:09:07 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/02 13:10:20 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:02:59 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
 
-static int	ft_is_inters(t_ray ray, double *t1, double *t2)
+static int	ft_check_cap(t_ray *ray, double t, t_bool is_cone)
 {
-	double		a;
-	double		b;
-	double		c;
-	double		discr;
-	t_vector	sphere_to_ray;
+	t_point	point;
 
-	sphere_to_ray = ft_p_to_v(ft_point(0, 0, 0), ray.origin);
-	a = ft_v_dot_prod(ray.direction, ray.direction);
-	b = 2.0 * ft_v_dot_prod(ray.direction, sphere_to_ray);
-	c = ft_v_dot_prod(sphere_to_ray, sphere_to_ray) - 1.0;
-	discr = b * b - 4.0 * a * c;
-	if (discr < 0)
-		return (FALSE);
-	*t1 = (-b - sqrt(discr)) / (2.0 * a);
-	*t2 = (-b + sqrt(discr)) / (2.0 * a);
-	return (TRUE);
+	point = ft_position(*ray, t);
+	if (!is_cone)
+		return (pow(point.x, 2) + pow(point.z, 2) <= 1);
+	return (pow(point.x, 2) + pow(point.z, 2) <= pow(0.5, 2));
 }
 
-static int	ft_inters_sp(t_object *sphere, t_ray *ray)
+static int	ft_cap_inters(t_ray *ray, t_ray *dest, t_object *obj)
 {
-	t_ray		ray2;
-	double		t1;
-	double		t2;
+	double	t0;
+	double	t1;
 
-	ray2 = ft_transform(*ray, sphere->transform);
-	if (ft_is_inters(ray2, &t1, &t2) == FALSE)
+	if (ft_eq(ray->direction.y, TOLERANCE))
 		return (EXIT_SUCCESS);
-	return (
-		ft_new_inters(ray, sphere, t1) ||
-		ft_new_inters(ray, sphere, t2));
+	t0 = (-0.5 - ray->origin.y) / ray->direction.y;
+	t1 = (+0.5 - ray->origin.y) / ray->direction.y;
+	if (ft_check_cap(ray, t0, obj->type == cone))
+		if (ft_add_inters(dest, obj, t0))
+			return (EXIT_FAILURE);
+	if (obj->type == cone)
+		return (EXIT_SUCCESS);
+	if (ft_check_cap(ray, t1, FALSE))
+		return (ft_add_inters(dest, obj, t1));
+	return (EXIT_SUCCESS);
 }
 
-static int	ft_inters_pl(t_object *plane, t_ray *ray)
+static int	ft_inters_(t_object *object, t_ray *ray, t_ray *dest)
 {
-	t_ray		ray2;
+	t_discr	discr;
+	
+	if ((object->type == cylinder || object->type == cone)
+		&& ft_cap_inters(ray, dest, object))
+			return (EXIT_FAILURE);
+	discr = ft_discriminant(object, ray);	
+	if (discr.n == 0)
+		return (EXIT_SUCCESS);
+	if (discr.n > 0 && ft_add_inters(dest, object, discr.t0))
+		return (EXIT_FAILURE);
+	if (discr.n == 2 && ft_add_inters(dest, object, discr.t1))
+		return (EXIT_FAILURE);	
+	return (EXIT_SUCCESS);
+}
+
+static int	ft_inters_pl(t_object *plane, t_ray *ray, t_ray *dest)
+{
 	double		t;
 
-	ray2 = ft_transform(*ray, plane->transform);
-	if (ft_eq(ray2.direction.y, 0))
+	if (ft_eq(ray->direction.y, TOLERANCE))
 		return (EXIT_FAILURE);
-	t = -ray2.origin.y / ray2.direction.y;
-	return (ft_new_inters(ray, plane, t));
+	t = -ray->origin.y / ray->direction.y;
+	return (ft_add_inters(dest, plane, t));
 }
 
-int	ft_inters(t_scene scene, t_ray *ray)
+int	ft_inters(t_scene *scene, t_ray *ray)
 {
 	t_object	*object;
+	t_ray		ray_obj;
 
-	object = scene.objects;
+	object = scene->objects;
 	while (object)
 	{
-		if (object->type == sphere)
-			ft_inters_sp(object, ray); // check failure ?
-		else if (object->type == plane)
-			ft_inters_pl(object, ray);
-		else if (object->type == cylinder)
-			ft_inters_cyl(object, ray);
+		ray_obj = ft_transform(*ray, object->transform);
+		if (object->type == plane)
+		{
+			if (ft_inters_pl(object, &ray_obj, ray))
+				return (EXIT_FAILURE);
+		}
+		else
+		{
+			if (ft_inters_(object, &ray_obj, ray))
+				return (EXIT_FAILURE);
+		}
 		object = object->next;
 	}
+	
 	return (EXIT_SUCCESS);
 }
