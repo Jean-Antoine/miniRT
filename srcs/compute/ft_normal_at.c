@@ -3,22 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_normal_at.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:06:22 by lpaquatt          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/07/04 17:48:50 by lpaquatt         ###   ########.fr       */
-=======
-/*   Updated: 2024/07/04 15:42:36 by jeada-si         ###   ########.fr       */
->>>>>>> 46b5a25 (cone cyl)
+/*   Updated: 2024/07/05 14:55:15 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
 
-static t_vector	ft_normal_at_sp(t_point obj_point)
+static t_vector	ft_get_bump_normal_sp(t_object *sphere, t_point point,
+	t_vector normal)
 {
-	return (ft_p_to_v(ft_point(0, 0, 0), obj_point));
+	t_point		uv;
+	t_mat		tbn;
+	t_vector	tangent;
+	t_vector	bitangent;
+	t_color		map_color;
+
+	uv = ft_get_uv_sp(point);
+	tangent = ft_v_cross_prod(normal, ft_vector(0, 1, 0));
+	if (ft_v_norm(tangent) < TOLERANCE)
+		tangent = ft_v_cross_prod(normal, ft_vector(0, 0, 1));
+	tangent = ft_v_normalize(tangent);
+	bitangent = ft_v_normalize(ft_v_cross_prod(normal, tangent));
+	tbn = ft_mat_view(normal, bitangent, tangent, ft_point(0, 0, 0));
+	map_color = ft_get_uv_color_img(sphere->material.texture, uv.x, uv.y);
+	map_color = ft_v_add(ft_v_scalar_prod(2, map_color), ft_vector(-1, -1, -1));
+	normal = ft_tup_prod_mat(tbn, map_color);
+	return (ft_v_normalize(normal));
+} 
+
+static t_vector	ft_normal_at_sp(t_point obj_point, t_object *sphere)
+{
+	t_vector	obj_normal;
+
+	obj_normal = ft_p_to_v(ft_point(0, 0, 0), obj_point);
+	if (sphere->material.texture.path)
+		obj_normal = ft_get_bump_normal_sp(sphere, obj_point, obj_normal);
+	return (obj_normal);
 }
 
 static t_vector	ft_normal_at_cyl(t_point obj_point)
@@ -62,7 +85,7 @@ t_vector	ft_normal_at(t_object *object, t_point world_point)
 		return (object->direction);
 	obj_point = ft_mat_prod_tup(object->transform, world_point);
 	if (object->type == sphere)
-		obj_normal = ft_normal_at_sp(obj_point);
+		obj_normal = ft_normal_at_sp(obj_point, object);
 	else if (object->type == cylinder)
 		obj_normal = ft_normal_at_cyl(obj_point);
 	else if (object->type == cone)

@@ -6,30 +6,17 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 14:44:00 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/05 15:17:02 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
 
-static double	ft_dmin(double x, double y)
-{
-	if (x > y)
-		return (y);
-	return (x);
-}
-
-static int	ft_color_to_int(t_color color)
-{	
-	return (((int)(ft_dmin(color.x * 255.0, 255.0)) << 16)
-		+ ((int)(ft_dmin(color.y * 255.0, 255.0)) << 8)
-		+ (int)(ft_dmin(color.z * 255.0, 255.0)));
-}
-
 void	ft_prepare_computations(t_ray ray, t_inters *inters)
 {
 	inters->comp.point = ft_position(ray, inters->t);
 	inters->comp.eye_v = ft_v_scalar_prod(-1, ray.direction);
+	inters->comp.color_at_pt = ft_color_at_point(inters->object, inters->comp.point);
 	inters->comp.normal_v = ft_normal_at(inters->object, inters->comp.point);
 	inters->comp.inside = FALSE;
 	if ((inters->object->type == sphere
@@ -45,7 +32,7 @@ void	ft_prepare_computations(t_ray ray, t_inters *inters)
 static void	ft_color_at(t_scene *scene, t_ray ray, int *dest)
 {
 	t_inters	*hit;
-	t_color		color;	
+	t_color		color;
 
 	hit = ft_hit(&ray.inters_lst);
 	*dest = ft_color_to_int(ft_black());

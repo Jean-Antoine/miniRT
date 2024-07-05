@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:46:10 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 14:46:01 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/05 15:11:55 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,6 @@ t_color	ft_color_at_point(t_object *object, t_point point) //a mettre ailleurs
 	return (object->material.color);
 }
 
-
-/*good ?*/
-
 t_color	ft_lighting_ambient(t_inters hit, t_scene *scene)
 {
 	t_material	material;
@@ -109,7 +106,7 @@ t_color	ft_lighting(t_light_comp l, t_inters hit, t_light *light,
 	eff_color = ft_color_mix(
 			ft_color_brightness(light->brightness_ratio, light->color),
 			hit.comp.color_at_pt);
-	if (ft_is_shadowed(hit.comp.point, *light, *scene) == TRUE)
+	if (ft_is_shadowed(hit.comp.point, light, scene) == TRUE)
 	{
 		if (!material.texture.path)
 			return (ambient);

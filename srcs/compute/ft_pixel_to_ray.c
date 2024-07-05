@@ -6,11 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:28:55 by jeada-si          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/07/03 14:07:47 by lpaquatt         ###   ########.fr       */
-=======
-/*   Updated: 2024/07/03 11:43:43 by jeada-si         ###   ########.fr       */
->>>>>>> 46b5a25 (cone cyl)
+/*   Updated: 2024/07/05 14:50:09 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +27,7 @@ static t_mat	ft_mat_view_inv(t_vector dir, t_point position)
 	up = ft_v_cross_prod(left, dir);
 	dir = ft_v_scalar_prod(-1, dir);
 	view = ft_mat_view(dir, left, up, ft_point(0, 0, 0));
-	view = ft_mat_prod(
-			view,
-			ft_translation(-position.x, -position.y, -position.z));
+	view = ft_translate(view, ft_v_scalar_prod(-1, position));
 	return (ft_mat_inv(view));
 }
 

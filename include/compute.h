@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 14:43:22 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:54:09 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int			ft_inters_cyl(t_object *cyl, t_ray *ray, t_ray *dest);
 t_inters	*ft_hit(t_inters **lst);
 void		ft_free_inters_lst(t_inters *inters);
 t_vector	ft_normal_at(t_object *sphere, t_point world_point);
-t_vector	ft_normal_at_sp(t_object *sphere, t_point world_point);
 t_vector	ft_reflect(t_vector in, t_vector normal);
 t_color		ft_get_color_at_point(t_inters hit, t_scene *scene);
 t_color		ft_get_uv_color_img(t_img texture, double u, double v);

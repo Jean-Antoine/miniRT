@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_int_to_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:46:35 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/04 17:47:14 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:57:35 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
+
+static double	ft_dmin(double a, double b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
 
 t_color	ft_int_to_color(unsigned int color)
 {
