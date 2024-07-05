@@ -6,18 +6,13 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:30 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/04 17:47:05 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/05 15:01:36 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
 
-static double	ft_dmin(double x, double y)
-{
-	if (x > y)
-		return (y);
-	return (x);
-}
+
 
 int	ft_color_at(t_scene *scene, t_ray ray)
 {

@@ -6,11 +6,18 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:46:35 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/04 17:47:14 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/05 15:02:11 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compute.h"
+
+static double	ft_dmin(double x, double y)
+{
+	if (x > y)
+		return (y);
+	return (x);
+}
 
 t_color	ft_int_to_color(unsigned int color)
 {
