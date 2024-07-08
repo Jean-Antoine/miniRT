@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 17:13:00 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 17:58:20 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/08 14:09:34 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@ t_point	ft_get_uv_cy(t_point point)
 	theta = atan2(point.x, point.z);
 	uv.x = (theta + M_PI) / (2 * M_PI);
 	uv.y = point.y + 0.5;
+	return (uv);
+}
+
+// get (u,v) coordinates for a point on a unit cone
+t_point	ft_get_uv_cone(t_point point)
+{
+	t_point	uv;
+	double	theta;
+
+	ft_bzero(&uv, sizeof(t_point));
+	theta = atan2(point.x, point.z);
+	uv.x = (theta + M_PI) / (2 * M_PI);
+	uv.y = (0.5 - point.y) / sqrt(2);
 	return (uv);
 }
 

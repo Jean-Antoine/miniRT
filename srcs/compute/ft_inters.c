@@ -6,7 +6,7 @@
 /*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 14:09:07 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 16:32:17 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:17:59 by lpaquatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	ft_inters_pl(t_object *plane, t_ray *ray, t_ray *dest)
 	double		t;
 
 	if (ft_eq(ray->direction.y, TOLERANCE))
-		return (EXIT_FAILURE);
+		return (EXIT_SUCCESS);// EXIT FAILURE faisait stopper la computation
 	t = -ray->origin.y / ray->direction.y;
 	return (ft_add_inters(dest, plane, t));
 }
