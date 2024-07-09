@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set_material.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:35:01 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/03 23:31:20 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/09 14:27:24 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	ft_get_img_from_path(t_img *img, char *path)
 			&img->line_len, &img->endian);
 	img->img_buff = ft_calloc(img->width * img->height,
 			img->bits_per_pixel / 8);
+	if (!img->img_buff)
+		return (EXIT_FAILURE);
 	ft_memcpy(img->img_buff, img->img_pixels_ptr, img->width * img->height
 		* img->bits_per_pixel / 8);
 	mlx_destroy_image(mlx, img->img_ptr);
