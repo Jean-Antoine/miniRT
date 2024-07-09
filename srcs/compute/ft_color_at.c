@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 14:36:05 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/09 16:00:09 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/09 16:07:07 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,15 @@ static void	ft_prepare_computations(t_ray ray, t_inters *inters)
 
 void	ft_color_at(t_scene *scene, t_ray ray, int *dest)
 {
-	t_inters	*hit;
-	t_inters	hit_;
+	t_inters	hit;
 	t_color		color;
 
-	hit = ft_hit(&ray.inters_lst);
-	if (hit)
-		hit_ = *hit;
-	ft_free_inters_lst(ray.inters_lst);
-	if (!hit)
+	if (!ray.inters_lst)
 		return ;
+	hit = *(ray.inters_lst);
+	ft_free_inters_lst(ray.inters_lst);
 	*dest = ft_color_to_int(ft_black());
-	ft_prepare_computations(ray, &hit_);
-	color = ft_get_color_at_point(hit_, scene);
+	ft_prepare_computations(ray, &hit);
+	color = ft_get_color_at_point(hit, scene);
 	*dest = ft_color_to_int(color);
 }

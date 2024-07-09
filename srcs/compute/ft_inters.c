@@ -6,7 +6,7 @@
 /*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 14:09:07 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/09 15:58:38 by jeada-si         ###   ########.fr       */
+/*   Updated: 2024/07/09 16:02:29 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ int	ft_inters(t_scene *scene, t_ray *ray)
 		if (exit_code)
 		{
 			ft_free_inters_lst(ray->inters_lst);
-			return (EXIT_FAILURE);
+			ft_free_scene(*scene);
+			exit(EXIT_FAILURE);
 		}
 		object = object->next;
 	}
