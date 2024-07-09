@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lighting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 16:35:09 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 16:42:33 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/09 15:59:41 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ static t_bool	ft_is_shadowed(t_point pt, t_light *light, t_scene *scene)
 	pt_to_light = ft_p_to_v(pt, light->position);
 	distance = ft_v_norm(pt_to_light);
 	ray = ft_ray(pt, ft_v_normalize(pt_to_light));
-	ft_inters(scene, &ray);
+	if (ft_inters(scene, &ray))
+	{
+		ft_free_scene(*scene);
+		exit(EXIT_FAILURE);
+	}
 	hit = ft_hit(&ray.inters_lst);
 	out = (hit && hit->t < distance + TOLERANCE);
 	ft_free_inters_lst(ray.inters_lst);

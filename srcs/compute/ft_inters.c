@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_inters.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 14:09:07 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/09 14:33:26 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/09 15:58:38 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,21 @@ int	ft_inters(t_scene *scene, t_ray *ray)
 {
 	t_object	*object;
 	t_ray		ray_obj;
+	int			exit_code;
 
 	object = scene->objects;
+	exit_code = EXIT_SUCCESS;
 	while (object)
 	{
 		ray_obj = ft_transform(*ray, object->transform);
 		if (object->type == plane)
-		{
-			if (ft_inters_pl(object, &ray_obj, ray))
-				return (EXIT_FAILURE);
-		}
+			exit_code = ft_inters_pl(object, &ray_obj, ray);
 		else
+			exit_code = ft_inters_(object, &ray_obj, ray);
+		if (exit_code)
 		{
-			if (ft_inters_(object, &ray_obj, ray))
-				return (EXIT_FAILURE);
+			ft_free_inters_lst(ray->inters_lst);
+			return (EXIT_FAILURE);
 		}
 		object = object->next;
 	}
