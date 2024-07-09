@@ -20,18 +20,6 @@ static void	ft_mat_sp(t_object *sphere)
 	sphere->transform = ft_mat_inv(sphere->transform);
 }
 
-static t_mat	ft_rotate(t_mat mat, t_vector vector)
-{
-	double	theta_x;
-	double	theta_z;
-
-	theta_x = atan2(vector.z, sqrt(pow(vector.x, 2) + pow(vector.y, 2)));
-	theta_z = atan2(vector.x, vector.y);
-	mat = ft_rotate_z(mat, theta_z);
-	mat = ft_rotate_x(mat, theta_x);
-	return (mat);
-}
-
 static void	ft_mat_pl(t_object *plane)
 {
 	plane->transform = ft_translate(plane->transform, plane->position);

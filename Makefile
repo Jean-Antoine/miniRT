@@ -33,6 +33,7 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_ray.c\
 								ft_pixel_to_ray.c\
 								ft_mat_view.c\
+								ft_color_at.c\
 								ft_transform.c\
 								ft_hit.c\
 								ft_get_uv_sp.c\
@@ -41,7 +42,9 @@ SRCS_F =					$(addprefix /vector/,\
 								ft_inters.c\
 								ft_discriminant.c\
 								ft_mat_obj.c\
+								ft_rotate.c\
 								ft_normal_at.c\
+								ft_get_bump_normal.c\
 								ft_reflect.c\
 								ft_int_to_color.c\
 								ft_get_color_at_point.c\
@@ -109,7 +112,7 @@ valgrind:					$(NAME)
 								--track-fds=yes\
 								--track-origins=yes \
 								--max-stackframe=2560592 \
-								./$(NAME) scenes/textured_sphere_two_spots.rt
+								./$(NAME) scenes/obj_w_textures_2.rt
 
 clean:						
 							@make --no-print-directory -C $(LIB_FT_D) clean
