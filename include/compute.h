@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaquatt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jeada-si <jeada-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:32:20 by lpaquatt          #+#    #+#             */
-/*   Updated: 2024/07/05 17:28:46 by lpaquatt         ###   ########.fr       */
+/*   Updated: 2024/07/09 09:46:25 by jeada-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <math.h>
 # define SIZE_H 1000
-# define SIZE_V 1000
+# define SIZE_V 500
 # define M_PI 3.14159265358979323846
 # define CHECKERS_BY_UNIT 2
 
@@ -90,6 +90,7 @@ t_color		ft_lighting(t_light_comp l, t_inters hit, t_light *light,
 t_color		ft_get_uv_color_img(t_img texture, double u, double v);
 t_point		ft_get_uv_cy(t_point point);
 t_point		ft_get_uv_sp(t_point point);
+t_point		ft_get_uv_cone(t_point point);
 int			ft_color_to_int(t_color color);
 t_color		ft_int_to_color(unsigned int color);
 t_color		ft_white(void);
